@@ -9,5 +9,5 @@ Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 
 new Vue({
-  render: h => h(SignUp),
+  render: h => h(App),
 }).$mount('#app')
