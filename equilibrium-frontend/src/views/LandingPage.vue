@@ -5,7 +5,9 @@
         <b-navbar-brand href="#">
           <img src="../assets/EquilibriumMini.png" class="d-inline-block align-top nav-logo" style="width: 41px; height: auto" alt="Equilibrium">
         </b-navbar-brand>
-        <b-nav-item class="text-primary">AÑADE CLIENTES</b-nav-item>
+        <b-nav-item class="text-primary">
+          <span class="text active">AÑADE CLIENTES</span>
+        </b-nav-item>
         <b-nav-item>VER CUENTAS</b-nav-item>
         <b-nav-item>REGISTRAR PAGOS</b-nav-item>
         <b-nav-item>REGISTRAR VENTAS</b-nav-item>
@@ -74,7 +76,7 @@ u {
   justify-content: center;
   align-items: center;
   top: 30px;
-  margin: auto;
+  margin: 0 auto;
   height: 3.6vw;
   width: 100vw;
 }
@@ -83,6 +85,21 @@ u {
   margin-left: 2vw;
   display: grid;
   place-items: center;
+}
+
+.text-primary {
+  background-image: url("../assets/ActiveTab.png");
+  background-size: 12vw auto;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-position: center 1.4em;
+  width: 12em;
+.active {
+  color: #eee;
+  font-size: 1em;
+  position: relative;
+  left: 1em;
+}
 }
 
 .nav-btn-registrarse {
@@ -118,57 +135,57 @@ u {
   left: 13.5vw;
   top: 9.5vw;
 
-  .title {
-    text-align: left;
-    font-size: 3.65vw;
-    line-height: (105 / 70);
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    color: #fff;
-  }
+.title {
+  text-align: left;
+  font-size: 3.65vw;
+  line-height: (105 / 70);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
 
-  .logo {
-    position: relative;
-    top: 1.5vw;
-    width: 39vw;
-    height: auto;
-  }
+.logo {
+  position: relative;
+  top: 1.5vw;
+  width: 39vw;
+  height: auto;
+}
 
-  .btn-comenzar-ya {
-    transition: 0s;
-    position: relative;
-    left: 6.5vw;
-    top: 1vw;
-    width: 30vw;
-    height: 6vw;
-    border-radius: 3.8vw;
-    border-width: 0px;
-    background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
+.btn-comenzar-ya {
+  transition: 0s;
+  position: relative;
+  left: 6.5vw;
+  top: 1vw;
+  width: 30vw;
+  height: 6vw;
+  border-radius: 3.8vw;
+  border-width: 0px;
+  background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
 
-    .RightArrow {
-      position: relative;
-      top: -0.73vw;
-      left: -1.1vw;
-      width: 2.2vw;
-      height: 1.35vw;
-      transform: rotate(-90deg);
-      transform-origin: center;
-      fill: rgba(240,240,240,1);
-    }
+.RightArrow {
+  position: relative;
+  top: -0.73vw;
+  left: -1.1vw;
+  width: 2.2vw;
+  height: 1.35vw;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  fill: rgba(240,240,240,1);
+}
 
-    .text {
-      position: relative;
-      top: -0.1vw;
-      left: 0.4vw;
-      display: inline-block;
-      font-size: 3vw;
-    }
-  }
+.text {
+  position: relative;
+  top: -0.1vw;
+  left: 0.4vw;
+  display: inline-block;
+  font-size: 3vw;
+}
+}
 
-  .btn-comenzar-ya:hover {
-    border: 5px solid #f96ea6;
-    border-radius: 73px;
-    background: #202020;
-  }
+.btn-comenzar-ya:hover {
+  border: 5px solid #f96ea6;
+  border-radius: 73px;
+  background: #202020;
+}
 }
 </style>
