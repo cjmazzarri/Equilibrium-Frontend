@@ -42,5 +42,133 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+body {
+  height: 100%;
+  display: grid;
+  background-image: url("../assets/LandingPageBg.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.text {
+  position: relative;
+  top: 50%;
+  font-family: Gilroy ☞, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  margin: auto;
+}
+
+u {
+  text-decoration: none;
+  border-bottom: 4px solid white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 30px;
+  margin: auto;
+  height: 3.6vw;
+  width: 100vw;
+}
+
+#nav-text > * {
+  margin-left: 2vw;
+  display: grid;
+  place-items: center;
+}
+
+.nav-btn-registrarse {
+  transition: 0.3s;
+  width: 11.5vw;
+  height: 3.5vw;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #4bc8f8 0%, #6e93f9 100%);
+}
+
+.nav-btn-registrarse:hover {
+  border: 3px solid #648dff;
+  background: transparent;
+}
+
+.nav-btn-iniciar {
+  transition: 0.3s;
+  width: 11.5vw;
+  height: 3.5vw;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.nav-btn-iniciar:hover {
+  border-radius: 4px;
+  border: none;
+  background: linear-gradient(90deg, #4d56d1 0%, #da71ff 100%);
+}
+
+.cta {
+  position: absolute;
+  left: 13.5vw;
+  top: 9.5vw;
+
+  .title {
+    text-align: left;
+    font-size: 3.65vw;
+    line-height: (105 / 70);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #fff;
+  }
+
+  .logo {
+    position: relative;
+    top: 1.5vw;
+    width: 39vw;
+    height: auto;
+  }
+
+  .btn-comenzar-ya {
+    transition: 0s;
+    position: relative;
+    left: 6.5vw;
+    top: 1vw;
+    width: 30vw;
+    height: 6vw;
+    border-radius: 3.8vw;
+    border-width: 0px;
+    background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
+
+    .RightArrow {
+      position: relative;
+      top: -0.73vw;
+      left: -1.1vw;
+      width: 2.2vw;
+      height: 1.35vw;
+      transform: rotate(-90deg);
+      transform-origin: center;
+      fill: rgba(240,240,240,1);
+    }
+
+    .text {
+      position: relative;
+      top: -0.1vw;
+      left: 0.4vw;
+      display: inline-block;
+      font-size: 3vw;
+    }
+  }
+
+  .btn-comenzar-ya:hover {
+    border: 5px solid #f96ea6;
+    border-radius: 73px;
+    background: #202020;
+  }
+}
 </style>
