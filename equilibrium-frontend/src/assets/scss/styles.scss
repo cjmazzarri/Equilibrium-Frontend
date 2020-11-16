@@ -1,8 +1,11 @@
- body {
-   background-image: url("assets/LandingPageBg.png");
+ .Login {
+   height: 100%;
+   display: grid;
+   background-image: url("assets/SimpleBG.png");
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
+
  }
 
  #app {
@@ -59,3 +62,69 @@
    border-radius: 4px;
    background: transparent;
  }
+
+ .iniciar-sesion-header{
+   font-family: Gilroy ☞;
+   text-align: left;
+   font-size: 20px;
+   font-weight: 700;
+   color: #202020;
+   padding-left: 2vw;
+ }
+
+ .form-text{
+   font-family: Gilroy ☞;
+   text-align: left;
+   font-size: 16px;
+   font-weight: 500;
+   color: #202020;
+ }
+
+ .form-link{
+   font-family: Gilroy ☞;
+   font-size: 16px;
+   font-weight: 500;
+   position: relative;
+   left: -3vw;
+   top: 2px;
+ }
+
+ .back{
+   background-color: white;
+   margin: auto;
+   width: 57vw;
+ }
+
+ .login-btn {
+   width: 25vw;
+   height: 35px;
+   border-radius: 50px;
+   background: linear-gradient(90deg, #7591ff 0%, #4dd1be 100%);
+   font-family: Gilroy ☞;
+   font-size: 16px;
+   margin: auto;
+   line-height: (9 / 20);
+   font-weight: 500;
+   color: #fff;
+   border-width: 0;
+ }
+
+ .login-form > * {
+   margin-bottom: 2.35vw;
+   padding-left: 2vw;
+ }
+
+ .form-check-input{
+   position: relative;
+   left: 2vw;
+ }
+
+ .form-check-text{
+   font-family: Gilroy ☞;
+   font-size: 16px;
+   font-weight: 500;
+   color: #202020;
+   position: relative;
+   left: 3vw;
+ }
+
