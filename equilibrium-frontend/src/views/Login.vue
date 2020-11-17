@@ -7,7 +7,7 @@
                     <img src="../assets/LoginBGWithLine.png" style="width: 28.5vw; height: auto;">
                 </b-col>
                 <b-col>
-                    <img src="../assets/CloseX.png" style="position: relative; left: 12vw; bottom: 12vh">
+                    <img src="../assets/CloseX.png" style="position: relative; left: 12vw; bottom: 18%">
                     <form class="login-form">
                         <h1 class="iniciar-sesion-header">Inicia sesión</h1>
                         <b-row>
