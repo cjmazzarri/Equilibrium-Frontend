@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <LandingPage/>
+    <Login/>
   </div>
 </template>
 
 <script>
-import LandingPage from "@/views/LandingPage";
+import Login from "@/views/Login";
 
 export default {
   name: 'App',
   components: {
-    LandingPage
+    Login
   }
 }
 </script>
