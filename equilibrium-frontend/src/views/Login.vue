@@ -1,6 +1,5 @@
 <template>
     <div class="Login vh-100 vw-100" style="align-content: center">
-        <!--b-row></b-row-->
         <b-container align="center">
             <b-row no-gutters class="back" align-v="center">
                 <b-col>
@@ -36,9 +35,7 @@
                 </b-col>
             </b-row>
         </b-container>
-        <!--b-row></b-row-->
     </div>
-
 </template>
 
 <script>
