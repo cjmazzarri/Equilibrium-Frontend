@@ -12,7 +12,7 @@
                         <h3 class="text">¿Ya tienes cuenta? <a class="form-link" href="" target="_blank" rel="noopener">Inicia sesión aquí</a></h3>
                         <div class="form-text">
                             <label for="InputUsername">Username</label>
-                            <input type="email" class="form-control" required id="InputUsername">
+                            <input type="text" class="form-control" required id="InputUsername">
                         </div>
                         <div class="form-text">
                             <label for="InputEmail">Correo electrónico </label>
