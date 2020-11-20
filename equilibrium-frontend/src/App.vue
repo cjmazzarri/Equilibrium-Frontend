@@ -6,7 +6,7 @@
 
 <script>
 
-import SentEmail from "@/views/SentEmail";
+import SentEmail from "@/views/ForgetPasswordComplete";
 
 export default {
   name: 'App',
