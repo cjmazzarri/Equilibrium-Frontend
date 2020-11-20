@@ -10,7 +10,7 @@
                     <form class="login-form">
                         <h1 class="iniciar-sesion-header">Inicia sesión</h1>
                         <b-row>
-                            <b-col cols>
+                            <b-col>
                                 <label style="font-size: 16px" class="form-text">¿No tienes cuenta?</label>
                             </b-col>
                             <b-col style="text-align: left">

@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <SignUp/>
+    <LoginComplete/>
   </div>
 </template>
 
 <script>
-import SignUp from "@/views/SignUp";
+
+import LoginComplete from "@/views/LoginComplete";
 
 export default {
   name: 'App',
   components: {
-    SignUp
+    LoginComplete
   }
 }
 </script>
