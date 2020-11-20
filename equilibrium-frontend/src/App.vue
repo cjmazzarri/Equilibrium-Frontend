@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Login/>
+    <RecoverPassword/>
   </div>
 </template>
 
 <script>
-import Login from "@/views/Login";
+import RecoverPassword from "@/views/RecoverPassword";
 
 export default {
   name: 'App',
   components: {
-    Login
+    RecoverPassword
   }
 }
 </script>
