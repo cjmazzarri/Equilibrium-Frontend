@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <SentEmail/>
+    <LoginComplete/>
   </div>
 </template>
 
 <script>
 
-import SentEmail from "@/views/ForgetPasswordComplete";
+import LoginComplete from "@/views/LoginComplete";
 
 export default {
   name: 'App',
   components: {
-    SentEmail
+    LoginComplete
   }
 }
 </script>
