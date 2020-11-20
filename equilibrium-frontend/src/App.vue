@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <RecoverPassword/>
+    <SentEmail/>
   </div>
 </template>
 
 <script>
-import RecoverPassword from "@/views/RecoverPassword";
+
+import SentEmail from "@/views/SentEmail";
 
 export default {
   name: 'App',
   components: {
-    RecoverPassword
+    SentEmail
   }
 }
 </script>
