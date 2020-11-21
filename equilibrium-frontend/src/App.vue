@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <SignUpComplete/>
+    <Dashboard/>
   </div>
 </template>
 
 <script>
-import SignUpComplete from "@/views/SignUpComplete";
+import Dashboard from "@/views/Dashboard";
 
 export default {
   name: 'App',
   components: {
-    SignUpComplete
+    Dashboard
   }
 }
 </script>
 
 <style lang="scss">
 @import './assets/scss/app.scss';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap-vue/src/index.scss';
 </style>
