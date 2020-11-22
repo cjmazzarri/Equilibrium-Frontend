@@ -1,5 +1,5 @@
 <template>
-  <div class="AddClientS1">
+  <div class="AddClientS2">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
       <b-button class="category" href="#">
@@ -65,7 +65,7 @@
         <div class="medium-card">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
-            <b-card-body class="title">Paso 1 de 5</b-card-body>
+            <b-card-body class="title">Paso 2 de 5</b-card-body>
             <div class="navigation">
               <div><img src="../../assets/AddClient/LeftArrow.png"></div>
               <div><p class="text">Anterior</p></div>
@@ -74,14 +74,13 @@
             </div>
           </b-card>
           <b-card class="bottom">
-            <div><h2 class="title">¿Cómo se llama mi cliente?</h2></div>
-            <div><b-form-input placeholder="Nombres" class="input"></b-form-input></div>
-            <div><b-form-input placeholder="Apellidos" class="input"></b-form-input></div>
-            <div class="illustration"><img src="../../assets/AddClient/Step1.png"></div>
-            <div><b-button class="next">
-              <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
-              <p class="text">Siguiente</p>
-            </b-button></div>
+            <div><h2 class="title">¿Con qué moneda<br>
+              abrimos la cuenta?</h2></div>
+            <div class="btn-container">
+              <div style="display: inline-block"><b-button class="choice">Soles</b-button></div>
+              <div style="display: inline-block"><b-button class="choice second">Dólares</b-button></div>
+            </div>
+            <div class="illustration"><img src="../../assets/AddClient/Step2.png"></div>
           </b-card>
         </div>
       </div>
@@ -91,7 +90,7 @@
 
 <script>
 export default {
-name: "AddClientS1"
+  name: "AddClientS2"
 }
 </script>
 
@@ -416,34 +415,34 @@ div.card-header {
       font-weight: 600;
       color: #000;
       margin-left: 4vw;
-      margin-top: 4vh;
+      margin-top: 7vh;
       margin-bottom: 5vh;
     }
-    .input{
-      margin-left: 4vw;
-      margin-top: 1.5vw;
-      font-size: 3.13vw;
-      font-weight: 600;
-      width: 45vw;
-      border-top: transparent;
-      border-left: transparent;
-      border-right: transparent;
-      border-radius: 0;
-      border-width: 0.26vw;
-    }
-    .input:focus{
-      border-color: #4D56D1;
-      outline: none 0 !important;
-      box-shadow: none;
-      -moz-box-shadow: none;
-      -webkit-box-shadow: none;
+    .btn-container{
+      display: flex;
+      margin-top: 8.7vh;
+      .choice {
+        width: 17vw;
+        height: 9vh;
+        border-radius: 2.24vw;
+        background: linear-gradient(90deg, #da71ff 0%, #634dfc 100%);
+        border: transparent;
+        font-size: 2.08vw;
+        font-weight: 600;
+        color: #fff;
+        box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
+        margin-left: 3.28vw;
+      }
+      .second {
+        background: linear-gradient(90deg, #f8a74b 0%, #f96ea6 100%);
+      }
     }
     .illustration{
       position: absolute;
-      bottom: -0.1vh;
-      right: 3vw;
+      bottom: 2vh;
+      right: 6.93vw;
       img{
-        width: 23vw;
+        width: 27vw;
       }
     }
     .next{

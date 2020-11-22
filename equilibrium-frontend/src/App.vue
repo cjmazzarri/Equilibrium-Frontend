@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <LandingPage/>
+    <AddClientS2/>
   </div>
 </template>
 
 <script>
-import LandingPage from "@/views/LandingPage";
+import AddClientS2 from "@/views/AddClient/AddClientS2";
 
 export default {
   name: 'App',
   components: {
-    LandingPage
+    AddClientS2
   }
 }
 </script>
