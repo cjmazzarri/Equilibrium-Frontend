@@ -41,13 +41,13 @@
           </b-dropdown>
           <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-profile" right no-caret>
             <template #button-content>
-              <div style="display: flex; align-items: center; justify-content: center; margin-top: -1.8vh">
-                <div><img src="../assets/ProfilePic.png" style="position:relative; top: -0.1vw; left: -1vw; width: 2.86vw; height: auto"></div>
+              <div style="display: flex; align-items: center; justify-content: center; margin-top: -2vh">
+                <div><img src="../assets/ProfilePic.png" style="position:relative; top: -0.2vw; left: -1vw; width: 2.86vw; height: auto"></div>
                 <div style="margin-left: -0.3vw">
                   <div><p class="pr-name" style="position:relative;top: 1vw">María Paredes</p></div>
                   <div><p class="pr-business" style="position:relative;top: -0.6vw">Bodega Ríos</p></div>
                 </div>
-                <div><img src="../assets/ProfileDropdown.png" style="position:relative; left: 0.8vw"></div>
+                <div><img src="../assets/ProfileDropdown.png" style="position:relative; left: 0.8vw; top: -0.5vh"></div>
               </div>
             </template>
             <p class="not-title pr-title">Acciones</p>
@@ -84,6 +84,33 @@
             <div class="sm-card-icon"><img src="../assets/RateIcon.png" style="width: 3.9vw; height: auto;"></div>
           </b-card>
         </div>
+        <div class="medium-card">
+          <b-card class="top">
+            <div class="graph-icon"><img src="../assets/CreditGraphIcon.png"></div>
+            <b-card-body class="title">Crédito pendiente en</b-card-body>
+            <b-form-select v-model="currency" :options="currencyoptions" class="currency-selector"></b-form-select>
+            <div class="caret"><img src="../assets/Arrow.png"></div>
+            <b-form-select v-model="month" :options="monthoptions" class="month-selector"></b-form-select>
+            <div class="right-caret"><img src="../assets/Arrow.png"></div>
+          </b-card>
+          <b-card class="bottom">
+            <div><img src="../assets/CreditGraph.png" style="width: 78.85vw; height: auto"></div>
+          </b-card>
+        </div>
+        <div class="separator" style="height: 2.5vh"></div>
+        <div class="medium-card">
+          <b-card class="top">
+            <div class="graph-icon"><img src="../assets/InterestGraphIcon.png"></div>
+            <b-card-body class="title">Interés ganado en</b-card-body>
+            <b-form-select v-model="currency" :options="currencyoptions" class="currency-selector"></b-form-select>
+            <div class="caret"><img src="../assets/Arrow.png"></div>
+            <b-form-select v-model="month" :options="monthoptions" class="rate-month-selector month-selector"></b-form-select>
+            <div class="right-caret"><img src="../assets/Arrow.png"></div>
+          </b-card>
+          <b-card class="bottom">
+            <div><img src="../assets/InterestGraph.png" style="width: 78.85vw; height: auto"></div>
+          </b-card>
+        </div>
       </div>
     </div>
   </div>
@@ -91,11 +118,53 @@
 
 <script>
 export default {
-name: "Dashboard"
+name: "Dashboard",
+  data() {
+  return {
+    currency: "Soles",
+    currencyoptions: [
+      {value: 'Soles', text: 'Soles'},
+      {value: 'Dólares', text: 'Dólares'}
+    ],
+    month: "Enero",
+    monthoptions: [
+      {value: 'Enero', text: 'Enero'},
+      {value: 'Diciembre', text: 'Diciembre'},
+      {value: 'Noviembre', text: 'Noviembre'},
+      {value: 'Octubre', text: 'Octubre'},
+      {value: 'Septiembre', text: 'Septiembre'},
+      {value: 'Agosto', text: 'Agosto'}
+    ]
+  }
+  }
 }
 </script>
 
 <style lang="scss">
+/*scrollbar*/
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #222222;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4FC0D1;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #7ADFCD;
+}
+body{
+  overflow-x: hidden;
+}
 .sidenav {
   height: 100%;
   width: 14.74vw;
@@ -186,13 +255,13 @@ name: "Dashboard"
 
 /* Style page content */
 .main {
-  margin-left: 14.74vw;
+  margin-left: 14.7vw;
+  margin-top: -2px;
   width: 85.26vw;
-  height: 100vh;
+  height: 158vh;
   background-image: url("../assets/DashboardBG.png");
   background-repeat: no-repeat;
-  background-origin: border-box;
-  background-position: center;
+  background-origin: content-box;
 }
 
 .main .navbar {
@@ -242,6 +311,8 @@ name: "Dashboard"
   background-color: #fff;
   border-radius: 0.89vw;
   margin-top: 1.8vh;
+  border: transparent !important;
+  box-shadow: -6px -4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .not-card {
@@ -288,6 +359,8 @@ name: "Dashboard"
 .nav-profile /deep/ .dropdown-menu {
   background-color: #fff;
   border-radius: 0.89vw;
+  border: transparent;
+  box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
   margin-top: 1.8vh;
   width: 12.24vw;
 }
@@ -329,7 +402,7 @@ name: "Dashboard"
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 1.78vh;
+  margin-top: 3vh;
 }
 
 .sm-card{
@@ -346,6 +419,11 @@ name: "Dashboard"
   color: #4c4c4c;
   text-align: left;
   margin-left: -0.6vw;
+  margin-top: -1.3vh;
+}
+
+div.card-header {
+  background-color: transparent;
 }
 
 .sm-card-body {
@@ -353,7 +431,7 @@ name: "Dashboard"
   font-weight: 600;
   color: #000;
   text-align: left;
-  margin-top: 1vw;
+  margin-top: 0.5vw;
   margin-left: -0.6vw;
 }
 
@@ -365,4 +443,73 @@ name: "Dashboard"
   top: -7.5vh;
 }
 
+.medium-card {
+  width: 81.1vw;
+  height: 47.31vh;
+  margin: 2vw auto;
+  .top {
+    height: 5.21vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
+    border-radius: 1.5vw 1.5vw 0 0;
+    border: transparent;
+    .graph-icon {
+      display: inline-block;
+      position: relative;
+      top: -0.5vh;
+      left: 0.5vw;
+    }
+    .title{
+      font-size: 1.82vw;
+      line-height: 1;
+      font-weight: 600;
+      color: #000;
+      display: inline-block;
+      margin-top: -1.5vh;
+      margin-left: 1vw;
+    }
+    .caret{
+      display: inline-block;
+      position: relative;
+      left: -1vw;
+      top: -0.5vh;
+    }
+    .currency-selector {
+      display: inline-block;
+      width: 9vw;
+      font-size: 1.82vw;
+      font-weight: 600;
+      color: #000;
+      background: transparent;
+      border: transparent;
+      margin: -1.3vh 0 0 -1.1vw;
+    }
+    .month-selector{
+      display: inline-block;
+      width: 10vw;
+      font-size: 1.82vw;
+      font-weight: 600;
+      color: #000;
+      background: transparent;
+      border: transparent;
+      margin: -1.5vh 0 0 33.5vw;
+    }
+    .right-caret{
+      display: inline-block;
+      position: relative;
+      left: -1vw;
+      top: -0.5vh;
+    }
+  }
+  .bottom{
+    border-radius: 0 0 1.5vw 1.5vw;
+    border: transparent;
+    padding: 1vw 0;
+  }
+}
+.rate-month-selector{
+  margin-left: 35.8vw !important;
+}
 </style>
