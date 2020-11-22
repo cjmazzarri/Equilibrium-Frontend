@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <VerCuentas/>
+    <RegisterPayment/>
   </div>
 </template>
 
 <script>
-import VerCuentas from "@/views/VerCuentas";
+import RegisterPayment from "@/views/RegisterPayment";
 
 export default {
   name: 'App',
   components: {
-    VerCuentas
+    RegisterPayment
   }
 }
 </script>
