@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Dashboard/>
+    <LandingPage/>
   </div>
 </template>
 
 <script>
-import Dashboard from "@/views/Dashboard";
+import LandingPage from "@/views/LandingPage";
 
 export default {
   name: 'App',
   components: {
-    Dashboard
+    LandingPage
   }
 }
 </script>

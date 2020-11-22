@@ -55,7 +55,6 @@ body {
 }
 .text {
   position: relative;
-  top: 50%;
   font-family: Gilroy ☞, Avenir, Helvetica, Arial, sans-serif;
   font-size: 0.9em;
   -webkit-font-smoothing: antialiased;
@@ -183,8 +182,8 @@ u {
 }
 
 .btn-comenzar-ya:hover {
-  border: 5px solid #f96ea6;
-  border-radius: 73px;
+  border: 0.26vw solid #f96ea6;
+  border-radius: 3.8vw;
   background: #202020;
 }
 }
