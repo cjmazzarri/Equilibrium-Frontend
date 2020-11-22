@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <LandingPage/>
+    <VerCuentas/>
   </div>
 </template>
 
 <script>
-import LandingPage from "@/views/LandingPage";
+import VerCuentas from "@/views/VerCuentas";
 
 export default {
   name: 'App',
   components: {
-    LandingPage
+    VerCuentas
   }
 }
 </script>
