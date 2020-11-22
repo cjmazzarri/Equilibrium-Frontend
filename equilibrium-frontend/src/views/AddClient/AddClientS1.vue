@@ -1,7 +1,7 @@
 <template>
-  <div class="AddClient">
+  <div class="AddClientS1">
     <div class="sidenav">
-      <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
+      <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
       <b-button class="category" href="#">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
@@ -27,12 +27,12 @@
     <div class="main">
       <b-navbar class="navbar navbar-dark bg-transparent">
         <b-navbar-nav id="nav-text">
-          <div class="nav-hamburger"><img src="../assets/HamburgerMenu.png"></div>
-          <div class="nav-search"><img src="../assets/SearchIcon.png"></div>
+          <div class="nav-hamburger"><img src="../../assets/HamburgerMenu.png"></div>
+          <div class="nav-search"><img src="../../assets/SearchIcon.png"></div>
           <p class="nav-text">Buscar</p>
           <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-notification" no-caret right>
             <template #button-content style="display: flex; justify-content: center; align-items: center">
-              <div><img src="../assets/NotificationBell.png" style="margin-top: -1vh; width: 1.77vw; height: auto"></div>
+              <div><img src="../../assets/NotificationBell.png" style="margin-top: -1vh; width: 1.77vw; height: auto"></div>
             </template>
             <p class="not-title">Panel de<br>notificaciones</p>
             <b-card bg-variant="Light" title="• Pago ausente" class="not-card" style="border-radius: 20px; font-size: 1vw">
@@ -42,12 +42,12 @@
           <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-profile" right no-caret>
             <template #button-content>
               <div style="display: flex; align-items: center; justify-content: center; margin-top: -2vh">
-                <div><img src="../assets/ProfilePic.png" style="position:relative; top: -0.2vw; left: -1vw; width: 2.86vw; height: auto"></div>
+                <div><img src="../../assets/ProfilePic.png" style="position:relative; top: -0.2vw; left: -1vw; width: 2.86vw; height: auto"></div>
                 <div style="margin-left: -0.3vw">
                   <div><p class="pr-name" style="position:relative;top: 1vw">María Paredes</p></div>
                   <div><p class="pr-business" style="position:relative;top: -0.6vw">Bodega Ríos</p></div>
                 </div>
-                <div><img src="../assets/ProfileDropdown.png" style="position:relative; left: 0.8vw; top: -0.5vh"></div>
+                <div><img src="../../assets/ProfileDropdown.png" style="position:relative; left: 0.8vw; top: -0.5vh"></div>
               </div>
             </template>
             <p class="not-title pr-title">Acciones</p>
@@ -64,16 +64,22 @@
         <div class="title"><h1>Añadir cliente</h1></div>
         <div class="medium-card">
           <b-card class="top">
-            <div class="graph-icon"><img src="../assets/AddClientIcon.png"></div>
+            <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Paso 1 de 5</b-card-body>
+            <div class="navigation">
+              <div><img src="../../assets/AddClient/LeftArrow.png"></div>
+              <div><p class="text">Anterior</p></div>
+              <div><p class="text">Siguiente</p></div>
+              <div><img src="../../assets/AddClient/RightArrow.png"></div>
+            </div>
           </b-card>
           <b-card class="bottom">
             <div><h2 class="title">¿Cómo se llama mi cliente?</h2></div>
             <div><b-form-input placeholder="Nombres" class="input"></b-form-input></div>
             <div><b-form-input placeholder="Apellidos" class="input"></b-form-input></div>
-            <div class="illustration"><img src="../assets/AddClient/Step1.png"></div>
+            <div class="illustration"><img src="../../assets/AddClient/Step1.png"></div>
             <div><b-button class="next">
-              <div class="indicator"><img src="../assets/AddClient/NextArrow.png"></div>
+              <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
           </b-card>
@@ -209,7 +215,7 @@ body{
   margin-top: -2px;
   width: 85.3vw;
   height: 102vh;
-  background-image: url("../assets/DashboardBG.png");
+  background-image: url("../../assets/DashboardBG.png");
   background-repeat: no-repeat;
   background-origin: content-box;
 }
@@ -380,6 +386,22 @@ div.card-header {
       display: inline-block;
       margin-top: -1.5vh;
       margin-left: 1vw;
+    }
+    .navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 17.55vw;
+      position: absolute;
+      right: 4vw;
+      top: 2.5vh;
+
+      .text{
+        font-size: 1.4vw;
+        font-weight: 600;
+        color: #16002f;
+        margin: auto 1vw auto 1vw;
+      }
     }
   }
   .bottom{
