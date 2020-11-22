@@ -1,5 +1,5 @@
 <template>
-  <div class="Dashboard">
+  <div class="AddClient">
     <div class="sidenav">
       <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
       <b-button class="category category-active" href="#">
@@ -61,54 +61,15 @@
         </b-navbar-nav>
       </b-navbar>
       <div class="main-body">
-        <div class="title"><h1>Dashboard - Resumen</h1></div>
-        <div class="res-card">
-          <b-card class="sm-card">
-            <b-card-header class="sm-card-title">Cuentas activas</b-card-header>
-            <b-card-body class="sm-card-body">12</b-card-body>
-            <div class="sm-card-icon"><img src="../assets/AccountIcon.png" style="width: 3.9vw; height: auto;"></div>
-          </b-card>
-          <b-card class="sm-card">
-            <b-card-header class="sm-card-title">Interés ganado</b-card-header>
-            <b-card-body class="sm-card-body">S/540</b-card-body>
-            <div class="sm-card-icon"><img src="../assets/InterestIcon.png" style="width: 3.9vw; height: auto;"></div>
-          </b-card>
-          <b-card class="sm-card">
-            <b-card-header class="sm-card-title">Crédito pendiente</b-card-header>
-            <b-card-body class="sm-card-body">S/4,520.36</b-card-body>
-            <div class="sm-card-icon"><img src="../assets/CreditIcon.png" style="width: 3.9vw; height: auto;"></div>
-          </b-card>
-          <b-card class="sm-card">
-            <b-card-header class="sm-card-title">Tasa promedio</b-card-header>
-            <b-card-body class="sm-card-body">15.1%</b-card-body>
-            <div class="sm-card-icon"><img src="../assets/RateIcon.png" style="width: 3.9vw; height: auto;"></div>
-          </b-card>
-        </div>
+        <div class="title"><h1>Añadir cliente</h1></div>
         <div class="medium-card">
           <b-card class="top">
-            <div class="graph-icon"><img src="../assets/CreditGraphIcon.png"></div>
-            <b-card-body class="title">Crédito pendiente en</b-card-body>
-            <b-form-select v-model="currency" :options="currencyoptions" class="currency-selector"></b-form-select>
-            <div class="caret"><img src="../assets/Arrow.png"></div>
-            <b-form-select v-model="month" :options="monthoptions" class="month-selector"></b-form-select>
-            <div class="right-caret"><img src="../assets/Arrow.png"></div>
+            <div class="graph-icon"><img src="../assets/AddClientIcon.png"></div>
+            <b-card-body class="title">Paso 1 de 5</b-card-body>
           </b-card>
           <b-card class="bottom">
-            <div><img src="../assets/CreditGraph.png" style="width: 78.85vw; height: auto"></div>
-          </b-card>
-        </div>
-        <div class="separator" style="height: 2.5vh"></div>
-        <div class="medium-card">
-          <b-card class="top">
-            <div class="graph-icon"><img src="../assets/InterestGraphIcon.png"></div>
-            <b-card-body class="title">Interés ganado en</b-card-body>
-            <b-form-select v-model="currency" :options="currencyoptions" class="currency-selector"></b-form-select>
-            <div class="caret"><img src="../assets/Arrow.png"></div>
-            <b-form-select v-model="month" :options="monthoptions" class="rate-month-selector month-selector"></b-form-select>
-            <div class="right-caret"><img src="../assets/Arrow.png"></div>
-          </b-card>
-          <b-card class="bottom">
-            <div><img src="../assets/InterestGraph.png" style="width: 78.85vw; height: auto"></div>
+            <div><h2 class="title">¿Cómo se llama mi cliente?</h2></div>
+            <div><b-form-input></b-form-input></div>
           </b-card>
         </div>
       </div>
@@ -118,25 +79,7 @@
 
 <script>
 export default {
-name: "Dashboard",
-  data() {
-  return {
-    currency: "Soles",
-    currencyoptions: [
-      {value: 'Soles', text: 'Soles'},
-      {value: 'Dólares', text: 'Dólares'}
-    ],
-    month: "Enero",
-    monthoptions: [
-      {value: 'Enero', text: 'Enero'},
-      {value: 'Diciembre', text: 'Diciembre'},
-      {value: 'Noviembre', text: 'Noviembre'},
-      {value: 'Octubre', text: 'Octubre'},
-      {value: 'Septiembre', text: 'Septiembre'},
-      {value: 'Agosto', text: 'Agosto'}
-    ]
-  }
-  }
+name: "AddClient"
 }
 </script>
 
@@ -164,6 +107,7 @@ name: "Dashboard",
 }
 body{
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 .sidenav {
   height: 100%;
@@ -257,8 +201,8 @@ body{
 .main {
   margin-left: 14.7vw;
   margin-top: -2px;
-  width: 85.26vw;
-  height: 158vh;
+  width: 85.3vw;
+  height: 102vh;
   background-image: url("../assets/DashboardBG.png");
   background-repeat: no-repeat;
   background-origin: content-box;
@@ -396,51 +340,8 @@ body{
   color: #e5e5e5;
 }
 
-.res-card {
-  width: 84vw;
-  margin-left: 0.7vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 3vh;
-}
-
-.sm-card{
-  width: 18.23vw;
-  height: 10vw;
-  color: #282a3f;
-  border-radius: 1.5vw !important;
-}
-
-.sm-card-title {
-  font-size: 1.35vw;
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  color: #4c4c4c;
-  text-align: left;
-  margin-left: -0.6vw;
-  margin-top: -1.3vh;
-}
-
 div.card-header {
   background-color: transparent;
-}
-
-.sm-card-body {
-  font-size: 2vw;
-  font-weight: 600;
-  color: #000;
-  text-align: left;
-  margin-top: 0.5vw;
-  margin-left: -0.6vw;
-}
-
-.sm-card-icon {
-  position: relative;
-  width: 3.9vw;
-  height: 3.9vw;
-  left: 12vw;
-  top: -7.5vh;
 }
 
 .medium-card {
@@ -470,46 +371,17 @@ div.card-header {
       margin-top: -1.5vh;
       margin-left: 1vw;
     }
-    .caret{
-      display: inline-block;
-      position: relative;
-      left: -1vw;
-      top: -0.5vh;
-    }
-    .currency-selector {
-      display: inline-block;
-      width: 9vw;
-      font-size: 1.82vw;
-      font-weight: 600;
-      color: #000;
-      background: transparent;
-      border: transparent;
-      margin: -1.3vh 0 0 -1.1vw;
-    }
-    .month-selector{
-      display: inline-block;
-      width: 10vw;
-      font-size: 1.82vw;
-      font-weight: 600;
-      color: #000;
-      background: transparent;
-      border: transparent;
-      margin: -1.5vh 0 0 33.5vw;
-    }
-    .right-caret{
-      display: inline-block;
-      position: relative;
-      left: -1vw;
-      top: -0.5vh;
-    }
   }
   .bottom{
     border-radius: 0 0 1.5vw 1.5vw;
     border: transparent;
     padding: 1vw 0;
+    .title{
+      font-size: 4.17vw;
+      font-weight: 600;
+      color: #000;
+      margin-left: 4vw;
+    }
   }
-}
-.rate-month-selector{
-  margin-left: 35.8vw !important;
 }
 </style>
