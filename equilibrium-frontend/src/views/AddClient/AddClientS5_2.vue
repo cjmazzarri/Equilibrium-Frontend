@@ -96,6 +96,7 @@ export default {
     return {
       period: 'Seleccione el periodo',
       periodoptions: [
+        {value: 'Seleccione el periodo', text: 'Seleccione el periodo'},
         {value: 'Semanal', text: 'Semanal'},
         {value: 'Quincenal', text: 'Quincenal'},
         {value: 'Mensual', text: 'Mensual'}
@@ -432,6 +433,7 @@ div.card-header {
     .period-selector {
       display: flex;
       width: 40.3vw;
+      height: 10vh;
       font-size: 3vw;
       font-weight: 600;
       color: #000;
