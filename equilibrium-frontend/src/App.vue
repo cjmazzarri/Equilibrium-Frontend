@@ -1,17 +1,15 @@
 <template>
   <div id="app">
-    <AddClientS6_1/>
+    <AddClient7Final/>
   </div>
 </template>
 
 <script>
-
-
-import AddClientS6_1 from "@/views/AddClient/AddClientS6_1";
+import AddClient7Final from "@/views/AddClient/AddClient7Final";
 export default {
   name: 'App',
   components: {
-    AddClientS6_1
+    AddClient7Final
   }
 }
 </script>
