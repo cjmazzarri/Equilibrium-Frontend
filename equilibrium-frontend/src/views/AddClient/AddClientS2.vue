@@ -2,7 +2,7 @@
   <div class="AddClientS2">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category" href="#">
+      <b-button class="category" to="/dashboard">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
@@ -11,15 +11,15 @@
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Añadir cliente</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" to="/view-accounts">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" to="/register-payment">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar pago</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" to="/register-sale">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar venta</p>
       </b-button>
@@ -54,7 +54,7 @@
             <b-button class="pr-action">
               <div class="pr-text"><p>• Perfil</p></div>
             </b-button>
-            <b-button class="pr-action">
+            <b-button class="pr-action" to="/login">
               <div class="pr-text"><p>• Cerrar sesión</p></div>
             </b-button>
           </b-dropdown>
@@ -67,18 +67,24 @@
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Paso 2 de 5</b-card-body>
             <div class="navigation">
-              <div><img src="../../assets/AddClient/LeftArrow.png"></div>
-              <div><p class="text">Anterior</p></div>
-              <div><p class="text">Siguiente</p></div>
-              <div><img src="../../assets/AddClient/RightArrow.png"></div>
+              <router-link to="/add-client-1">
+                <div><img src="../../assets/AddClient/LeftArrow.png"></div>
+              </router-link>
+              <div><a href="/add-client-1"><p class="text">Anterior</p></a></div>
+              <div><a href="/add-client-3"><p class="text">Siguiente</p></a></div>
+              <router-link to="/add-client-3">
+
+                <div><img src="../../assets/AddClient/RightArrow.png"></div>
+              </router-link>
             </div>
           </b-card>
           <b-card class="bottom">
             <div><h2 class="title">¿Con qué moneda<br>
               abrimos la cuenta?</h2></div>
             <div class="btn-container">
-              <div style="display: inline-block"><b-button class="choice">Soles</b-button></div>
-              <div style="display: inline-block"><b-button class="choice second">Dólares</b-button></div>
+              <div style="display: inline-block"><b-button class="choice" to="/add-client-3">Soles</b-button></div>
+              <div style="display: inline-block">
+                <b-button class="choice second" to="/add-client-3">Dólares</b-button></div>
             </div>
             <div class="illustration"><img src="../../assets/AddClient/Step2.png"></div>
           </b-card>
