@@ -31,7 +31,7 @@ export default new Router({
         { path: "/add-client-7", alias:"/", name: "", component: () => import()   },
         { path: "/view-account", alias:"/viewAccount", name: "viewAccount", component: () => import("./views/ViewAccounts")   },
         { path: "/register-payment", alias:"/registerPayment", name: "registerPayment", component: () => import("./views/RegisterPayment")   },
-        { path: "/", alias:"/", name: "", component: () => import()   },
+        { path: "/register-sale", alias:"/registerSale", name: "registerSale", component: () => import("./views/RegisterSale")   },
         { path: "/", alias:"/", name: "", component: () => import()   },
         { path: "/", alias:"/", name: "", component: () => import()   },
         { path: "/", alias:"/", name: "", component: () => import()   },
