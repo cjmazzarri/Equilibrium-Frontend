@@ -6,7 +6,9 @@
                     <img src="../assets/LoginBGWithLine.png" style="width: 28.5vw; height: auto;">
                 </b-col>
                 <b-col>
-                    <img src="../assets/CloseX.png" style="position: relative; left: 12vw; bottom: 25%">
+                    <router-link to="/">
+                        <img src="../assets/CloseX.png" style="position: relative; left: 12vw; bottom: 25%">
+                    </router-link>
                     <form class="login-form">
                         <h1 class="recuperar-contrasena-header">Recuperar contraseña</h1>
                         <div class="form-group">
@@ -16,7 +18,7 @@
                             <label class="form-text" for="InputUsername">Email</label>
                             <input type="text" class="form-control" id="InputUsername">
                         </div>
-                        <button class="submit-btn" type="submit">MANDAR CORREO</button>
+                        <b-button class="submit-btn" type="submit" text to="/forget-password-complete">MANDAR CORREO</b-button>
                     </form>
                 </b-col>
             </b-row>

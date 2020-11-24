@@ -31,8 +31,8 @@
                             <input type="checkbox" class="form-check-input" id="KeepLoggedInCheck">
                             <label class="form-check-text" for="KeepLoggedInCheck">Mantener la sesión iniciada</label>
                         </div>
-                        <button class="login-btn" type="submit">INICIAR SESIÓN</button>
-                        <a class="form-link" style="left: -2vw" href="" target="_blank" rel="noopener">¿No recuerdas tu username o contraseña?</a>
+                        <b-button class="login-btn" text to="/dashboard">INICIAR SESIÓN</b-button>
+                        <a class="form-link" style="left: -2vw" href="/forget-password" rel="noopener">¿No recuerdas tu username o contraseña?</a>
                     </form>
                 </b-col>
             </b-row>

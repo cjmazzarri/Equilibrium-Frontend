@@ -9,7 +9,7 @@
                     <img class="close-x" src="../assets/CloseX.png">
                     <form class="login-form">
                         <h1 class="registrate-header">Regístrate en Equilibrium</h1>
-                        <h3 class="text">¿Ya tienes cuenta? <a class="form-link" href="" target="_blank" rel="noopener">Inicia sesión aquí</a></h3>
+                        <h3 class="text">¿Ya tienes cuenta? <a class="form-link" href="/login" rel="noopener">Inicia sesión aquí</a></h3>
                         <div class="form-text">
                             <label for="InputUsername">Username</label>
                             <input type="text" class="form-control" required id="InputUsername">
