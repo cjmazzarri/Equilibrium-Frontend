@@ -1,15 +1,15 @@
 <template>
-  <div class="AddClient">
+  <div class="AddClientS3">
     <div class="sidenav">
-      <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category category-active" href="#">
-        <svg class="category-indicator" width="10" height="61" viewBox="0 0 10 61"><defs><clipPath><rect width="10" height="61"/></clipPath></defs><g clip-path="url(#clip-path)"><rect width="228" height="59" rx="8"/></g></svg>
-        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-        <p class="s-text s-text-active">Dashboard</p>
-      </b-button>
+      <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
       <b-button class="category" href="#">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-        <p class="s-text">Añadir cliente</p>
+        <p class="s-text">Dashboard</p>
+      </b-button>
+      <b-button class="category category-active" href="#">
+        <svg class="category-indicator" width="10" height="61" viewBox="0 5 8 61"><defs><clipPath><rect width="10" height="61"/></clipPath></defs><g clip-path="url(#clip-path)"><rect width="228" height="70" rx="8"/></g></svg>
+        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+        <p class="s-text s-text-active">Añadir cliente</p>
       </b-button>
       <b-button class="category" href="#">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
@@ -27,12 +27,12 @@
     <div class="main">
       <b-navbar class="navbar navbar-dark bg-transparent">
         <b-navbar-nav id="nav-text">
-          <div class="nav-hamburger"><img src="../assets/HamburgerMenu.png"></div>
-          <div class="nav-search"><img src="../assets/SearchIcon.png"></div>
+          <div class="nav-hamburger"><img src="../../assets/HamburgerMenu.png"></div>
+          <div class="nav-search"><img src="../../assets/SearchIcon.png"></div>
           <p class="nav-text">Buscar</p>
           <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-notification" no-caret right>
             <template #button-content style="display: flex; justify-content: center; align-items: center">
-              <div><img src="../assets/NotificationBell.png" style="margin-top: -1vh; width: 1.77vw; height: auto"></div>
+              <div><img src="../../assets/NotificationBell.png" style="margin-top: -1vh; width: 1.77vw; height: auto"></div>
             </template>
             <p class="not-title">Panel de<br>notificaciones</p>
             <b-card bg-variant="Light" title="• Pago ausente" class="not-card" style="border-radius: 20px; font-size: 1vw">
@@ -42,12 +42,12 @@
           <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-profile" right no-caret>
             <template #button-content>
               <div style="display: flex; align-items: center; justify-content: center; margin-top: -2vh">
-                <div><img src="../assets/ProfilePic.png" style="position:relative; top: -0.2vw; left: -1vw; width: 2.86vw; height: auto"></div>
+                <div><img src="../../assets/ProfilePic.png" style="position:relative; top: -0.2vw; left: -1vw; width: 2.86vw; height: auto"></div>
                 <div style="margin-left: -0.3vw">
                   <div><p class="pr-name" style="position:relative;top: 1vw">María Paredes</p></div>
                   <div><p class="pr-business" style="position:relative;top: -0.6vw">Bodega Ríos</p></div>
                 </div>
-                <div><img src="../assets/ProfileDropdown.png" style="position:relative; left: 0.8vw; top: -0.5vh"></div>
+                <div><img src="../../assets/ProfileDropdown.png" style="position:relative; left: 0.8vw; top: -0.5vh"></div>
               </div>
             </template>
             <p class="not-title pr-title">Acciones</p>
@@ -64,12 +64,23 @@
         <div class="title"><h1>Añadir cliente</h1></div>
         <div class="medium-card">
           <b-card class="top">
-            <div class="graph-icon"><img src="../assets/AddClientIcon.png"></div>
-            <b-card-body class="title">Paso 1 de 5</b-card-body>
+            <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
+            <b-card-body class="title">Paso 3 de 5</b-card-body>
+            <div class="navigation">
+              <div><img src="../../assets/AddClient/LeftArrow.png"></div>
+              <div><p class="text">Anterior</p></div>
+              <div><p class="text">Siguiente</p></div>
+              <div><img src="../../assets/AddClient/RightArrow.png"></div>
+            </div>
           </b-card>
           <b-card class="bottom">
-            <div><h2 class="title">¿Cómo se llama mi cliente?</h2></div>
-            <div><b-form-input></b-form-input></div>
+            <div><h2 class="title">¿Qué tipo de tasa de<br>interés cobraré?</h2></div>
+            <div class="btn-container" >
+              <div style="display: inline-block"><b-button class="choice">Tasa Simple</b-button></div>
+              <div style="display: inline-block"><b-button class="choice second">Tasa Nominal</b-button></div>
+              <div style="display: inline-block;z-index: 2" ><b-button class="choice third">Tasa Efectiva</b-button></div>
+            </div>
+            <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step3.png"></div>
           </b-card>
         </div>
       </div>
@@ -79,7 +90,7 @@
 
 <script>
 export default {
-name: "AddClient"
+  name: "AddClientS3"
 }
 </script>
 
@@ -203,7 +214,7 @@ body{
   margin-top: -2px;
   width: 85.3vw;
   height: 102vh;
-  background-image: url("../assets/DashboardBG.png");
+  background-image: url("../../assets/DashboardBG.png");
   background-repeat: no-repeat;
   background-origin: content-box;
 }
@@ -243,6 +254,8 @@ body{
   border-radius: 0.89vw;
   background: #fff;
   margin-left: 53.13vw;
+  position: relative;
+  top: 1vh;
 }
 
 .not-title {
@@ -280,6 +293,8 @@ body{
   height: 3.33vw;
   border-radius: 0.89vw;
   background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
+  position: absolute;
+  top: 1vh;
 }
 
 .pr-name {
@@ -298,6 +313,7 @@ body{
   width: 4.53vw;
   height: 0.94vw;
   color: #727272;
+  margin-top: -0.3vh;
 }
 
 .nav-profile /deep/ .dropdown-menu {
@@ -346,7 +362,7 @@ div.card-header {
 
 .medium-card {
   width: 81.1vw;
-  height: 47.31vh;
+  height: 67.41vh;
   margin: 2vw auto;
   .top {
     height: 5.21vw;
@@ -371,8 +387,26 @@ div.card-header {
       margin-top: -1.5vh;
       margin-left: 1vw;
     }
+    .navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 17.55vw;
+      position: absolute;
+      right: 4vw;
+      top: 2.5vh;
+
+      .text{
+        font-size: 1.4vw;
+        font-weight: 600;
+        color: #16002f;
+        margin: auto 1vw auto 1vw;
+      }
+    }
   }
   .bottom{
+    height: 62.2vh;
+    width: 81.1vw;
     border-radius: 0 0 1.5vw 1.5vw;
     border: transparent;
     padding: 1vw 0;
@@ -381,6 +415,61 @@ div.card-header {
       font-weight: 600;
       color: #000;
       margin-left: 4vw;
+      margin-top: 7vh;
+      margin-bottom: 5vh;
+    }
+    .btn-container{
+      display: flex;
+      margin-top: 8.7vh;
+      .choice {
+        width: 17vw;
+        height: 9vh;
+        border-radius: 2.24vw;
+        background: linear-gradient(90deg, #6e93f9 0%, #4bc8f8 100%);
+        border: transparent;
+        font-size: 2.08vw;
+        font-weight: 600;
+        color: #fff;
+        box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
+        margin-left: 3.28vw;
+      }
+      .second {
+        background: linear-gradient(90deg, #da71ff 0%, #634dfc 100%);
+      }
+      .third {
+        background: linear-gradient(90deg, #f8a74b 0%, #f96ea6 100%);
+      }
+    }
+    .illustration{
+      position: absolute;
+      bottom: -0.1vh;
+      right: 5.57vw;
+      img{
+        width: 25.2vw;
+      }
+    }
+    .next{
+      position: absolute;
+      right: 6vw;
+      width: 15.57vw;
+      height: 9.44vh;
+      border-radius: 51px;
+      background: #202020;
+      box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
+      .indicator{
+        display: inline-block;
+        margin-right: 1vw;
+      }
+      .text{
+        display: inline-block;
+        font-size: 1.9vw;
+        font-weight: 600;
+        text-decoration: underline;
+        color: #e6e6e6;
+        margin-top: 0.5vh;
+        position: relative;
+        top: 0.5vh;
+      }
     }
   }
 }

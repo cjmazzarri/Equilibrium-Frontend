@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import RegisterPayment from "@/views/RegisterPayment";
+import AddClientS5_2 from "@/views/AddClient/AddClientS5_2";
 
 export default {
   name: 'App',
   components: {
-    RegisterPayment
+    AddClientS5_2
   }
 }
 </script>
