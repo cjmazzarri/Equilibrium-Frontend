@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <RegisterPayment/>
+    <AddClientS5_2/>
   </div>
 </template>
 
