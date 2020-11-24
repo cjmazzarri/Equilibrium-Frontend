@@ -46,6 +46,8 @@ export default {
 
 <style lang="scss">
 .LandingPage {
+  top: 0;
+  left: 0;
   height: 100vh;
   background-image: url("../assets/LandingPageBg.png");
   background-repeat: no-repeat;
@@ -82,6 +84,7 @@ u {
     background-position: center 3.5vh;
     width: 12vw;
     .active {
+      top: 0;
       color: #eee;
       font-size: 1.24vw;
       position: relative;
@@ -94,6 +97,7 @@ u {
     border-radius: 4px;
     background: linear-gradient(90deg, #4bc8f8 0%, #6e93f9 100%);
     .text{
+      top: 0;
       display: inline-block;
       margin-top: 2.6vh;
       font-size: 1.15vw;
@@ -115,6 +119,7 @@ u {
     border-radius: 4px;
     background: transparent;
     .text{
+      top: 0;
       margin-top: 2.2vh;
       display: inline-block;
       font-size: 1.15vw;
@@ -142,64 +147,60 @@ u {
   position: absolute;
   left: 13.5vw;
   top: 20vh;
-
-.title {
-  text-align: left;
-  font-size: 3.65vw;
-  line-height: (105 / 70);
-  font-weight: 600;
-  letter-spacing: 0.01vw;
-  color: #fff;
-}
-
-.logo {
-  position: relative;
-  top: 3vh;
-  width: 39vw;
-  height: auto;
-}
-
-.btn-comenzar-ya {
-  transition: 0s;
-  position: relative;
-  left: 6.5vw;
-  top: 2vh;
-  width: 30vw;
-  height: 11.8vh;
-  border-radius: 3.8vw;
-  background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
-  border: transparent;
-  .RightArrow {
-    display: inline-block;
-    position: relative;
-    top: 2.4vh;
-    left: -1.1vw;
-    width: 2.2vw;
-    height: auto;
-    transform: rotate(-90deg);
-    transform-origin: center;
-    fill: rgba(240,240,240,1);
-  }
-  .text {
-    position: relative;
-    top: 3.9vh;
-    left: 0.4vw;
-    display: inline-block;
-    font-size: 3vw;
+  .title {
+    text-align: left;
+    font-size: 3.65vw;
+    line-height: (105 / 70);
+    font-weight: 600;
+    letter-spacing: 0.01vw;
     color: #fff;
   }
-}
-
-.btn-comenzar-ya:hover {
-  border: 0.26vw solid #f96ea6;
-  border-radius: 3.8vw;
-  background: #202020;
-  .RightArrow{
-    top: 1.8vh;
+  .logo {
+    position: relative;
+    top: 3vh;
+    width: 39vw;
+    height: auto;
   }
-  .text{
-    top: 3.3vh;
+  .btn-comenzar-ya {
+    transition: 0s;
+    position: relative;
+    left: 6.5vw;
+    top: 2vh;
+    width: 30vw;
+    height: 11.8vh;
+    border-radius: 3.8vw;
+    background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
+    border: transparent;
+    .RightArrow {
+      display: inline-block;
+      position: relative;
+      top: 2.4vh;
+      left: -1.1vw;
+      width: 2.2vw;
+      height: auto;
+      transform: rotate(-90deg);
+      transform-origin: center;
+      fill: rgba(240,240,240,1);
+    }
+    .text {
+      position: relative;
+      top: 3.9vh;
+      left: 0.4vw;
+      display: inline-block;
+      font-size: 3vw;
+      color: #fff;
+    }
   }
-}
+  .btn-comenzar-ya:hover {
+    border: 0.26vw solid #f96ea6;
+    border-radius: 3.8vw;
+    background: #202020;
+    .RightArrow{
+      top: 1.9vh;
+    }
+    .text{
+      top: 3.4vh;
+    }
+  }
 }
 </style>
