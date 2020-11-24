@@ -82,7 +82,7 @@
             <b-form-select v-model="period" :options="periodoptions" class="period-selector"></b-form-select>
             <div class="caret"><img src="../../assets/Arrow.png"></div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step3.png"></div>
-            <div><b-button class="next" style="z-index: 2">
+            <div><b-button class="next" style="z-index: 2" to="/add-client-3-2">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>

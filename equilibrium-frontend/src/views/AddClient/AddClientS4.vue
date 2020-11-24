@@ -67,12 +67,12 @@
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Paso 4 de 5</b-card-body>
             <div class="navigation">
-              <router-link to="/add-client-3-2">
+              <router-link to="/add-client-3-3">
                 <div><img src="../../assets/AddClient/LeftArrow.png"></div>
               </router-link>
               <div><a href="/add-client-3-3"><p class="text">Anterior</p></a></div>
               <div><a href="/add-client-4-1"><p class="text">Siguiente</p></a></div>
-              <router-link to="/add-client-4">
+              <router-link to="/add-client-4-1">
                 <div><img src="../../assets/AddClient/RightArrow.png"></div>
               </router-link>
             </div>
@@ -80,11 +80,11 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cobraré<br>mantenimiento?</h2></div>
             <div class="btn-container" >
-              <div style="display: inline-block"><b-button class="choice">
+              <div style="display: inline-block"><b-button class="choice" to="/add-client-4-1">
                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Accept.png"></div>
                 <div class="text" style="display: inline-block"><p>Si cobraré</p></div>
-              </b-button></div>
-              <div style="display: inline-block"><b-button class="choice second">
+              </b-button ></div>
+              <div style="display: inline-block"><b-button class="choice second" to="/add-client-4-1">
                   <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Decline.png" style="width: 1.8vw"></div>
                   <div class="text" style="display: inline-block"><p>No cobraré</p></div>
               </b-button></div>
