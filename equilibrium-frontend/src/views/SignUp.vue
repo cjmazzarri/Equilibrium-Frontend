@@ -6,7 +6,9 @@
                     <img src="../assets/SignUpBG.png" style="width: 28.5vw; height: auto;">
                 </b-col>
                 <b-col>
-                    <img class="close-x" src="../assets/CloseX.png">
+                    <router-link to="/">
+                        <img class="close-x" src="../assets/CloseX.png">
+                    </router-link>
                     <form class="login-form">
                         <h1 class="registrate-header">Regístrate en Equilibrium</h1>
                         <h3 class="text">¿Ya tienes cuenta? <a class="form-link" href="/login" rel="noopener">Inicia sesión aquí</a></h3>
@@ -32,7 +34,7 @@
                         </div>
 
                     </form>
-                    <button class="register-btn">REGISTRARSE</button>
+                    <b-button class="register-btn" text to="/sign-up-complete">REGISTRARSE</b-button>
                 </b-col>
             </b-row>
         </b-container>

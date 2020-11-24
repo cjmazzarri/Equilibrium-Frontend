@@ -6,7 +6,9 @@
                     <img src="../assets/SignUpBG.png" style="width: 28.5vw; height: auto;">
                 </b-col>
                 <b-col>
-                    <img class="close-x" src="../assets/CloseX.png">
+                    <router-link to="/login">
+                        <img class="close-x" src="../assets/CloseX.png">
+                    </router-link>
                     <img class="checkmark" src="../assets/CyanCheckmark.png">
                     <h1 class="registro-header">Registro completado!</h1>
                     <label class="text">Te has registrado en Equilibrium

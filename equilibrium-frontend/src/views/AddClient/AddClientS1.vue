@@ -2,7 +2,7 @@
   <div class="AddClientS1">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category" href="#">
+      <b-button class="category" href="/dashboard">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
@@ -11,15 +11,15 @@
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Añadir cliente</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/view-accounts">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/register-payment">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar pago</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/register-sale">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar venta</p>
       </b-button>
@@ -36,7 +36,7 @@
             </template>
             <p class="not-title">Panel de<br>notificaciones</p>
             <b-card bg-variant="Light" title="• Pago ausente" class="not-card" style="border-radius: 20px; font-size: 1vw">
-              <b-card-text class="not-card-text">El ultimo pago de José Torres fue registrado hace 1 mes.</b-card-text>
+              <b-card-text class="not-card-text">El último pago de José Torres fue registrado hace 1 mes.</b-card-text>
             </b-card>
           </b-dropdown>
           <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-profile" right no-caret>
@@ -54,7 +54,7 @@
             <b-button class="pr-action">
               <div class="pr-text"><p>• Perfil</p></div>
             </b-button>
-            <b-button class="pr-action">
+            <b-button class="pr-action" to="/">
               <div class="pr-text"><p>• Cerrar sesión</p></div>
             </b-button>
           </b-dropdown>
@@ -67,10 +67,12 @@
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Paso 1 de 5</b-card-body>
             <div class="navigation">
-              <div><img src="../../assets/AddClient/LeftArrow.png"></div>
-              <div><p class="text">Anterior</p></div>
-              <div><p class="text">Siguiente</p></div>
-              <div><img src="../../assets/AddClient/RightArrow.png"></div>
+              <div><a href="/add-client-2"><p class="text">Siguiente</p></a></div>
+              <div>
+                <router-link to="/add-client-2">
+                  <img src="../../assets/AddClient/RightArrow.png">
+                </router-link>
+              </div>
             </div>
           </b-card>
           <b-card class="bottom">
@@ -78,7 +80,7 @@
             <div><b-form-input placeholder="Nombres" class="input"></b-form-input></div>
             <div><b-form-input placeholder="Apellidos" class="input"></b-form-input></div>
             <div class="illustration"><img src="../../assets/AddClient/Step1.png"></div>
-            <div><b-button class="next">
+            <div><b-button class="next" text to="/add-client-2">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
