@@ -5,19 +5,19 @@
         <b-navbar-brand href="#">
           <img src="../assets/EquilibriumMini.png" class="d-inline-block align-top nav-logo" style="width: 41px; height: auto" alt="Equilibrium">
         </b-navbar-brand>
-        <b-nav-item class="text-primary">
+        <b-nav-item class="text-primary" text to="/login">
           <span class="text active">AÑADE CLIENTES</span>
         </b-nav-item>
-        <b-nav-item>VER CUENTAS</b-nav-item>
-        <b-nav-item>REGISTRAR PAGOS</b-nav-item>
-        <b-nav-item>REGISTRAR VENTAS</b-nav-item>
+        <b-nav-item  text to="/login">VER CUENTAS</b-nav-item>
+        <b-nav-item text to="/login">REGISTRAR PAGOS</b-nav-item>
+        <b-nav-item text to="/login">REGISTRAR VENTAS</b-nav-item>
         <b-nav-item>
-          <b-button size="lg" class="nav-btn-registrarse">
+          <b-button size="lg" class="nav-btn-registrarse" text to="/sign-up">
             <p class="text">REGISTRARSE</p>
           </b-button>
         </b-nav-item>
         <b-nav-item>
-          <b-button size="lg" class="nav-btn-iniciar">
+          <b-button size="lg" class="nav-btn-iniciar" text to="/login">
             <p class="text">INICIAR SESIÓN</p>
           </b-button>
         </b-nav-item>
@@ -30,7 +30,7 @@
         <br>facilito con
       </p>
       <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button size="lg" class="btn-comenzar-ya">
+      <b-button size="lg" class="btn-comenzar-ya" texto to="/sign-up">
         <svg class="RightArrow" viewBox="0 0 41.9 25.8"><path d="M21 25.8L0 5.9 6.2 0 21 14 35.7 0 41.9 5.9 21 25.8Z"/></svg>
         <p class="text">Comienza ya!</p>
       </b-button>

@@ -6,7 +6,9 @@
                     <img src="../assets/LoginBGWithLine.png" style="width: 28.5vw; height: auto;">
                 </b-col>
                 <b-col>
-                    <img src="../assets/CloseX.png" style="position: relative; left: 12vw; bottom: 18%">
+                    <router-link to="/">
+                        <img src="../assets/CloseX.png" style="position: relative; left: 12vw; bottom: 18%">
+                    </router-link>
                     <form class="login-form">
                         <h1 class="iniciar-sesion-header">Inicia sesión</h1>
                         <b-row>
@@ -14,7 +16,7 @@
                                 <label style="font-size: 16px" class="form-text">¿No tienes cuenta?</label>
                             </b-col>
                             <b-col style="text-align: left">
-                                <a class="form-link" href="" target="_blank" rel="noopener">Regístrate aquí</a>
+                                <a class="form-link" href="/sign-up" rel="noopener">Regístrate aquí</a>
                             </b-col>
                         </b-row>
                         <div class="form-group">

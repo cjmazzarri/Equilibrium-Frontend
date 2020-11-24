@@ -6,7 +6,7 @@ Vue.use(Router);
 export default new Router({
     mode: "history",
     routes: [
-        { path: "/landing-page", alias:"/landingPage", name: "landingPage", component: () => import("./views/LandingPage")   },
+        { path: "/", alias:"/landingPage", name: "landingPage", component: () => import("./views/LandingPage")   },
         { path: "/sign-up", alias:"/signUp", name: "signUp", component: () => import("./views/SignUp")   },
         { path: "/sign-up-complete", alias:"/signUpComplete", name: "signUpComplete", component: () => import("./views/SignUpComplete")   },
         { path: "/login", alias:"/login", name: "login", component: () => import("./views/Login")   },
@@ -28,14 +28,11 @@ export default new Router({
         { path: "/add-client-5-3", alias:"/addClient5.3", name: "addClient5.3", component: () => import("./views/AddClient/AddClientS5_3")   },
         { path: "/add-client-6", alias:"/addClient6", name: "addClient6", component: () => import("./views/AddClient/AddClientS6")   },
         { path: "/add-client-6-1", alias:"/addClient6.1", name: "addClient6.1", component: () => import("./views/AddClient/AddClientS6_1")   },
-        { path: "/add-client-7", alias:"/", name: "", component: () => import()   },
+        { path: "/add-client-7", alias:"/addClient7", name: "addClient7", component: () => import("./views/AddClient/AddClient7Final")   },
         { path: "/view-account", alias:"/viewAccount", name: "viewAccount", component: () => import("./views/ViewAccounts")   },
         { path: "/register-payment", alias:"/registerPayment", name: "registerPayment", component: () => import("./views/RegisterPayment")   },
         { path: "/register-sale", alias:"/registerSale", name: "registerSale", component: () => import("./views/RegisterSale")   },
-        { path: "/", alias:"/", name: "", component: () => import()   },
-        { path: "/", alias:"/", name: "", component: () => import()   },
-        { path: "/", alias:"/", name: "", component: () => import()   },
-        { path: "/", alias:"/", name: "", component: () => import()   }
+
 
 
     ]
