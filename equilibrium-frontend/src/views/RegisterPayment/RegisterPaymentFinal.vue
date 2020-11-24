@@ -2,24 +2,24 @@
   <div class="RegisterPaymentFinal">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category" href="#">
+      <b-button class="category" to="/dashboard">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" to="/add-client-1">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Añadir cliente</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" to="/view-accounts">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" to="/register-payment">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.4vh; position: absolute; left: 0">
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Registrar pago</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" to="/register-sale">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar venta</p>
       </b-button>
@@ -54,14 +54,14 @@
             <b-button class="pr-action">
               <div class="pr-text"><p>• Perfil</p></div>
             </b-button>
-            <b-button class="pr-action">
+            <b-button class="pr-action" to="/login">
               <div class="pr-text"><p>• Cerrar sesión</p></div>
             </b-button>
           </b-dropdown>
         </b-navbar-nav>
       </b-navbar>
       <div class="main-body">
-        <div class="back-arrow"><img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;"></div>
+        <div class="back-arrow"><router-link to="/register-payment"><img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;"></router-link></div>
         <div class="title"><h1>Registrar un <u>pago</u></h1></div>
         <div class="medium-card half">
           <b-card class="top">
@@ -77,12 +77,6 @@
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Finalización</b-card-body>
-            <div class="navigation">
-              <div><img src="../../assets/AddClient/LeftArrow.png"></div>
-              <div><p class="text">Anterior</p></div>
-              <div><p class="text">Siguiente</p></div>
-              <div><img src="../../assets/AddClient/RightArrow.png"></div>
-            </div>
           </b-card>
           <b-card class="bottom">
             <div><h2 class="title">¡Listo, el pago ha<br>
@@ -92,7 +86,7 @@
               <p>Monto: S/ 500</p>
             </div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step3.png"></div>
-            <div><b-button class="next">
+            <div><b-button class="next" to="/dashboard">
               <div class="indicator"><img src="../../assets/AddClient/Accept.png"></div>
               <p class="text">Volver al dashboard</p>
             </b-button></div>

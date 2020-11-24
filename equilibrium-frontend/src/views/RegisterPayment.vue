@@ -1,68 +1,67 @@
 <template>
     <div class="RegisterPayment">
         <div class="sidenav">
-            <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-            <b-button class="category" href="#">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text s-text-active">Dashboard</p>
-            </b-button>
-            <b-button class="category" href="#">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Añadir cliente</p>
-            </b-button>
-            <b-button class="category" href="#">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Ver cuentas</p>
-            </b-button>
-            <b-button class="category category-active" href="#">
-                <svg class="category-indicator" width="10" height="61" viewBox="0 0 10 61"><defs><clipPath><rect width="10" height="61"/></clipPath></defs><g clip-path="url(#clip-path)"><rect width="228" height="59" rx="8"/></g></svg>
-                <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Registrar pago</p>
-            </b-button>
-            <b-button class="category" href="#">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Registrar venta</p>
-            </b-button>
-        </div>
+        <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
+        <b-button class="category" to="/dashboard">
+          <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text">Dashboard</p>
+        </b-button>
+        <b-button class="category" to="/add-client-1">
+          <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text">Añadir cliente</p>
+        </b-button>
+        <b-button class="category" to="/view-accounts">
+          <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text">Ver cuentas</p>
+        </b-button>
+        <b-button class="category category-active" to="/register-payment">
+          <img src="../assets/CategoryIndicator.png" style="height: 6.4vh; position: absolute; left: 0">
+          <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text s-text-active">Registrar pago</p>
+        </b-button>
+        <b-button class="category" to="/register-sale">
+          <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text">Registrar venta</p>
+        </b-button>
+      </div>
         <div class="main">
             <b-navbar class="navbar navbar-dark bg-transparent">
-                <b-navbar-nav id="nav-text">
-                    <div class="nav-hamburger"><img src="../assets/HamburgerMenu.png"></div>
-                    <div class="nav-search"><img src="../assets/SearchIcon.png"></div>
-                    <p class="nav-text">Buscar</p>
-                    <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-notification" no-caret right>
-                        <template #button-content style="display: flex; justify-content: center; align-items: center">
-                            <div><img src="../assets/NotificationBell.png" style="margin-top: -1vh; width: 1.77vw; height: auto"></div>
-                        </template>
-                        <p class="not-title">Panel de<br>notificaciones</p>
-                        <b-card bg-variant="Light" title="• Pago ausente" class="not-card" style="border-radius: 20px; font-size: 1vw">
-                            <b-card-text class="not-card-text">El ultimo pago de José Torres fue registrado hace 1 mes.</b-card-text>
-                        </b-card>
-                    </b-dropdown>
-                    <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-profile" right no-caret>
-                        <template #button-content>
-                            <div style="display: flex; align-items: center; justify-content: center; margin-top: -2vh">
-                                <div><img src="../assets/ProfilePic.png" style="position:relative; top: -0.2vw; left: -1vw; width: 2.86vw; height: auto"></div>
-                                <div style="margin-left: -0.3vw">
-                                    <div><p class="pr-name" style="position:relative;top: 1vw">María Paredes</p></div>
-                                    <div><p class="pr-business" style="position:relative;top: -0.6vw">Bodega Ríos</p></div>
-                                </div>
-                                <div><img src="../assets/ProfileDropdown.png" style="position:relative; left: 0.8vw; top: -0.5vh"></div>
-                            </div>
-                        </template>
-                        <p class="not-title pr-title">Acciones</p>
-                        <b-button class="pr-action">
-                            <div class="pr-text"><p>• Perfil</p></div>
-                        </b-button>
-                        <b-button class="pr-action">
-                            <div class="pr-text"><p>• Cerrar sesión</p></div>
-                        </b-button>
-                    </b-dropdown>
-                </b-navbar-nav>
-            </b-navbar>
+            <b-navbar-nav id="nav-text">
+              <div class="nav-hamburger"><img src="../assets/HamburgerMenu.png"></div>
+              <div class="nav-search"><img src="../assets/SearchIcon.png"></div>
+              <p class="nav-text">Buscar</p>
+              <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-notification" no-caret right>
+                <template #button-content style="display: flex; justify-content: center; align-items: center">
+                  <div><img src="../assets/NotificationBell.png" style="margin-top: -1vh; width: 1.77vw; height: auto"></div>
+                </template>
+                <p class="not-title">Panel de<br>notificaciones</p>
+                <b-card bg-variant="Light" title="• Pago ausente" class="not-card" style="border-radius: 20px; font-size: 1vw">
+                  <b-card-text class="not-card-text">El ultimo pago de José Torres fue registrado hace 1 mes.</b-card-text>
+                </b-card>
+              </b-dropdown>
+              <b-dropdown variant="link" toggle-class="text-decoration-none" class="nav-profile" right no-caret>
+                <template #button-content>
+                  <div style="display: flex; align-items: center; justify-content: center; margin-top: -2vh">
+                    <div><img src="../assets/ProfilePic.png" style="position:relative; top: -0.2vw; left: -1vw; width: 2.86vw; height: auto"></div>
+                    <div style="margin-left: -0.3vw">
+                      <div><p class="pr-name" style="position:relative;top: 1vw">María Paredes</p></div>
+                      <div><p class="pr-business" style="position:relative;top: -0.6vw">Bodega Ríos</p></div>
+                    </div>
+                    <div><img src="../assets/ProfileDropdown.png" style="position:relative; left: 0.8vw; top: -0.5vh"></div>
+                  </div>
+                </template>
+                <p class="not-title pr-title">Acciones</p>
+                <b-button class="pr-action">
+                  <div class="pr-text"><p>• Perfil</p></div>
+                </b-button>
+                <b-button class="pr-action" to="/login">
+                  <div class="pr-text"><p>• Cerrar sesión</p></div>
+                </b-button>
+              </b-dropdown>
+            </b-navbar-nav>
+          </b-navbar>
             <div class="main-body">
                 <div class="title"><h1>Registrar un pago</h1></div>
-
                 <div class="payment-card">
                     <b-card class="top cyan">
                         <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
@@ -73,7 +72,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn">
+                                <b-button class="pay-btn" to="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -91,7 +90,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/20 - 28/12</div>
-                                <b-button class="pay-btn">
+                                <b-button class="pay-btn" to="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -109,7 +108,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/100 - 02/01</div>
-                                <b-button class="pay-btn">
+                                <b-button class="pay-btn" to="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -127,7 +126,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/10 - 29/12</div>
-                                <b-button class="pay-btn">
+                                <b-button class="pay-btn" to="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -145,7 +144,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn">
+                                <b-button class="pay-btn" to="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -163,7 +162,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn">
+                                <b-button class="pay-btn" to="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -181,7 +180,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn">
+                                <b-button class="pay-btn" to="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -199,7 +198,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn">
+                                <b-button class="pay-btn" to="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -574,7 +573,7 @@
                 .text{
                     font-family: Gilroy ☞;
                     font-size: 1.46vw;
-                    line-height: 0;
+                    line-height: 1.3;
                     font-weight: 600;
                     color: #fff;
                 }
