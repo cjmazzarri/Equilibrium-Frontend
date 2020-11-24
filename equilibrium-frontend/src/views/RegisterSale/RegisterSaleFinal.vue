@@ -1,5 +1,5 @@
 <template>
-  <div class="RegisterPaymentFinal">
+  <div class="RegisterSaleFinal">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
       <b-button class="category" href="#">
@@ -14,14 +14,14 @@
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
+      <b-button class="category" href="#">
+        <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+        <p class="s-text">Registrar pago</p>
+      </b-button>
       <b-button class="category category-active" href="#">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.4vh; position: absolute; left: 0">
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-        <p class="s-text s-text-active">Registrar pago</p>
-      </b-button>
-      <b-button class="category" href="#">
-        <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-        <p class="s-text">Registrar venta</p>
+        <p class="s-text s-text-active">Registrar venta</p>
       </b-button>
     </div>
     <div class="main">
@@ -62,7 +62,7 @@
       </b-navbar>
       <div class="main-body">
         <div class="back-arrow"><img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;"></div>
-        <div class="title"><h1>Registrar un <u>pago</u></h1></div>
+        <div class="title"><h1>Registrar una <u>venta</u></h1></div>
         <div class="medium-card half">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
@@ -85,10 +85,10 @@
             </div>
           </b-card>
           <b-card class="bottom">
-            <div><h2 class="title">¡Listo, el pago ha<br>
-              sido registrado!</h2></div>
+            <div><h2 class="title">¡Listo, la venta ha<br>
+              sido registrada!</h2></div>
             <div class="details">
-              <p>Título: Cancelación Noviembre</p>
+              <p>Título: Compras Noviembre</p>
               <p>Monto: S/ 500</p>
             </div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step3.png"></div>
@@ -105,7 +105,7 @@
 
 <script>
 export default {
-  name: "RegisterPaymentFinal"
+  name: "RegisterSaleFinal"
 }
 </script>
 
@@ -390,7 +390,7 @@ div.card-header {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background: linear-gradient(90deg, #a5e6ff 0%, #4f76d1 100%);
+    background: linear-gradient(90deg, #e1a5ff 0%, #d14fbb 100%);
     border-radius: 1.5vw 1.5vw 0 0;
     border: transparent;
     .graph-icon {

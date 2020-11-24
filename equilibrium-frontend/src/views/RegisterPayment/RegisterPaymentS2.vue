@@ -6,18 +6,18 @@
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category category-active" href="#">
-        <svg class="category-indicator" width="10" height="61" viewBox="0 5 8 61"><defs><clipPath><rect width="10" height="61"/></clipPath></defs><g clip-path="url(#clip-path)"><rect width="228" height="70" rx="8"/></g></svg>
-        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-        <p class="s-text s-text-active">Añadir cliente</p>
+      <b-button class="category" href="#">
+        <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+        <p class="s-text">Añadir cliente</p>
       </b-button>
       <b-button class="category" href="#">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category" href="#">
-        <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-        <p class="s-text">Registrar pago</p>
+      <b-button class="category category-active" href="#">
+        <img src="../../assets/CategoryIndicator.png" style="height: 6.4vh; position: absolute; left: 0">
+        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+        <p class="s-text s-text-active">Registrar pago</p>
       </b-button>
       <b-button class="category" href="#">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
@@ -62,7 +62,7 @@
       </b-navbar>
       <div class="main-body">
         <div class="back-arrow"><img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;"></div>
-        <div class="title"><h1>Registrar un pago</h1></div>
+        <div class="title"><h1>Registrar un <u>pago</u></h1></div>
         <div class="medium-card half">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
@@ -215,7 +215,7 @@ body{
 
 .sidenav .s-text-active {
   position: relative;
-  left: -0.5vw;
+  left: 0;
   font-weight: 600;
   color: #584fd8;
 }
