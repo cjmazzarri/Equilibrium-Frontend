@@ -2,24 +2,24 @@
   <div class="RegisterPaymentS2">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category" to="/dashboard">
+      <b-button class="category" href="/dashboard">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category" to="/add-client-1">
+      <b-button class="category" href="/add-client-1">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Añadir cliente</p>
       </b-button>
-      <b-button class="category" to="/view-accounts">
+      <b-button class="category" href="/view-accounts">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category category-active" to="/register-payment">
+      <b-button class="category category-active" href="/register-payment">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Registrar pago</p>
       </b-button>
-      <b-button class="category" to="/register-sale">
+      <b-button class="category" href="/register-sale">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar venta</p>
       </b-button>
@@ -61,7 +61,6 @@
         </b-navbar-nav>
       </b-navbar>
       <div class="main-body">
-        <div class="back-arrow"><router-link to="/register-payment"><img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;"></router-link></div>
         <div class="title"><h1>Registrar un <u>pago</u></h1></div>
         <div class="medium-card half">
           <b-card class="top">
@@ -80,8 +79,6 @@
             <div class="navigation">
               <div><router-link to="/register-payment-1"><img src="../../assets/AddClient/LeftArrow.png"></router-link></div>
               <div><router-link to="/register-payment-1"><p class="text">Anterior</p></router-link></div>
-              <div><router-link to="/register-payment-final"><p class="text">Siguiente</p></router-link></div>
-              <div><router-link to="/register-payment-final"><img src="../../assets/AddClient/RightArrow.png"></router-link></div>
             </div>
           </b-card>
           <b-card class="bottom">
@@ -122,20 +119,6 @@ body{
   background-image: url("../../assets/DashboardBG.png");
   background-repeat: no-repeat;
   background-origin: content-box;
-}
-
-.back-arrow{
-  position: absolute;
-  left: 17vw;
-  margin-top: 0.9vh;
-}
-
-.title {
-  margin-left: 5.5vw;
-  text-align: left;
-  font-size: 2.6vw;
-  font-weight: 600;
-  color: #e5e5e5;
 }
 
 div.card-header {
