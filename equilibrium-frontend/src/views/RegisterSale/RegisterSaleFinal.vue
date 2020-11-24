@@ -126,20 +126,6 @@ body{
   background-origin: content-box;
 }
 
-.back-arrow{
-  position: absolute;
-  left: 17vw;
-  margin-top: 0.9vh;
-}
-
-.title {
-  margin-left: 5.5vw;
-  text-align: left;
-  font-size: 2.6vw;
-  font-weight: 600;
-  color: #e5e5e5;
-}
-
 div.card-header {
   background-color: transparent;
 }

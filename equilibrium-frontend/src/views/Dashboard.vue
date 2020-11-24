@@ -156,14 +156,6 @@ body{
   background-origin: content-box;
 }
 
-.title {
-  margin-left: 2.2vw;
-  text-align: left;
-  font-size: 2.6vw;
-  font-weight: 600;
-  color: #e5e5e5;
-}
-
 .res-card {
   width: 84vw;
   margin-left: 0.7vw;

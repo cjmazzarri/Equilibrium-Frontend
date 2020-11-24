@@ -61,7 +61,6 @@
         </b-navbar-nav>
       </b-navbar>
       <div class="main-body">
-        <div class="back-arrow"><router-link to="/register-payment"><img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;"></router-link></div>
         <div class="title"><h1>Registrar un <u>pago</u></h1></div>
         <div class="medium-card half">
           <b-card class="top">
@@ -122,20 +121,6 @@ body{
   background-image: url("../../assets/DashboardBG.png");
   background-repeat: no-repeat;
   background-origin: content-box;
-}
-
-.back-arrow{
-  position: absolute;
-  left: 17vw;
-  margin-top: 0.9vh;
-}
-
-.title {
-  margin-left: 5.5vw;
-  text-align: left;
-  font-size: 2.6vw;
-  font-weight: 600;
-  color: #e5e5e5;
 }
 
 div.card-header {

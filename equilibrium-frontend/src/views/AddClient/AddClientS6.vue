@@ -117,14 +117,6 @@
         background-origin: content-box;
     }
 
-    .title {
-        margin-left: 2.2vw;
-        text-align: left;
-        font-size: 2.6vw;
-        font-weight: 600;
-        color: #e5e5e5;
-    }
-
     div.card-header {
         background-color: transparent;
     }
