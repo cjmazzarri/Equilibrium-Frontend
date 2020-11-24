@@ -84,95 +84,49 @@
                         <div class="sm-card-icon"><img src="../assets/RateIcon.png" style="width: 3.9vw; height: auto;"></div>
                     </b-card>
                 </div>
-
-                <div class="medium-card">
+                <li v-for="(client, index) in clientInfo" :key="index" style="list-style-type: none;display: inline">
+                  <div class="medium-card">
                     <b-card class="top cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">José Torres</b-card-body>
-                        <div class="amount-1 title">S/1,356.02</div>
+                      <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
+                      <b-card-body class="title">{{client.firstName+" "+client.lastName}}</b-card-body>
+                      <div class="amount-1 title">{{"S/ "+client.creditAmount}}</div>
                     </b-card>
                     <b-card class="bottom">
-                        <div class="info">Tipo de tasa: Efectiva</div>
-                        <div class="info">Tasa de interés: 3% Mensual</div>
-                        <div class="info">Mantenimiento: S/5.00 Mensual</div>
-                        <div class="info">Delivery: S/2.00 por entrega</div>
-                        <b-button class="they-paid-btn">
-                            <div class="text">Me pagó</div>
-                        </b-button>
-                        <b-button class="i-sold-btn">
-                            <div class="text">Le vendí</div>
-                        </b-button>
+                      <div class="info">Tipo de tasa: Efectiva</div>
+                      <div class="info">Tasa de interés: 3% Mensual</div>
+                      <div class="info">Mantenimiento: S/5.00 Mensual</div>
+                      <div class="info">Delivery: S/2.00 por entrega</div>
+                      <b-button class="they-paid-btn">
+                        <div class="text">Me pagó</div>
+                      </b-button>
+                      <b-button class="i-sold-btn">
+                        <div class="text">Le vendí</div>
+                      </b-button>
                     </b-card>
-                </div>
-
-                <div class="medium-card">
-                    <b-card class="top dark-cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Marina Zárate</b-card-body>
-                        <div class="amount-2 title">S/920.09</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <div class="info">Tipo de tasa: Nominal</div>
-                        <div class="info">Tasa de interés: 2% Mensual</div>
-                        <div class="info">Mantenimiento: Sin mantenimiento</div>
-                        <div class="info">Delivery: S/10.00 por entrega</div>
-                        <b-button class="they-paid-btn">
-                            <div class="text">Me pagó</div>
-                        </b-button>
-                        <b-button class="i-sold-btn">
-                            <div class="text">Le vendí</div>
-                        </b-button>
-                    </b-card>
-                </div>
-
-                <div class="medium-card">
-                    <b-card class="top purple">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Jenny Castro</b-card-body>
-                        <div class="amount-3 title">S/846.50</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <div class="info">Tipo de tasa: Simple</div>
-                        <div class="info">Tasa de interés: 15% Anual</div>
-                        <div class="info">Mantenimiento: S/3.00 Quincenal</div>
-                        <div class="info">Delivery: S/25.00 por mes</div>
-                        <b-button class="they-paid-btn">
-                            <div class="text">Me pagó</div>
-                        </b-button>
-                        <b-button class="i-sold-btn">
-                            <div class="text">Le vendí</div>
-                        </b-button>
-                    </b-card>
-                </div>
-
-                <div class="medium-card">
-                    <b-card class="top pink">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Julieta Olórtegui</b-card-body>
-                        <div class="amount-4 title">S/645.12</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <div class="info">Tipo de tasa: Efectiva</div>
-                        <div class="info">Tasa de interés: 3% Mensual</div>
-                        <div class="info">Mantenimiento: S/5.00 Mensual</div>
-                        <div class="info">Delivery: S/2.00 por entrega</div>
-                        <b-button class="they-paid-btn">
-                            <div class="text">Me pagó</div>
-                        </b-button>
-                        <b-button class="i-sold-btn">
-                            <div class="text">Le vendí</div>
-                        </b-button>
-                    </b-card>
-                </div>
-
+                  </div>
+                </li>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { baseUrl } from '../shared/baseUrl';
     export default {
-        name: "VerCuentas"
+        name: "VerCuentas",
+        mounted() {
+          //get all users
+          this.axios
+              .get(baseUrl + 'commerces/1/clients')
+              .then(responseUser => {
+                this.clientInfo = responseUser.data.content;
+              });
+        },
+        data() {
+          return {
+            clientInfo: []
+          }
+        }
     }
 </script>
 
