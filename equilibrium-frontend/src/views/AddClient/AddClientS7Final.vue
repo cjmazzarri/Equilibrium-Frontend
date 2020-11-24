@@ -2,7 +2,7 @@
     <div class="AddClientS7Final">
         <div class="sidenav">
             <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-            <b-button class="category" href="#">
+            <b-button class="category" href="/dashboard">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Dashboard</p>
             </b-button>
@@ -11,15 +11,15 @@
                 <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text s-text-active">Añadir cliente</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/view-accounts">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Ver cuentas</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-payment">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar pago</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-sale">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar venta</p>
             </b-button>
@@ -54,7 +54,7 @@
                         <b-button class="pr-action">
                             <div class="pr-text"><p>• Perfil</p></div>
                         </b-button>
-                        <b-button class="pr-action">
+                        <b-button class="pr-action" href="/login">
                             <div class="pr-text"><p>• Cerrar sesión</p></div>
                         </b-button>
                     </b-dropdown>
@@ -76,7 +76,7 @@
                             Delivery: S/10.00 por mes</div>
                         <div class="illustration" style="z-index: 0"><img src="../../assets/AddClient/Step7.png"></div>
                         <div class="btn-container">
-                            <div style="display: inline-block"><b-button class="choice">
+                            <div style="display: inline-block"><b-button class="choice" href="/dashboard">
                                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Accept.png"></div>
                                 <div class="text" style="display: inline-block; text-decoration: underline"><p>Volver al dashboard</p></div>
                             </b-button></div>

@@ -6,19 +6,19 @@
         <img src="../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Dashboard</p>
       </b-button>
-      <b-button class="category" to="/add-client-1">
+      <b-button class="category" href="/add-client-1">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Añadir cliente</p>
       </b-button>
-      <b-button class="category" to="/view-accounts">
+      <b-button class="category" href="/view-accounts">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category" to="/register-payment">
+      <b-button class="category" href="/register-payment">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar pago</p>
       </b-button>
-      <b-button class="category" to="register-sale">
+      <b-button class="category" href="register-sale">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar venta</p>
       </b-button>

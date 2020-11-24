@@ -2,11 +2,11 @@
     <div class="VerCuentas">
         <div class="sidenav">
             <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-            <b-button class="category" href="#">
+            <b-button class="category" href="/dashboard">
             <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text s-text-active">Dashboard</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/add-client-1">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Añadir cliente</p>
             </b-button>
@@ -15,11 +15,11 @@
                 <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Ver cuentas</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-payment">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar pago</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-sale">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar venta</p>
             </b-button>
@@ -54,7 +54,7 @@
                         <b-button class="pr-action">
                             <div class="pr-text"><p>• Perfil</p></div>
                         </b-button>
-                        <b-button class="pr-action">
+                        <b-button class="pr-action" href="login">
                             <div class="pr-text"><p>• Cerrar sesión</p></div>
                         </b-button>
                     </b-dropdown>
@@ -96,10 +96,10 @@
                         <div class="info">Tasa de interés: 3% Mensual</div>
                         <div class="info">Mantenimiento: S/5.00 Mensual</div>
                         <div class="info">Delivery: S/2.00 por entrega</div>
-                        <b-button class="they-paid-btn">
+                        <b-button class="they-paid-btn" href="/register-payment-1">
                             <div class="text">Me pagó</div>
                         </b-button>
-                        <b-button class="i-sold-btn">
+                        <b-button class="i-sold-btn" href="/register-sale-1">
                             <div class="text">Le vendí</div>
                         </b-button>
                     </b-card>
@@ -116,10 +116,10 @@
                         <div class="info">Tasa de interés: 2% Mensual</div>
                         <div class="info">Mantenimiento: Sin mantenimiento</div>
                         <div class="info">Delivery: S/10.00 por entrega</div>
-                        <b-button class="they-paid-btn">
+                        <b-button class="they-paid-btn" href="/register-payment-1">
                             <div class="text">Me pagó</div>
                         </b-button>
-                        <b-button class="i-sold-btn">
+                        <b-button class="i-sold-btn" href="/register-sale-1">
                             <div class="text">Le vendí</div>
                         </b-button>
                     </b-card>
@@ -136,10 +136,10 @@
                         <div class="info">Tasa de interés: 15% Anual</div>
                         <div class="info">Mantenimiento: S/3.00 Quincenal</div>
                         <div class="info">Delivery: S/25.00 por mes</div>
-                        <b-button class="they-paid-btn">
+                        <b-button class="they-paid-btn" href="/register-payment-1">
                             <div class="text">Me pagó</div>
                         </b-button>
-                        <b-button class="i-sold-btn">
+                        <b-button class="i-sold-btn" href="/register-sale-1">
                             <div class="text">Le vendí</div>
                         </b-button>
                     </b-card>
@@ -156,10 +156,10 @@
                         <div class="info">Tasa de interés: 3% Mensual</div>
                         <div class="info">Mantenimiento: S/5.00 Mensual</div>
                         <div class="info">Delivery: S/2.00 por entrega</div>
-                        <b-button class="they-paid-btn">
+                        <b-button class="they-paid-btn" href="/register-payment-1">
                             <div class="text">Me pagó</div>
                         </b-button>
-                        <b-button class="i-sold-btn">
+                        <b-button class="i-sold-btn" href="/register-sale-1">
                             <div class="text">Le vendí</div>
                         </b-button>
                     </b-card>
@@ -340,7 +340,6 @@
                 .text{
                     font-family: Gilroy ☞;
                     font-size: 1.46vw;
-                    line-height: 0;
                     font-weight: 600;
                     color: #fff;
                 }
@@ -357,7 +356,6 @@
                 .text{
                     font-family: Gilroy ☞;
                     font-size: 1.46vw;
-                    line-height: 0;
                     font-weight: 600;
                     color: #fff;
                 }

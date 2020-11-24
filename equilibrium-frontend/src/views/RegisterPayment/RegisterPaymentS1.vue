@@ -61,7 +61,9 @@
         </b-navbar-nav>
       </b-navbar>
       <div class="main-body">
-        <div class="back-arrow"><router-link to="/register-payment"><img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;"></router-link></div>
+        <div class="back-arrow"><router-link to="/register-payment">
+          <img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;">
+        </router-link></div>
         <div class="title"><h1>Registrar un <u>pago</u></h1></div>
         <div class="medium-card half">
           <b-card class="top">
