@@ -2,7 +2,7 @@
     <div class="AddClientS6_1">
         <div class="sidenav">
             <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-            <b-button class="category" href="#">
+            <b-button class="category" href="/dashboard">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Dashboard</p>
             </b-button>
@@ -11,15 +11,15 @@
                 <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text s-text-active">Añadir cliente</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/view-accounts">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Ver cuentas</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-payment">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar pago</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-sale">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar venta</p>
             </b-button>
@@ -54,7 +54,7 @@
                         <b-button class="pr-action">
                             <div class="pr-text"><p>• Perfil</p></div>
                         </b-button>
-                        <b-button class="pr-action">
+                        <b-button class="pr-action" href="/login">
                             <div class="pr-text"><p>• Cerrar sesión</p></div>
                         </b-button>
                     </b-dropdown>
@@ -69,18 +69,20 @@
                     </b-card>
                     <b-card class="bottom">
                         <div><h2 class="title">¿Que deseo corregir?</h2></div>
-                        <div class="info">Cliente: Jesús Ortega<br>
-                            Moneda: Soles<br>
-                            Tipo de tasa: Efectiva<br>
-                            Tasa de interés: 15% anual<br>
-                            Mantenimiento: S/5.00 Mensual<br>
-                            Delivery: S/10.00 por mes</div>
+                        <div class="info">
+                            <a href="/add-client-1">Cliente: Jesús Ortega<br></a>
+                            <a href="/add-client-2">Moneda: Soles<br></a>
+                            <a href="/add-client-3">Tipo de tasa: Efectiva<br></a>
+                            <a href="/add-client-3-1">Tasa de interés: 15% anual<br></a>
+                            <a href="/add-client-4">Mantenimiento: S/5.00 Mensual<br></a>
+                            <a href="/add-client-5">Delivery: S/10.00 por mes</a>
+                        </div>
                         <div class="illustration" style="z-index: 0"><img src="../../assets/AddClient/Step6.png"></div>
                         <div class="btn-container">
                             <div style="display: inline-block"><b-button class="choice edit">
                                 <div class="text" style="display: inline-block"><p>Modo de edición</p></div>
                             </b-button></div>
-                            <div style="display: inline-block"><b-button class="choice">
+                            <div style="display: inline-block"><b-button class="choice" to="/add-client-6">
                                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Accept.png"></div>
                                 <div class="text" style="display: inline-block; text-decoration: underline"><p>Todo correcto!</p></div>
                             </b-button></div>
