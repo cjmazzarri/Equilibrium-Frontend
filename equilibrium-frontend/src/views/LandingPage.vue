@@ -53,6 +53,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .text {
   font-family: Gilroy ☞, Avenir, Helvetica, Arial, sans-serif;
   line-height: 0;
@@ -96,7 +97,7 @@ u {
     height: 7vh;
     border-radius: 4px;
     background: linear-gradient(90deg, #4bc8f8 0%, #6e93f9 100%);
-    .text{
+    .text {
       top: 0;
       display: inline-block;
       margin-top: 2.6vh;
@@ -108,7 +109,7 @@ u {
   .nav-btn-registrarse:hover {
     border: 0.19vw solid #648dff;
     background: transparent;
-    .text{
+    .text {
       margin-top: 2.3vh;
     }
   }
@@ -118,7 +119,7 @@ u {
     border: 0.1042vw solid #fff;
     border-radius: 4px;
     background: transparent;
-    .text{
+    .text {
       top: 0;
       margin-top: 2.2vh;
       display: inline-block;
@@ -131,13 +132,13 @@ u {
     border-radius: 0.21vw;
     border: transparent;
     background: linear-gradient(90deg, #4d56d1 0%, #da71ff 100%);
-    .text{
+    .text {
       margin-top: 2.4vh;
     }
   }
 }
 
-#nav-text > * {
+#nav-text>* {
   margin-left: 2vw;
   display: grid;
   place-items: center;
@@ -180,7 +181,7 @@ u {
       height: auto;
       transform: rotate(-90deg);
       transform-origin: center;
-      fill: rgba(240,240,240,1);
+      fill: rgba(240, 240, 240, 1);
     }
     .text {
       position: relative;
@@ -195,10 +196,10 @@ u {
     border: 0.26vw solid #f96ea6;
     border-radius: 3.8vw;
     background: #202020;
-    .RightArrow{
+    .RightArrow {
       top: 1.9vh;
     }
-    .text{
+    .text {
       top: 3.4vh;
     }
   }
