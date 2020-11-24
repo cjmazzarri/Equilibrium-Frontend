@@ -2,24 +2,24 @@
     <div class="RegisterPayment">
         <div class="sidenav">
         <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-        <b-button class="category" to="/dashboard">
+        <b-button class="category" href="/dashboard">
           <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
           <p class="s-text">Dashboard</p>
         </b-button>
-        <b-button class="category" to="/add-client-1">
+        <b-button class="category" href="/add-client-1">
           <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
           <p class="s-text">Añadir cliente</p>
         </b-button>
-        <b-button class="category" to="/view-accounts">
+        <b-button class="category" href="/view-accounts">
           <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
           <p class="s-text">Ver cuentas</p>
         </b-button>
-        <b-button class="category category-active" to="/register-payment">
+        <b-button class="category category-active" href="/register-payment">
           <img src="../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
           <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
           <p class="s-text s-text-active">Registrar pago</p>
         </b-button>
-        <b-button class="category" to="/register-sale">
+        <b-button class="category" href="/register-sale">
           <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
           <p class="s-text">Registrar venta</p>
         </b-button>
@@ -72,7 +72,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" to="/register-payment-1">
+                                <b-button class="pay-btn" href="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -90,7 +90,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/20 - 28/12</div>
-                                <b-button class="pay-btn" to="/register-payment-1">
+                                <b-button class="pay-btn" href="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -108,7 +108,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/100 - 02/01</div>
-                                <b-button class="pay-btn" to="/register-payment-1">
+                                <b-button class="pay-btn" href="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -126,7 +126,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/10 - 29/12</div>
-                                <b-button class="pay-btn" to="/register-payment-1">
+                                <b-button class="pay-btn" href="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -144,7 +144,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" to="/register-payment-1">
+                                <b-button class="pay-btn" href="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -162,7 +162,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" to="/register-payment-1">
+                                <b-button class="pay-btn" href="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -180,7 +180,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" to="/register-payment-1">
+                                <b-button class="pay-btn" href="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>
@@ -198,7 +198,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" to="/register-payment-1">
+                                <b-button class="pay-btn" href="/register-payment-1">
                                     <div class="text">Registrar pago</div>
                                 </b-button>
                             </b-col>

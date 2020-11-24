@@ -2,23 +2,23 @@
   <div class="RegisterSaleS2">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category" href="#">
+      <b-button class="category" href="/dashboard">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="add-client-1">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Añadir cliente</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/view-accounts">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/register-payment">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar pago</p>
       </b-button>
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" href="/register-sale">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Registrar venta</p>
@@ -77,10 +77,8 @@
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Paso 2 de 2</b-card-body>
             <div class="navigation">
-              <div><img src="../../assets/AddClient/LeftArrow.png"></div>
-              <div><p class="text">Anterior</p></div>
-              <div><p class="text">Siguiente</p></div>
-              <div><img src="../../assets/AddClient/RightArrow.png"></div>
+              <div><router-link to="/register-sale-1"><img src="../../assets/AddClient/LeftArrow.png"></router-link></div>
+              <div><router-link to="/register-sale-1"><p class="text">Anterior</p></router-link></div>
             </div>
           </b-card>
           <b-card class="bottom">
@@ -88,7 +86,7 @@
               de la venta?</h2></div>
             <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterSale/Step1.png"></div>
-            <div><b-button class="next">
+            <div><b-button class="next" to="/register-sale-final">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Finalizar</p>
             </b-button></div>

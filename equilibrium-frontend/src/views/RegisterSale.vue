@@ -1,29 +1,29 @@
 <template>
     <div class="RegisterPayment">
         <div class="sidenav">
-            <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-            <b-button class="category" href="#">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text s-text-active">Dashboard</p>
-            </b-button>
-            <b-button class="category" href="#">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Añadir cliente</p>
-            </b-button>
-            <b-button class="category" href="#">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Ver cuentas</p>
-            </b-button>
-            <b-button class="category" href="#">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Registrar pago</p>
-            </b-button>
-            <b-button class="category category-active" href="#">
-                <img src="../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Registrar venta</p>
-            </b-button>
-        </div>
+        <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
+        <b-button class="category" href="/dashboard">
+          <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text">Dashboard</p>
+        </b-button>
+        <b-button class="category" href="add-client-1">
+          <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text">Añadir cliente</p>
+        </b-button>
+        <b-button class="category" href="/view-accounts">
+          <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text">Ver cuentas</p>
+        </b-button>
+        <b-button class="category" href="/register-payment">
+          <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text">Registrar pago</p>
+        </b-button>
+        <b-button class="category category-active" href="/register-sale">
+          <img src="../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+          <p class="s-text s-text-active">Registrar venta</p>
+        </b-button>
+      </div>
         <div class="main">
             <b-navbar class="navbar navbar-dark bg-transparent">
                 <b-navbar-nav id="nav-text">
@@ -73,7 +73,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn">
+                                <b-button class="sale-btn" href="/register-sale-1">
                                     <div class="text">Registrar venta</div>
                                 </b-button>
                             </b-col>
@@ -91,7 +91,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/20 - 28/12</div>
-                                <b-button class="sale-btn">
+                                <b-button class="sale-btn" href="/register-sale-1">
                                     <div class="text">Registrar venta</div>
                                 </b-button>
                             </b-col>
@@ -109,7 +109,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/100 - 02/01</div>
-                                <b-button class="sale-btn">
+                                <b-button class="sale-btn" href="/register-sale-1">
                                     <div class="text">Registrar venta</div>
                                 </b-button>
                             </b-col>
@@ -127,7 +127,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/10 - 29/12</div>
-                                <b-button class="sale-btn">
+                                <b-button class="sale-btn" href="/register-sale-1">
                                     <div class="text">Registrar venta</div>
                                 </b-button>
                             </b-col>
@@ -145,7 +145,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn">
+                                <b-button class="sale-btn" href="/register-sale-1">
                                     <div class="text">Registrar venta</div>
                                 </b-button>
                             </b-col>
@@ -163,7 +163,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn">
+                                <b-button class="sale-btn" href="/register-sale-1">
                                     <div class="text">Registrar venta</div>
                                 </b-button>
                             </b-col>
@@ -181,7 +181,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn">
+                                <b-button class="sale-btn" href="/register-sale-1">
                                     <div class="text">Registrar venta</div>
                                 </b-button>
                             </b-col>
@@ -199,7 +199,7 @@
                         <b-row>
                             <b-col>
                                 <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn">
+                                <b-button class="sale-btn" href="/register-sale-1">
                                     <div class="text">Registrar venta</div>
                                 </b-button>
                             </b-col>
@@ -232,7 +232,7 @@
         background-repeat: no-repeat;
         background-origin: content-box;
     }
-    
+
     .sale-card{
         width: 39.43vw;
         height: 18.52vh;
@@ -332,7 +332,7 @@
                 position: relative;
                 left: 1vw;
                 .text{
-                    font-family: Gilroy ☞;
+                    margin-top: 1.9vh;
                     font-size: 1.46vw;
                     line-height: 0;
                     font-weight: 600;

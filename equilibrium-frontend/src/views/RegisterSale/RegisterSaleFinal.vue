@@ -2,23 +2,23 @@
   <div class="RegisterSaleFinal">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category" href="#">
+      <b-button class="category" href="/dashboard">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="add-client-1">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Añadir cliente</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/view-accounts">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/register-payment">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar pago</p>
       </b-button>
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" href="/register-sale">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Registrar venta</p>
@@ -61,7 +61,6 @@
         </b-navbar-nav>
       </b-navbar>
       <div class="main-body">
-        <div class="back-arrow"><img src="../../assets/RegisterPayment/BackArrow.png" style="width: 1.51vw;"></div>
         <div class="title"><h1>Registrar una <u>venta</u></h1></div>
         <div class="medium-card half">
           <b-card class="top">
@@ -77,12 +76,6 @@
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Finalización</b-card-body>
-            <div class="navigation">
-              <div><img src="../../assets/AddClient/LeftArrow.png"></div>
-              <div><p class="text">Anterior</p></div>
-              <div><p class="text">Siguiente</p></div>
-              <div><img src="../../assets/AddClient/RightArrow.png"></div>
-            </div>
           </b-card>
           <b-card class="bottom">
             <div><h2 class="title">¡Listo, la venta ha<br>
@@ -92,7 +85,7 @@
               <p>Monto: S/ 500</p>
             </div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step3.png"></div>
-            <div><b-button class="next">
+            <div><b-button class="next" href="/dashboard">
               <div class="indicator"><img src="../../assets/AddClient/Accept.png"></div>
               <p class="text">Volver al dashboard</p>
             </b-button></div>
