@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss">
-body {
+.LandingPage {
   height: 100vh;
   background-image: url("../assets/LandingPageBg.png");
   background-repeat: no-repeat;
@@ -53,7 +53,6 @@ body {
 }
 .text {
   font-family: Gilroy ☞, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 0.9em;
   line-height: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -64,59 +63,59 @@ body {
 
 u {
   text-decoration: none;
-  border-bottom: 4px solid white;
+  border-bottom: 0.21vw solid white;
 }
 
 .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 30px;
+  top: 4vh;
   margin: 0 auto;
-  height: 3.6vw;
+  height: 6.4vh;
   width: 100vw;
   .text-primary {
     background-image: url("../assets/ActiveTab.png");
     background-size: 12vw auto;
     background-repeat: no-repeat;
     background-origin: border-box;
-    background-position: center 1.4em;
-    width: 12em;
+    background-position: center 3.5vh;
+    width: 12vw;
     .active {
       color: #eee;
-      font-size: 1em;
+      font-size: 1.24vw;
       position: relative;
-      left: 1em;
+      left: 1vw;
     }
   }
   .nav-btn-registrarse {
     width: 11.5vw;
-    height: 3.5vw;
+    height: 7vh;
     border-radius: 4px;
     background: linear-gradient(90deg, #4bc8f8 0%, #6e93f9 100%);
     .text{
       display: inline-block;
-      margin-top: 2.4vh;
+      margin-top: 2.6vh;
       font-size: 1.15vw;
       font-weight: 700;
       color: #fff;
     }
   }
   .nav-btn-registrarse:hover {
-    border: 3px solid #648dff;
+    border: 0.19vw solid #648dff;
     background: transparent;
     .text{
-      margin-top: 2.1vh;
+      margin-top: 2.3vh;
     }
   }
   .nav-btn-iniciar {
     width: 11.5vw;
-    height: 3.5vw;
-    border: 2px solid #fff;
+    height: 7vh;
+    border: 0.1042vw solid #fff;
     border-radius: 4px;
     background: transparent;
     .text{
-      margin-top: 0.1vh;
+      margin-top: 2.2vh;
       display: inline-block;
       font-size: 1.15vw;
       font-weight: 700;
@@ -124,11 +123,11 @@ u {
     }
   }
   .nav-btn-iniciar:hover {
-    border-radius: 4px;
+    border-radius: 0.21vw;
     border: transparent;
     background: linear-gradient(90deg, #4d56d1 0%, #da71ff 100%);
     .text{
-      margin-top: 2.2vh;
+      margin-top: 2.4vh;
     }
   }
 }
@@ -142,20 +141,20 @@ u {
 .cta {
   position: absolute;
   left: 13.5vw;
-  top: 9.5vw;
+  top: 20vh;
 
 .title {
   text-align: left;
   font-size: 3.65vw;
   line-height: (105 / 70);
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.01vw;
   color: #fff;
 }
 
 .logo {
   position: relative;
-  top: 1.5vw;
+  top: 3vh;
   width: 39vw;
   height: auto;
 }
@@ -164,26 +163,26 @@ u {
   transition: 0s;
   position: relative;
   left: 6.5vw;
-  top: 1vw;
+  top: 2vh;
   width: 30vw;
-  height: 6vw;
+  height: 11.8vh;
   border-radius: 3.8vw;
   background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
   border: transparent;
   .RightArrow {
     display: inline-block;
     position: relative;
-    top: 2.1vh;
+    top: 2.4vh;
     left: -1.1vw;
     width: 2.2vw;
-    height: 1.35vw;
+    height: auto;
     transform: rotate(-90deg);
     transform-origin: center;
     fill: rgba(240,240,240,1);
   }
   .text {
     position: relative;
-    top: 3.6vh;
+    top: 3.9vh;
     left: 0.4vw;
     display: inline-block;
     font-size: 3vw;
@@ -196,10 +195,10 @@ u {
   border-radius: 3.8vw;
   background: #202020;
   .RightArrow{
-    top: 1.6vh;
+    top: 1.8vh;
   }
   .text{
-    top: 3.1vh;
+    top: 3.3vh;
   }
 }
 }
