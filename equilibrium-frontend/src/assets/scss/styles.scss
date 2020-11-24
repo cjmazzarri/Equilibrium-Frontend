@@ -108,7 +108,11 @@
     }
  }
  .main .navbar {
-    padding: 1vw 4.6vh;
+    position: relative;
+    top: 4vh;
+    margin-bottom: 5vh;
+    width: 85.26vw;
+    height: 5.93vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,22 +126,26 @@
        padding-top: 0.2vh;
     }
     .nav-hamburger {
-       margin-left: 1.8vw;
-       margin-top: 2vh;
        width: 1.04vw;
        height: auto;
+       margin: auto 0 auto 1.8vw;
+       top: 0;
+       left: 0;
     }
     .nav-search {
        width: 0.89vw;
        height: auto;
        margin: auto 0 auto 2.81vw;
+       top: 0;
+       left: 0;
     }
     .nav-notification {
        width: 5.57vw;
        height: 6.65vh;
        border-radius: 0.89vw;
        background: #fff;
-       margin-left: 53.13vw;
+       margin-left: 53.13vw !important;
+       position: relative;
        right: 2vw;
        top: 1vh;
        .not-title {
