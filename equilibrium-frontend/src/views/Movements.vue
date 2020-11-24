@@ -71,7 +71,11 @@
                         </b-card-body>
                     </b-card>
                     <b-card class="bottom">
-
+                       <b-list-group>
+                           <b-list-group-item>
+                               
+                           </b-list-group-item>
+                       </b-list-group>
                     </b-card>
                 </div>
             </div>
