@@ -12,7 +12,7 @@
         <b-nav-item text to="/login">REGISTRAR PAGOS</b-nav-item>
         <b-nav-item text to="/login">REGISTRAR VENTAS</b-nav-item>
         <b-nav-item>
-          <b-button size="lg" class="nav-btn-registrarse" text to="/sign-up">
+          <b-button class="nav-btn-registrarse" text to="/sign-up">
             <p class="text">REGISTRARSE</p>
           </b-button>
         </b-nav-item>
@@ -46,23 +46,20 @@ export default {
 
 <style lang="scss">
 body {
-  height: 100%;
-  display: grid;
+  height: 100vh;
   background-image: url("../assets/LandingPageBg.png");
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
 }
 .text {
-  position: relative;
   font-family: Gilroy ☞, Avenir, Helvetica, Arial, sans-serif;
   font-size: 0.9em;
+  line-height: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   font-weight: 700;
   color: #fff;
-  margin: auto;
 }
 
 u {
@@ -78,55 +75,68 @@ u {
   margin: 0 auto;
   height: 3.6vw;
   width: 100vw;
+  .text-primary {
+    background-image: url("../assets/ActiveTab.png");
+    background-size: 12vw auto;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position: center 1.4em;
+    width: 12em;
+    .active {
+      color: #eee;
+      font-size: 1em;
+      position: relative;
+      left: 1em;
+    }
+  }
+  .nav-btn-registrarse {
+    width: 11.5vw;
+    height: 3.5vw;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #4bc8f8 0%, #6e93f9 100%);
+    .text{
+      display: inline-block;
+      margin-top: 2.4vh;
+      font-size: 1.15vw;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+  .nav-btn-registrarse:hover {
+    border: 3px solid #648dff;
+    background: transparent;
+    .text{
+      margin-top: 2.1vh;
+    }
+  }
+  .nav-btn-iniciar {
+    width: 11.5vw;
+    height: 3.5vw;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    background: transparent;
+    .text{
+      margin-top: 0.1vh;
+      display: inline-block;
+      font-size: 1.15vw;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+  .nav-btn-iniciar:hover {
+    border-radius: 4px;
+    border: transparent;
+    background: linear-gradient(90deg, #4d56d1 0%, #da71ff 100%);
+    .text{
+      margin-top: 2.2vh;
+    }
+  }
 }
 
 #nav-text > * {
   margin-left: 2vw;
   display: grid;
   place-items: center;
-}
-
-.text-primary {
-  background-image: url("../assets/ActiveTab.png");
-  background-size: 12vw auto;
-  background-repeat: no-repeat;
-  background-origin: border-box;
-  background-position: center 1.4em;
-  width: 12em;
-.active {
-  color: #eee;
-  font-size: 1em;
-  position: relative;
-  left: 1em;
-}
-}
-
-.nav-btn-registrarse {
-  transition: 0.3s;
-  width: 11.5vw;
-  height: 3.5vw;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #4bc8f8 0%, #6e93f9 100%);
-}
-
-.nav-btn-registrarse:hover {
-  border: 3px solid #648dff;
-  background: transparent;
-}
-
-.nav-btn-iniciar {
-  transition: 0.3s;
-  width: 11.5vw;
-  height: 3.5vw;
-  border: 2px solid #fff;
-  border-radius: 4px;
-  background: transparent;
-}
-
-.nav-btn-iniciar:hover {
-  border-radius: 4px;
-  border: none;
-  background: linear-gradient(90deg, #4d56d1 0%, #da71ff 100%);
 }
 
 .cta {
@@ -158,33 +168,39 @@ u {
   width: 30vw;
   height: 6vw;
   border-radius: 3.8vw;
-  border-width: 0px;
   background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
-
-.RightArrow {
-  position: relative;
-  top: -0.73vw;
-  left: -1.1vw;
-  width: 2.2vw;
-  height: 1.35vw;
-  transform: rotate(-90deg);
-  transform-origin: center;
-  fill: rgba(240,240,240,1);
-}
-
-.text {
-  position: relative;
-  top: -0.1vw;
-  left: 0.4vw;
-  display: inline-block;
-  font-size: 3vw;
-}
+  border: transparent;
+  .RightArrow {
+    display: inline-block;
+    position: relative;
+    top: 2.1vh;
+    left: -1.1vw;
+    width: 2.2vw;
+    height: 1.35vw;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    fill: rgba(240,240,240,1);
+  }
+  .text {
+    position: relative;
+    top: 3.6vh;
+    left: 0.4vw;
+    display: inline-block;
+    font-size: 3vw;
+    color: #fff;
+  }
 }
 
 .btn-comenzar-ya:hover {
   border: 0.26vw solid #f96ea6;
   border-radius: 3.8vw;
   background: #202020;
+  .RightArrow{
+    top: 1.6vh;
+  }
+  .text{
+    top: 3.1vh;
+  }
 }
 }
 </style>
