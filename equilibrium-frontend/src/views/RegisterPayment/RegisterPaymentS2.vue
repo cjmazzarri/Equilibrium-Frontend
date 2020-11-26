@@ -86,10 +86,13 @@
               del pago?</h2></div>
             <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="paymentAmount"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
-            <div @click="onClick"><b-button class="next" :to="`/register-payment-final/${clientInfo.id}`">
-              <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
-              <p class="text">Finalizar</p>
-            </b-button></div>
+              <div >
+                <router-link @click="onClick" :to="`/register-payment-final/${clientInfo.id}`">
+                  <b-button class="next" ><div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
+                    <p class="text">Finalizar</p>
+                  </b-button>
+                </router-link>
+              </div>
           </b-card>
         </div>
       </div>
@@ -104,26 +107,28 @@ export default {
   data(){
     return{
       clientInfo: null,
-      clientId: 0,
-      paymentInfo: null
+      paymentInfo: null,
+      paymentAmount: 0,
     }
   },
   mounted(){
     this.axios
-      .get(baseUrl + 'commerces/1/clients/'+this.$store.getters.clientId)
+      .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
       .then(responseClient => {
         this.clientInfo = responseClient.data;
       });
   },
   methods: {
     onClick(){
-      this.axios.post(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/payments', {
+      this.axios.post(baseUrl+'commerces/1/clients/'+this.$route.params.id+'/payments', {
         description: this.$store.getters.paymentTitle,
         amount: this.paymentAmount
       }).then(responsePayment=>{
-        console.log(responsePayment.data)
+        this.paymentInfo = responsePayment.data
+        console.log(responsePayment.data.id)
+        this.$store.commit('paymentId', this.paymentInfo.id)
       })
-      this.$store.commit('paymentAmount', this.paymentAmount)
+
     }
   }
 }

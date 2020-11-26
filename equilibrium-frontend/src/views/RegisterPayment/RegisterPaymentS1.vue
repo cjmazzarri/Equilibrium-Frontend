@@ -114,16 +114,15 @@
       .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
       .then(responseClient => {
         this.clientInfo = responseClient.data;
-        this.clientId = this.$route.params.id;
-        console.log("id es: "+this.clientId)
+        this.$store.commit('clientId', responseClient.data.id)
+        console.log("global: "+responseClient.data.firstName)
+        console.log("params id: "+this.$route.params.id)
+        console.log("client info: "+this.clientInfo)
       });
   },
   methods: {
     onClick(){
       this.$store.commit('paymentTitle', this.paymentTitle)
-      this.$store.commit('clientId', this.clientId)
-      console.log("título de payment es: "+this.paymentTitle)
-      console.log("el id es: "+this.clientId)
     }
   }
 }

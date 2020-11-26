@@ -81,8 +81,9 @@
             <div><h2 class="title">¡Listo, el pago ha<br>
               sido registrado!</h2></div>
             <div class="details">
-              <p>{{"Título: "+$store.getters.paymentTitle}}</p>
-              <p>{{"Monto: "+$store.getters.paymentAmount}}</p>
+              <p>{{"Título: "+paymentInfo.description}}</p>
+              <p>{{"Monto: "+paymentInfo.amount}}</p>
+              <!--mostrar con get-->
             </div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step3.png"></div>
             <div @click="onClick"><b-button class="next" href="/dashboard">
@@ -105,27 +106,25 @@ export default {
     return{
       clientInfo: null,
       paymentInfo: null,
-      paymentAmount: null,
-      paymentTitle: ''
     }
   },
   mounted(){
     this.axios
-      .get(baseUrl + 'commerces/1/clients/'+this.$store.getters.clientId)
+      .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
       .then(responseClient => {
         this.clientInfo = responseClient.data;
       });
     this.axios
-    .get(baseUrl + 'commerces/1/clients/'+this.$store.getters.clientId+'/payments/latest')
+    .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id+'/payments/'+this.$store.getters.paymentId)
       .then(responsePayment => {
         this.paymentInfo = responsePayment.data;
+        console.log(this.paymentInfo)
       });
   },
   methods: {
     onClick(){
       this.$store.commit('paymentTitle', '')
       this.$store.commit('paymentAmount', '')
-      this.$store.commit('clientId', 0)
     }
   }
 

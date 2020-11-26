@@ -75,11 +75,13 @@
                             <b-row>
                                 <b-col>
                                     <div class="info">
-                                        {{"Último pago: S/."+paymentInfo[1].amount}}</div>
-                                    <router-link :to="`/register-payment-1/${client.id}`">
-                                        <b-button class="pay-btn">
-                                            <div class="text">Registrar pago</div>
-                                        </b-button>
+                                        {{"Creado en: "+client.createdAt}}</div>
+                                    <router-link @click="onClick" :to="`/register-payment-1/${client.id}`">
+                                        <div>
+                                            <b-button class="pay-btn">
+                                                <div class="text">Registrar pago</div>
+                                            </b-button>
+                                        </div>
                                     </router-link>
                                 </b-col>
                             </b-row>
@@ -102,31 +104,41 @@
                 .get(baseUrl + 'commerces/1/clients')
                 .then(responseClient => {
                     this.clientInfo = responseClient.data.content;
-                    let n = this.clientInfo.length
+                    /*let n = this.clientInfo.length
                     for(let i = 0; i < n; i++){
                         this.axios
                             .get(baseUrl + 'commerces/1/clients/'+this.clientInfo[i].id+'/payments/latest')
                             .then(responseLastPayment => {
                                 this.paymentInfo.push(responseLastPayment.data);
                             })
-                    }
+                    }*/
+                    this.simpleDate()
+                    console.log(this.clientInfo);
                 });
-            console.log(this.clientInfo, this.paymentInfo);
+
+
         },
         data(){
             return {
-                clientInfo: [],
-                paymentInfo: [],
-                clientId: 0
+                clientInfo: []
+                //paymentInfo: [],
             }
         },
         methods: {
-            /*onClick(){
-                this.$store.commit('clientId', this.client.id)
+            onClick(){
                 console.log(this.client.id)
-            }*/
+            },
+            simpleDate() {
+                for (let i = 0; i < this.clientInfo.length; i++) {
+                    let date = this.clientInfo[i].createdAt;
+                    let splitDate = date.split("-")
+                    let formatDate = splitDate[2][0] + splitDate[2][1] + '/' + splitDate[1] + '/' + splitDate[0][2] + splitDate[0][3];
+                    this.clientInfo[i].createdAt = formatDate;
+                }
+            }
         }
     }
+
 </script>
 
 <style lang="scss">
