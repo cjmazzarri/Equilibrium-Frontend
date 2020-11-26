@@ -70,12 +70,12 @@
                     <b-card class="bottom">
                         <div><h2 class="title">¿Todo conforme?</h2></div>
                         <div class="info">
-                            Cliente: Jesús Ortega<br>
-                            Moneda: Soles<br>
-                            Tipo de tasa: Efectiva<br>
-                            Tasa de interés: 15% anual<br>
-                            Mantenimiento: S/5.00 Mensual<br>
-                            Delivery: S/10.00 por mes</div>
+                            Cliente: {{clientName}}<br>
+                            Moneda: {{currency}}<br>
+                            Tipo de tasa: {{rateType}}<br>
+                            Tasa de interés: {{rateValue}}<br>
+                            Mantenimiento: {{maintenanceFee}}<br>
+                            Delivery: {{deliveryFee}}</div>
                         <div class="illustration" style="z-index: 0"><img src="../../assets/AddClient/Step6.png"></div>
                         <div class="btn-container">
                             <div style="display: inline-block"><b-button class="choice" to="add-client-7">
@@ -95,8 +95,78 @@
 </template>
 
 <script>
+import { baseUrl } from '../../shared/baseUrl';
     export default {
-        name: "AddClientS6"
+      name: "AddClientS6",
+      data(){
+        return {
+          clientName: '',
+          currency: '',
+          rateType: '',
+          rateValue: '',
+          maintenanceFee: '',
+          deliveryFee: ''
+        }
+      },
+      mounted() {
+        this.axios
+          .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId)
+          .then(responseClient => {
+            console.log(responseClient.data)
+            this.clientName=responseClient.data.firstName+' '+responseClient.data.lastName;
+            let currency = '';
+            switch (responseClient.data.currency) {
+              case "s": currency='Soles'; break;
+              case "d": currency='Dólares'; break;
+            }
+            this.currency=currency;
+          });
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/rates')
+            .then(responseRate => {
+              let rate=responseRate.data;
+              this.rateType=rate.type[0].toUpperCase()+rate.type.slice(1);
+              let period = '';
+              switch (rate.period){
+                case 30: period='mensual'; break;
+                case 60: period='bimestral'; break;
+                case 90: period='trimestral'; break;
+                case 120: period='cuatrimestral'; break;
+                case 180: period='semestral'; break;
+                case 360: period='anual'; break;
+              }
+              this.rateValue=rate.value+'% '+period;
+            });
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/maintenanceFees')
+            .then(r => {
+              let mFee=r.data;
+              let periodM = '';
+              switch (mFee.period){
+                case "s": periodM='Semanal'; break;
+                case "q": periodM='Quincenal'; break;
+                case "m": periodM='Mensual'; break;
+              }
+              this.maintenanceFee='S/'+mFee.value+' '+periodM;
+            })
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/deliveryFees')
+            .then(r => {
+              let dFee=r.data;
+              let periodD='';
+              switch (dFee.type){
+                case "Pedido":
+                  periodD='por Pedido'; break;
+                case "Periodo":
+                  switch (dFee.frequency){
+                    case 7: periodD='por semana'; break;
+                    case 15: periodD='por quincena'; break;
+                    case 30: periodD='por mes'; break;
+                  }
+              }
+              this.deliveryFee='S/'+dFee.value+' '+periodD;
+            })
+      }
     }
 </script>
 

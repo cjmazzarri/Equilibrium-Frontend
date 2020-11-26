@@ -108,7 +108,7 @@ export default {
         currency: moneda
       }).then(responseClient => {
         this.$store.commit('clientId', responseClient.data.id);
-        console.log(responseClient.data.id)
+        console.log(this.$store.getters.clientId)
       })
       this.$store.commit('clientFirstName', '');
       this.$store.commit('clientLastName', '');

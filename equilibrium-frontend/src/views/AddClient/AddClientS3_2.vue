@@ -114,6 +114,7 @@ export default {
   methods: {
     onClick(){
       this.$store.commit('rateCapitalization', this.period);
+      //console.log(this.$store.getters.clientId)
       //console.log(this.$store.getters.rateType, this.$store.getters.ratePeriod, this.$store.getters.rateCapitalization)
     }
   }

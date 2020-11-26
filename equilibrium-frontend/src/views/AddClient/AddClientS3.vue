@@ -108,6 +108,7 @@ export default {
   methods: {
     onClick(type){
       this.$store.commit('rateType', type);
+      //console.log(this.$store.getters.clientId)
     }
   }
 }

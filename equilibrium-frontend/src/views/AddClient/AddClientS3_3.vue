@@ -117,6 +117,7 @@ export default {
         capitalization: this.$store.getters.rateCapitalization
       }).then(responseClient => {
         console.log(responseClient.data)
+        //console.log(this.$store.getters.clientId)
       })
       //console.log(this.rateValue, this.$store.getters.ratePeriod, this.rateValue, this.$store.getters.rateCapitalization)
       this.$store.commit('rateType', '');

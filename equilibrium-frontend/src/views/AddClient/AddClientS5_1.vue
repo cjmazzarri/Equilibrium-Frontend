@@ -97,7 +97,7 @@ export default {
   methods: {
     onClick(type){
       this.$store.commit('deliveryType', type)
-      //console.log(this.$store.getters.deliveryType)
+      //console.log(this.$store.getters.clientId)
     }
   }
 }

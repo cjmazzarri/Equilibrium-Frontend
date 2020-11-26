@@ -88,7 +88,7 @@
               </b-input-group-append>
             </b-input-group></div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step5.png"></div>
-            <div @click="onClick"><b-button class="next" style="z-index: 2" href="/add-client-6" v-bind:disabled="deliveryValue.length <= 0">
+            <div @click="onClick"><b-button class="next" style="z-index: 2" to="/add-client-6" v-bind:disabled="deliveryValue.length <= 0">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -115,7 +115,7 @@ export default {
         frequency: this.$store.getters.deliveryPeriod,
         type: this.$store.getters.deliveryType
       }).then(responseDeliveryFee => {
-        console.log(responseDeliveryFee.data)
+        console.log(responseDeliveryFee.data, this.$store.getters.clientId)
       })
     },
     isNumber(e){

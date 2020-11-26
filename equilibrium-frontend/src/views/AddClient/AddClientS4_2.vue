@@ -88,7 +88,7 @@
               </b-input-group-append>
             </b-input-group></div>
             <div class="illustration"><img src="../../assets/AddClient/Step4.png"></div>
-            <div @click="onClick"><b-button class="next" href="/add-client-5" v-bind:disabled="maintenanceAmount.length <= 0">
+            <div @click="onClick"><b-button class="next" to="/add-client-5" v-bind:disabled="maintenanceAmount.length <= 0">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -114,6 +114,7 @@ export default {
         period: this.$store.getters.maintenancePeriod,
         value: this.maintenanceAmount
       }).then(responseMaintenanceFee => {
+        console.log(this.$store.getters.clientId)
         console.log(responseMaintenanceFee.data)
       })
     },

@@ -113,6 +113,7 @@ export default {
   methods: {
     onClick(){
       this.$store.commit('ratePeriod', this.period);
+      //console.log(this.$store.getters.clientId)
     }
   }
 }
