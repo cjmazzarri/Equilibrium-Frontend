@@ -80,12 +80,14 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuál es el título<br>
               de la venta?</h2></div>
-            <div><b-form-input placeholder="Título, Ej. Compras Nov." class="input"></b-form-input></div>
+            <div><b-form-input placeholder="Título, Ej. Compras Nov." class="input" v-model="saleTitle"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterSale/Step1.png"></div>
-            <div><b-button class="next" to="/register-sale-2">
-              <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
-              <p class="text">Siguiente</p>
-            </b-button></div>
+            <router-link :to="`/register-sale-2/${this.$store.getters.clientId}`">
+              <div @click="onClick"><b-button class="next">
+                <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
+                <p class="text">Siguiente</p>
+              </b-button></div>
+            </router-link>
           </b-card>
         </div>
       </div>
@@ -95,7 +97,18 @@
 
 <script>
 export default {
-  name: "RegisterSaleS1"
+  name: "RegisterSaleS1",
+  data(){
+    return {
+      saleTitle: ''
+    }
+  },
+  methods: {
+    onClick(){
+      this.$store.commit('saleTitle', this.saleTitle);
+      console.log(this.$store.getters.saleTitle);
+    }
+  }
 }
 </script>
 

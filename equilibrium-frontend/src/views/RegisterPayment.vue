@@ -69,7 +69,7 @@
                             <b-card-body class="title">
                                     {{client.firstName+" "+client.lastName}}
                             </b-card-body>
-                            <div class="amount-1 title">{{"S/. "+client.creditAmount}}</div>
+                            <div class="amount-1 title">{{"S/ "+client.creditAmount}}</div>
                         </b-card>
                         <b-card class="bottom">
                             <b-row>

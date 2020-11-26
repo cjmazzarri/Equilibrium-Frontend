@@ -80,10 +80,6 @@
           <b-card class="bottom">
             <div><h2 class="title">¡Listo, la venta ha<br>
               sido registrada!</h2></div>
-            <div class="details">
-              <p>Título: Compras Noviembre</p>
-              <p>Monto: S/ 500</p>
-            </div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step3.png"></div>
             <div><b-button class="next" href="/dashboard">
               <div class="indicator"><img src="../../assets/AddClient/Accept.png"></div>
@@ -177,7 +173,7 @@ div.card-header {
       font-weight: 600;
       color: #000;
       margin-left: 4vw;
-      margin-top: 0;
+      margin-top: 6vh;
       margin-bottom: 3vh;
     }
     .details{

@@ -62,158 +62,65 @@
             </b-navbar>
             <div class="main-body">
                 <div class="title"><h1>Registrar una venta</h1></div>
-
-                <div class="sale-card">
-                    <b-card class="top cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">José Torres</b-card-body>
-                        <div class="amount-1 title">S/1,356.02</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn" href="/register-sale-1">
-                                    <div class="text">Registrar venta</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="sale-card">
-                    <b-card class="top dark-cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Marina Zárate</b-card-body>
-                        <div class="amount-3 title">S/920.09</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/20 - 28/12</div>
-                                <b-button class="sale-btn" href="/register-sale-1">
-                                    <div class="text">Registrar venta</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="sale-card">
-                    <b-card class="top purple">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Jenny Castro</b-card-body>
-                        <div class="amount-1 title">S/846.50</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/100 - 02/01</div>
-                                <b-button class="sale-btn" href="/register-sale-1">
-                                    <div class="text">Registrar venta</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="sale-card">
-                    <b-card class="top pink">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Julieta Olórtegui</b-card-body>
-                        <div class="amount-5 title">S/645.12</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/10 - 29/12</div>
-                                <b-button class="sale-btn" href="/register-sale-1">
-                                    <div class="text">Registrar venta</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="sale-card">
-                    <b-card class="top cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Jesús Ramos</b-card-body>
-                        <div class="amount-1 title">S/356.02</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn" href="/register-sale-1">
-                                    <div class="text">Registrar venta</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="sale-card">
-                    <b-card class="top dark-cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Dino Pérez</b-card-body>
-                        <div class="amount-2 title">S/256.69</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn" href="/register-sale-1">
-                                    <div class="text">Registrar venta</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="sale-card">
-                    <b-card class="top purple">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Daniel Ko</b-card-body>
-                        <div class="amount-6 title">S/156.56</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn" href="/register-sale-1">
-                                    <div class="text">Registrar venta</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="sale-card">
-                    <b-card class="top pink">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Lucía Marino</b-card-body>
-                        <div class="amount-4 title">S/46.57</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="sale-btn" href="/register-sale-1">
-                                    <div class="text">Registrar venta</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
+                <li v-for="(client, index) in clientInfo" :key="index" style="list-style-type: none; display: inline">
+                    <div class="sale-card">
+                        <b-card class="top cyan">
+                            <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
+                            <b-card-body class="title">{{client.firstName+" "+client.lastName}}</b-card-body>
+                            <div class="amount-1 title">{{"S/"+client.creditAmount}}</div>
+                        </b-card>
+                        <b-card class="bottom">
+                            <b-row>
+                                <b-col>
+                                    <div class="info">Creado en: {{client.createdAt}}</div>
+                                    <router-link :to="`/register-sale-1/${client.id}`">
+                                      <b-button class="sale-btn" @click="onClick(client.id)">
+                                        <div class="text">Registrar venta</div>
+                                      </b-button>
+                                    </router-link>
+                                </b-col>
+                            </b-row>
+                        </b-card>
+                    </div>
+                </li>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
     export default {
-        name: "RegisterSale"
+      name: "RegisterSale",
+      mounted() {
+        //get all clients
+        this.axios
+            .get(baseUrl + 'commerces/1/clients')
+            .then(responseClient => {
+              this.clientInfo = responseClient.data.content;
+              this.simpleDate();
+            });
+        console.log(this.clientInfo);
+      },
+      data() {
+        return {
+          clientInfo: []
+        }
+      },
+      methods: {
+        simpleDate() {
+          for (let i = 0; i < this.clientInfo.length; i++) {
+            let date = this.clientInfo[i].createdAt;
+            let splitDate = date.split("-")
+            let formatDate = splitDate[2][0] + splitDate[2][1] + '/' + splitDate[1] + '/' + splitDate[0][2] + splitDate[0][3];
+            this.clientInfo[i].createdAt = formatDate;
+          }
+        },
+        onClick(id){
+          this.$store.commit('clientId', id);
+          console.log(this.$store.getters.clientId);
+        }
+      }
     }
 </script>
 
@@ -228,6 +135,7 @@
       margin-top: -1px;
       width: 85.26vw;
       height: auto;
+      min-height: 100vh;
       background-image: url("../assets/DashboardBG.png");
       background-position: top left;
       background-color: #202020;

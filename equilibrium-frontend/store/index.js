@@ -20,6 +20,8 @@ export default new Vuex.Store({
         maintenancePeriod: null,
         deliveryType: null,
         deliveryPeriod: 0,
+        saleTitle: null,
+        saleId: 0
     },
     mutations: {
         clientId(state, clientId){
@@ -64,6 +66,12 @@ export default new Vuex.Store({
         deliveryPeriod(state, deliveryPeriod){
             state.deliveryPeriod = deliveryPeriod;
         },
+        saleTitle(state, saleTitle){
+            state.saleTitle = saleTitle;
+        },
+        saleId(state, saleId){
+            state.saleId = saleId;
+        },
     },
     getters: {
         clientId: state => {
@@ -105,5 +113,11 @@ export default new Vuex.Store({
         deliveryPeriod: state => {
             return state.deliveryPeriod;
         },
+        saleTitle: state => {
+            return state.saleTitle;
+        },
+        saleId: state => {
+            return state.saleId;
+        }
     }
 })

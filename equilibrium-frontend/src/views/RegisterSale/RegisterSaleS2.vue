@@ -84,12 +84,14 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuál es el monto<br>
               de la venta?</h2></div>
-            <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input"></b-form-input></div>
+            <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="saleAmount"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterSale/Step1.png"></div>
-            <div><b-button class="next" to="/register-sale-final">
-              <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
-              <p class="text">Finalizar</p>
-            </b-button></div>
+            <router-link :to="`/register-sale-final/${this.$store.getters.clientId}`">
+              <div @click="onClick"><b-button class="next">
+                <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
+                <p class="text">Finalizar</p>
+              </b-button></div>
+            </router-link>
           </b-card>
         </div>
       </div>
@@ -98,8 +100,27 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
+
 export default {
-  name: "RegisterSaleS2"
+  name: "RegisterSaleS2",
+  data(){
+    return {
+      saleAmount: ''
+    }
+  },
+  methods: {
+    onClick(){
+      this.axios.post(baseUrl+"commerces/1/clients/"+this.$store.getters.clientId+"/sales", {
+        description: this.$store.getters.saleTitle,
+        amount: this.saleAmount
+      }).then(response => {
+        console.log(response.data.id)
+        this.$store.commit('saleId', response.data.id)
+        console.log(this.$store.getters.saleId)
+      })
+    }
+  }
 }
 </script>
 
