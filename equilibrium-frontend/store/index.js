@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         commerceId: 1,
-        clientId: null,
+        clientId: 0,
         clientFirstName: null,
         clientLastName: null,
         clientCurrency: null,
@@ -16,6 +16,7 @@ export default new Vuex.Store({
         rateCapitalization: 0,
         paymentTitle: null,
         paymentAmount: null,
+        paymentId: 0,
         maintenancePeriod: null,
         deliveryType: null,
         deliveryPeriod: 0,
@@ -52,6 +53,9 @@ export default new Vuex.Store({
         },
         paymentAmount(state, paymentAmount){
             state.paymentAmount = paymentAmount;
+        },
+        paymentId(state, paymentId){
+            state.paymentId = paymentId;
         },
         maintenancePeriod(state, maintenancePeriod){
             state.maintenancePeriod = maintenancePeriod;
@@ -96,6 +100,9 @@ export default new Vuex.Store({
         },
         paymentTitle: state => {
             return state.paymentTitle;
+        },
+        paymentId: state => {
+            return state.paymentId;
         },
         maintenancePeriod: state => {
             return state.maintenancePeriod;
