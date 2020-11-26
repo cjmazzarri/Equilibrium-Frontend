@@ -64,12 +64,12 @@
                 <div class="title"><h1>Registrar un pago</h1></div>
                 <li v-for="(client, index) in clientInfo" :key="index" style="list-style-type: none; display: inline">
                     <div class="payment-card">
-                        <b-card class="top cyan">
+                        <b-card class="top purple">
                             <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
                             <b-card-body class="title">
                                     {{client.firstName+" "+client.lastName}}
                             </b-card-body>
-                            <div class="amount-1 title">{{"S/ "+client.creditAmount}}</div>
+                            <div class="amount-1">{{"S/ "+client.creditAmount}}</div>
                         </b-card>
                         <b-card class="bottom">
                             <b-row>
@@ -77,11 +77,9 @@
                                     <div class="info">
                                         {{"Creado en: "+client.createdAt}}</div>
                                     <router-link @click="onClick" :to="`/register-payment-1/${client.id}`">
-                                        <div>
-                                            <b-button class="pay-btn">
-                                                <div class="text">Registrar pago</div>
-                                            </b-button>
-                                        </div>
+                                          <b-button class="pay-btn">
+                                              <div class="text">Registrar pago</div>
+                                          </b-button>
                                     </router-link>
                                 </b-col>
                             </b-row>
@@ -169,54 +167,36 @@
         .top {
             height: 5.21vw;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: flex-start;
             border-radius: 1.5vw 1.5vw 0 0;
             border: transparent;
+            width: 39.48vw;
             .graph-icon {
-                display: inline-block;
-                position: relative;
-                bottom: 2vh;
-                left: 0.5vw;
+              display: inline-block;
+              position: relative;
+              top: 0;
+              left: 1vw;
             }
             .title{
                 font-size: 1.82vw;
-                line-height: 1;
                 font-weight: 600;
                 color: #000;
                 display: inline-block;
-                margin-top: -1.5vh;
-                margin-left: 1vw;
+                margin-top: -2.5vh;
+                margin-left: 2vw;
+                position: relative;
+                top: 0.5vh;
             }
             .amount-1{
+                font-size: 1.82vw;
+                font-weight: 600;
+                color: #000;
+                text-align: right;
                 display: inline-block;
-                position: relative;
-                left: 9vw;
-            }
-            .amount-2{
-                display: inline-block;
-                position: relative;
-                left: 11vw;
-            }
-            .amount-3{
-                display: inline-block;
-                position: relative;
-                left: 6.88vw;
-            }
-            .amount-4{
-                display: inline-block;
-                position: relative;
-                left: 10.5vw;
-            }
-            .amount-5{
-                display: inline-block;
-                position: relative;
-                left: 6.1vw;
-            }
-            .amount-6{
-                display: inline-block;
-                position: relative;
-                left: 12.4vw;
+                position: absolute;
+                right: 3vw;
+                top: 3.3vh;
             }
         }
         .cyan{
@@ -234,21 +214,21 @@
         .bottom{
             border-radius: 0 0 1.5vw 1.5vw;
             border: transparent;
-
-            .title{
-                font-size: 4.17vw;
-                font-weight: 600;
-                color: #000;
-                margin-left: 4vw;
-            }
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            vertical-align: center;
+            width: 39.48vw;
+            min-height: 9.26vh;
             .info{
                 font-size: 1.56vw;
                 font-weight: 600;
                 color: #000;
                 text-align: left;
-                position: relative;
-                right: 1.35vw;
-                display: inline-block;
+                position: absolute;
+              left: -16vw;
+              top: 0.7vh;
+              width: 15vw;
             }
             .pay-btn{
                 width: 14.32vw;
@@ -257,10 +237,10 @@
                 background: linear-gradient(90deg, #634dfc 0%, #da71ff 100%);
                 display: inline-block;
                 border: transparent;
-                position: relative;
-                left: 1vw;
+                position: absolute;
+                left: 4vw;
+              top: -0.7vh;
                 .text{
-                    font-family: Gilroy ☞;
                     font-size: 1.46vw;
                     line-height: 1.3;
                     font-weight: 600;

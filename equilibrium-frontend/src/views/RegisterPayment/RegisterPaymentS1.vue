@@ -66,10 +66,11 @@
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
             <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}</b-card-body>
-            <b-card-body class="title amount">{{"S/. "+clientInfo.creditAmount}}</b-card-body>
+            <b-card-body class="amount">{{"S/ "+clientInfo.creditAmount}}</b-card-body>
           </b-card>
           <b-card class="bottom">
-            <div class="text"><p>Último pago: S/20 - 28/12 - Cancelación Nov.</p></div>
+            <div class="text">
+              {{"Creado en: "+clientInfo.createdAt}}</div>
           </b-card>
         </div>
         <div class="medium-card">
@@ -84,7 +85,7 @@
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
             <div @click="onClick">
               <router-link :to="`/register-payment-2/${clientInfo.id}`">
-                <b-button class="next">
+                <b-button class="next" v-bind:disabled="paymentTitle.length <= 0">
                   <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
                   <p class="text">Siguiente</p>
                 </b-button>
@@ -118,11 +119,18 @@
         console.log("global: "+responseClient.data.firstName)
         console.log("params id: "+this.$route.params.id)
         console.log("client info: "+this.clientInfo)
+        this.simpleDate()
       });
   },
   methods: {
     onClick(){
       this.$store.commit('paymentTitle', this.paymentTitle)
+    },
+    simpleDate() {
+      let date = this.clientInfo.createdAt;
+      let splitDate = date.split("-")
+      let formatDate = splitDate[2][0] + splitDate[2][1] + '/' + splitDate[1] + '/' + splitDate[0][2] + splitDate[0][3];
+      this.clientInfo.createdAt = formatDate;
     }
   }
 }
@@ -266,8 +274,38 @@ div.card-header {
   margin-top: 2.5vh;
   margin-left: 2.4vw;
   .top{
+    height: 5.21vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 1.5vw 1.5vw 0 0;
+    border: transparent;
+    width: 39.48vw;
+    .graph-icon {
+      display: inline-block;
+      position: relative;
+      top: 0;
+      left: 1vw;
+    }
+    .title{
+      font-size: 1.82vw;
+      font-weight: 600;
+      color: #000;
+      display: inline-block;
+      margin-top: -2.5vh;
+      margin-left: 2vw;
+      position: relative;
+      top: 0.5vh;
+    }
     .amount{
-      margin-left: 8vw;
+      font-size: 1.82vw;
+      font-weight: 600;
+      color: #000;
+      text-align: right;
+      display: inline-block;
+      position: absolute;
+      right: 3vw;
+      top: 1vh;
     }
   }
   .bottom {

@@ -65,11 +65,12 @@
         <div class="medium-card half">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
-            <b-card-body class="title">Marina Zárate</b-card-body>
-            <b-card-body class="title amount">S/920.09</b-card-body>
+            <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}</b-card-body>
+            <b-card-body class="amount">{{"S/ "+clientInfo.creditAmount}}</b-card-body>
           </b-card>
           <b-card class="bottom">
-            <div class="text"><p>Último pago: S/20 - 28/12 - Cancelación Nov.</p></div>
+            <div class="text">
+              {{"Creado en: "+clientInfo.createdAt}}</div>
           </b-card>
         </div>
         <div class="medium-card">
@@ -84,10 +85,10 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuál es el monto<br>
               de la venta?</h2></div>
-            <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="saleAmount"></b-form-input></div>
+            <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="saleAmount" onkeyup="if(this.value<0){this.value= this.value * -1}" v-on:keypress="isNumber($event)"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterSale/Step1.png"></div>
             <router-link :to="`/register-sale-final/${this.$store.getters.clientId}`">
-              <div @click="onClick"><b-button class="next">
+              <div @click="onClick"><b-button class="next"  v-bind:disabled="saleAmount.length <= 0">
                 <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
                 <p class="text">Finalizar</p>
               </b-button></div>
@@ -106,8 +107,18 @@ export default {
   name: "RegisterSaleS2",
   data(){
     return {
+      clientInfo: null,
+      saleInfo: null,
       saleAmount: ''
     }
+  },
+  mounted(){
+    this.axios
+        .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
+        .then(responseClient => {
+          this.clientInfo = responseClient.data;
+          this.simpleDate()
+        });
   },
   methods: {
     onClick(){
@@ -119,6 +130,17 @@ export default {
         this.$store.commit('saleId', response.data.id)
         console.log(this.$store.getters.saleId)
       })
+    },
+    isNumber(e){
+      let char = String.fromCharCode(e.keyCode); // Get the character
+      if(/^(?:[1-9]\d*|0)?(?:\.\d+)?$/.test(char)) return true; // Match with regex
+      else e.preventDefault(); // If not match, don't add to input text
+    },
+    simpleDate() {
+      let date = this.clientInfo.createdAt;
+      let splitDate = date.split("-")
+      let formatDate = splitDate[2][0] + splitDate[2][1] + '/' + splitDate[1] + '/' + splitDate[0][2] + splitDate[0][3];
+      this.clientInfo.createdAt = formatDate;
     }
   }
 }
