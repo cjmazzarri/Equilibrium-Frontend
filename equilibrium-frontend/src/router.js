@@ -54,9 +54,7 @@ export default new Router({
         { path: "/register-sale-2", alias:"/registerSale2", name: "registerSale2", component: () => import("./views/RegisterSale/RegisterSaleS2")   },
         { path: "/register-sale-final", alias:"/registerSaleFinal", name: "registerSaleFinal", component: () => import("./views/RegisterSale/RegisterSaleFinal")   },
 
-        { path: "/movements", alias:"/movs", name: "movs", component: () => import("./views/Movements")   },
-
-
+        { path: "/movements/:id", alias:"/movements", name: "movements", component: () => import("./views/Movements")   },
     ]
 })
 

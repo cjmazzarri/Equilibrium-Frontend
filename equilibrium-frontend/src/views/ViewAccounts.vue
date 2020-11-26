@@ -88,7 +88,11 @@
                   <div class="medium-card">
                     <b-card class="top cyan">
                       <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                      <b-card-body class="title">{{client.firstName+" "+client.lastName}}</b-card-body>
+                      <b-card-body class="title">
+                          <router-link :to="`/movements/${client.id}`">
+                              <a style="color: black"><u>{{client.firstName+" "+client.lastName}}</u></a>
+                          </router-link>
+                      </b-card-body>
                       <div class="amount-1 title">{{"S/ "+client.creditAmount}}</div>
                     </b-card>
                     <b-card class="bottom">
