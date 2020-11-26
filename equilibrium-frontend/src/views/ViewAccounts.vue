@@ -96,8 +96,14 @@
                       <div class="amount-1 title">{{"S/ "+client.creditAmount}}</div>
                     </b-card>
                     <b-card class="bottom">
-                      <div class="info">Tipo de tasa: Efectiva</div>
-                      <div class="info">Tasa de interés: 3% Mensual</div>
+                      <div class="info">Tipo de tasa: {{client.rate.type}}</div>
+                      <div v-if="client.rate.period == 30" class="info">
+                          Tasa de interés: {{client.rate.value+"% mensual"}}</div>
+                      <div v-if="client.rate.period == 60" class="info">Tasa de interés: {{client.rate.value+"% bimestral"}}</div>
+                      <div v-if="client.rate.period == 90" class="info">Tasa de interés: {{client.rate.value+"% trimestral"}}</div>
+                      <div v-if="client.rate.period == 120" class="info">Tasa de interés: {{client.rate.value+"% cuatrimestral"}}</div>
+                      <div v-if="client.rate.period == 180" class="info">Tasa de interés: {{client.rate.value+"% semestral"}}</div>
+                      <div v-if="client.rate.period == 360" class="info">Tasa de interés: {{client.rate.value+"% anual"}}</div>
                       <div class="info">Mantenimiento: S/5.00 Mensual</div>
                       <div class="info">Delivery: S/2.00 por entrega</div>
                       <b-button class="they-paid-btn">
@@ -124,12 +130,44 @@ import { baseUrl } from '../shared/baseUrl';
               .get(baseUrl + 'commerces/1/clients')
               .then(responseUser => {
                 this.clientInfo = responseUser.data.content;
+                this.rateTypeFormat();
+                this.rateValueFormat();
               });
+
+        },
+        methods: {
+            rateTypeFormat(){
+                for(let i = 0; i < this.clientInfo.length; i++){
+                    let r = this.clientInfo[i].rate;
+                    r = r.type[0].toUpperCase()+r.type.slice(1)
+                    this.clientInfo[i].rate.type = r;
+                }
+            },
+            rateValueFormat(){
+                for(let i = 0; i < this.clientInfo.length; i++){
+                    let r = this.clientInfo[i].rate;
+                    let period = '';
+                    switch (r.period){
+                        case 30: period='mensual'; break;
+                        case 60: period='bimestral'; break;
+                        case 90: period='trimestral'; break;
+                        case 120: period='cuatrimestral'; break;
+                        case 180: period='semestral'; break;
+                        case 360: period='anual'; break;
+                }
+                this.ratePeriod = "% "+period;
+                    console.log(this.ratePeriod);
+                 }
+            },
         },
         data() {
-          return {
-            clientInfo: []
-          }
+            return {
+                clientInfo: [],
+                rateType: '',
+                ratePeriod: '',
+                maintenanceFee: '',
+                deliveryFee: ''
+            }
         }
     }
 </script>
