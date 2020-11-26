@@ -80,9 +80,9 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuál es el título<br>
               del pago?</h2></div>
-            <div><b-form-input placeholder="Título, Ej. Cancelación Nov." class="input"></b-form-input></div>
+            <div><b-form-input placeholder="Título, Ej. Cancelación Nov." class="input" v-model="paymentTitle"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
-            <div><b-button class="next" to="/register-payment-2">
+            <div @click="onClick"><b-button class="next" to="/register-payment-2">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -95,7 +95,17 @@
 
 <script>
 export default {
-  name: "RegisterPaymentS1"
+  name: "RegisterPaymentS1",
+  data(){
+    return {
+      paymentTitle: ''
+    }
+  },
+  methods: {
+    onClick(){
+      this.$store.commit('paymentTitle', this.paymentTitle)
+    }
+  }
 }
 </script>
 

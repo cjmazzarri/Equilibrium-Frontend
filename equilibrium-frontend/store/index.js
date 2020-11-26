@@ -13,7 +13,8 @@ export default new Vuex.Store({
         rateValue: null,
         ratePeriod: null,
         rateType: null,
-        rateCapitalization: 0
+        rateCapitalization: 0,
+        paymentTitle: null
     },
     mutations: {
         clientId(state, clientId){
@@ -40,6 +41,9 @@ export default new Vuex.Store({
         rateCapitalization(state, rateCapitalization){
             state.rateCapitalization = rateCapitalization;
         },
+        paymentTitle(state, paymentTitle){
+            state.paymentTitle = paymentTitle;
+        },
     },
     getters: {
         clientId: state => {
@@ -65,6 +69,9 @@ export default new Vuex.Store({
         },
         rateCapitalization: state => {
             return state.rateCapitalization;
+        },
+        paymentTitle: state => {
+            return state.paymentTitle;
         }
     }
 })
