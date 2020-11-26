@@ -6,7 +6,7 @@
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" href="/add-client-1">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Añadir cliente</p>
@@ -80,8 +80,8 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cobraré delivery<br>por pedido o por<br>periodo?</h2></div>
             <div class="btn-container" >
-              <div style="display: inline-block"><b-button class="choice" to="/add-client-5-2">Por pedido</b-button></div>
-              <div style="display: inline-block"><b-button class="choice second" to="/add-client-5-2">Por periodo</b-button></div>
+              <div style="display: inline-block" @click="onClick('Pedido')"><b-button class="choice" to="/add-client-5-3">Por pedido</b-button></div>
+              <div style="display: inline-block" @click="onClick('Periodo')"><b-button class="choice second" to="/add-client-5-2">Por periodo</b-button></div>
             </div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step5.png"></div>
           </b-card>
@@ -93,7 +93,13 @@
 
 <script>
 export default {
-  name: "AddClientS5_1"
+  name: "AddClientS5_1",
+  methods: {
+    onClick(type){
+      this.$store.commit('deliveryType', type)
+      //console.log(this.$store.getters.deliveryType)
+    }
+  }
 }
 </script>
 
