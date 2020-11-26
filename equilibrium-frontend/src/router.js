@@ -45,12 +45,12 @@ export default new Router({
         { path: "/view-accounts", alias:"/viewAccounts", name: "viewAccounts", component: () => import("./views/ViewAccounts")   },
 
         { path: "/register-payment", alias:"/registerPayment", name: "registerPayment", component: () => import("./views/RegisterPayment")   },
-        { path: "/register-payment-1", alias:"/registerPayment1", name: "registerPayment1", component: () => import("./views/RegisterPayment/RegisterPaymentS1")   },
-        { path: "/register-payment-2", alias:"/registerPayment2", name: "registerPayment2", component: () => import("./views/RegisterPayment/RegisterPaymentS2")   },
-        { path: "/register-payment-final", alias:"/registerPaymentFinal", name: "registerPaymentFinal", component: () => import("./views/RegisterPayment/RegisterPaymentFinal")   },
+        { path: "/register-payment-1/:id", alias:"/registerPayment1", name: "registerPayment1", component: () => import("./views/RegisterPayment/RegisterPaymentS1")   },
+        { path: "/register-payment-2/:id", alias:"/registerPayment2", name: "registerPayment2", component: () => import("./views/RegisterPayment/RegisterPaymentS2")   },
+        { path: "/register-payment-final/:id", alias:"/registerPaymentFinal", name: "registerPaymentFinal", component: () => import("./views/RegisterPayment/RegisterPaymentFinal")   },
 
         { path: "/register-sale", alias:"/registerSale", name: "registerSale", component: () => import("./views/RegisterSale")   },
-        { path: "/register-sale-1", alias:"/registerSale1", name: "registerSale1", component: () => import("./views/RegisterSale/RegisterSaleS1")   },
+        { path: "/register-sale-1/", alias:"/registerSale1", name: "registerSale1", component: () => import("./views/RegisterSale/RegisterSaleS1")   },
         { path: "/register-sale-2", alias:"/registerSale2", name: "registerSale2", component: () => import("./views/RegisterSale/RegisterSaleS2")   },
         { path: "/register-sale-final", alias:"/registerSaleFinal", name: "registerSaleFinal", component: () => import("./views/RegisterSale/RegisterSaleFinal")   },
 

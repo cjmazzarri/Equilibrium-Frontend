@@ -65,8 +65,8 @@
         <div class="medium-card half">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
-            <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}}</b-card-body>
-            <b-card-body class="title amount">S/920.09</b-card-body>
+            <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}</b-card-body>
+            <b-card-body class="title amount">{{"S/. "+clientInfo.creditAmount}}</b-card-body>
           </b-card>
           <b-card class="bottom">
             <div class="text"><p>Último pago: S/20 - 28/12 - Cancelación Nov.</p></div>
@@ -82,10 +82,14 @@
               del pago?</h2></div>
             <div><b-form-input placeholder="Título, Ej. Cancelación Nov." class="input" v-model="paymentTitle"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
-            <div @click="onClick"><b-button class="next" to="/register-payment-2">
-              <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
-              <p class="text">Siguiente</p>
-            </b-button></div>
+            <div @click="onClick">
+              <router-link :to="`/register-payment-2/${clientInfo.id}`">
+                <b-button class="next">
+                  <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
+                  <p class="text">Siguiente</p>
+                </b-button>
+              </router-link>
+            </div>
           </b-card>
         </div>
       </div>
@@ -101,7 +105,8 @@
   data(){
     return {
       clientInfo: null,
-      paymentTitle: ''
+      paymentTitle: '',
+      clientId: 0
     }
   },
   mounted() {
@@ -109,11 +114,16 @@
       .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
       .then(responseClient => {
         this.clientInfo = responseClient.data;
+        this.clientId = this.$route.params.id;
+        console.log("id es: "+this.clientId)
       });
   },
   methods: {
     onClick(){
       this.$store.commit('paymentTitle', this.paymentTitle)
+      this.$store.commit('clientId', this.clientId)
+      console.log("título de payment es: "+this.paymentTitle)
+      console.log("el id es: "+this.clientId)
     }
   }
 }

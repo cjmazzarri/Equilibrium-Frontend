@@ -65,8 +65,8 @@
         <div class="medium-card half">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
-            <b-card-body class="title">Marina Zárate</b-card-body>
-            <b-card-body class="title amount">S/920.09</b-card-body>
+            <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}</b-card-body>
+            <b-card-body class="title amount">{{clientInfo.amount}}</b-card-body>
           </b-card>
           <b-card class="bottom">
             <div class="text"><p>Último pago: S/20 - 28/12 - Cancelación Nov.</p></div>
@@ -81,11 +81,11 @@
             <div><h2 class="title">¡Listo, el pago ha<br>
               sido registrado!</h2></div>
             <div class="details">
-              <p>Título: Cancelación Noviembre</p>
-              <p>Monto: S/ 500</p>
+              <p>{{"Título: "+$store.getters.paymentTitle}}</p>
+              <p>{{"Monto: "+$store.getters.paymentAmount}}</p>
             </div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step3.png"></div>
-            <div><b-button class="next" href="/dashboard">
+            <div @click="onClick"><b-button class="next" href="/dashboard">
               <div class="indicator"><img src="../../assets/AddClient/Accept.png"></div>
               <p class="text">Volver al dashboard</p>
             </b-button></div>
@@ -97,8 +97,38 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
+
 export default {
-  name: "RegisterPaymentFinal"
+  name: "RegisterPaymentFinal",
+  data(){
+    return{
+      clientInfo: null,
+      paymentInfo: null,
+      paymentAmount: null,
+      paymentTitle: ''
+    }
+  },
+  mounted(){
+    this.axios
+      .get(baseUrl + 'commerces/1/clients/'+this.$store.getters.clientId)
+      .then(responseClient => {
+        this.clientInfo = responseClient.data;
+      });
+    this.axios
+    .get(baseUrl + 'commerces/1/clients/'+this.$store.getters.clientId+'/payments/latest')
+      .then(responsePayment => {
+        this.paymentInfo = responsePayment.data;
+      });
+  },
+  methods: {
+    onClick(){
+      this.$store.commit('paymentTitle', '')
+      this.$store.commit('paymentAmount', '')
+      this.$store.commit('clientId', 0)
+    }
+  }
+
 }
 </script>
 
