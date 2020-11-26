@@ -119,7 +119,7 @@ import { baseUrl } from '../shared/baseUrl';
     export default {
         name: "VerCuentas",
         mounted() {
-          //get all users
+          //get all clients
           this.axios
               .get(baseUrl + 'commerces/1/clients')
               .then(responseUser => {

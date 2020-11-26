@@ -62,157 +62,63 @@
           </b-navbar>
             <div class="main-body">
                 <div class="title"><h1>Registrar un pago</h1></div>
-                <div class="payment-card">
-                    <b-card class="top cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">José Torres</b-card-body>
-                        <div class="amount-1 title">S/1,356.02</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" href="/register-payment-1">
-                                    <div class="text">Registrar pago</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="payment-card">
-                    <b-card class="top dark-cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Marina Zárate</b-card-body>
-                        <div class="amount-3 title">S/920.09</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/20 - 28/12</div>
-                                <b-button class="pay-btn" href="/register-payment-1">
-                                    <div class="text">Registrar pago</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="payment-card">
-                    <b-card class="top purple">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Jenny Castro</b-card-body>
-                        <div class="amount-1 title">S/846.50</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/100 - 02/01</div>
-                                <b-button class="pay-btn" href="/register-payment-1">
-                                    <div class="text">Registrar pago</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="payment-card">
-                    <b-card class="top pink">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Julieta Olórtegui</b-card-body>
-                        <div class="amount-5 title">S/645.12</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/10 - 29/12</div>
-                                <b-button class="pay-btn" href="/register-payment-1">
-                                    <div class="text">Registrar pago</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="payment-card">
-                    <b-card class="top cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Jesús Ramos</b-card-body>
-                        <div class="amount-1 title">S/356.02</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" href="/register-payment-1">
-                                    <div class="text">Registrar pago</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="payment-card">
-                    <b-card class="top dark-cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Dino Pérez</b-card-body>
-                        <div class="amount-2 title">S/256.69</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" href="/register-payment-1">
-                                    <div class="text">Registrar pago</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="payment-card">
-                    <b-card class="top purple">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Daniel Ko</b-card-body>
-                        <div class="amount-6 title">S/156.56</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" href="/register-payment-1">
-                                    <div class="text">Registrar pago</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
-
-                <div class="payment-card">
-                    <b-card class="top pink">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Lucía Marino</b-card-body>
-                        <div class="amount-4 title">S/46.57</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <b-row>
-                            <b-col>
-                                <div class="info">Último pago: S/50 - 29/12</div>
-                                <b-button class="pay-btn" href="/register-payment-1">
-                                    <div class="text">Registrar pago</div>
-                                </b-button>
-                            </b-col>
-                        </b-row>
-                    </b-card>
-                </div>
+                <li v-for="(client, index) in clientInfo" :key="index" style="list-style-type: none; display: inline">
+                    <div class="payment-card">
+                        <b-card class="top cyan">
+                            <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
+                            <b-card-body class="title">
+                                <router-link :to="`/register-payment-1`">
+                                    <a style="color: black"><u>{{client.firstName+" "+client.lastName}}</u></a>
+                                </router-link>
+                            </b-card-body>
+                            <div class="amount-1 title">{{"S/. "+client.creditAmount}}</div>
+                        </b-card>
+                        <b-card class="bottom">
+                            <b-row>
+                                <b-col>
+                                    <div class="info">
+                                        {{"Último pago: S/."+lastPaymentInfo[1].amount}}</div>
+                                    <b-button class="pay-btn" href="/register-payment-1">
+                                        <div class="text">Registrar pago</div>
+                                    </b-button>
+                                </b-col>
+                            </b-row>
+                        </b-card>
+                    </div>
+                </li>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {baseUrl} from "@/shared/baseUrl";
+
     export default {
-        name: "RegisterPayment"
+        name: "RegisterPayment",
+        mounted() {
+            //get all clients
+            this.axios
+                .get(baseUrl + 'commerces/1/clients')
+                .then(responseClient => {
+                    this.clientInfo = responseClient.data.content;
+                    let n = this.clientInfo.length
+                    for(let i = 0; i < n; i++){
+                        this.axios
+                            .get(baseUrl + 'commerces/1/clients/'+this.clientInfo[i].id+'/payments/latest')
+                            .then(responseLastPayment => {
+                                this.lastPaymentInfo.push(responseLastPayment.data);
+                            })
+                    }
+                });
+            console.log(this.clientInfo, this.lastPaymentInfo);
+        },
+        data(){
+            return {
+                clientInfo: [],
+                lastPaymentInfo: []
+            }
+        }
     }
 </script>
 

@@ -65,7 +65,7 @@
         <div class="medium-card half">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
-            <b-card-body class="title">Marina Zárate</b-card-body>
+            <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}}</b-card-body>
             <b-card-body class="title amount">S/920.09</b-card-body>
           </b-card>
           <b-card class="bottom">
@@ -94,8 +94,25 @@
 </template>
 
 <script>
-export default {
-  name: "RegisterPaymentS1"
+  import { baseUrl} from "@/shared/baseUrl";
+
+  export default {
+  name: "RegisterPaymentS1",
+  data(){
+    return {
+      clientInfo: null
+    }
+  },
+  mounted() {
+    this.axios
+      .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
+      .then(responseClient => {
+        this.clientInfo = responseClient.data;
+      });
+  },
+  methods: {
+
+  }
 }
 </script>
 
