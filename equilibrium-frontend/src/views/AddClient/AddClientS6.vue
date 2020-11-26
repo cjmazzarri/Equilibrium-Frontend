@@ -82,7 +82,7 @@
                                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Accept.png"></div>
                                 <div class="text" style="display: inline-block"><p>Crear cuenta</p></div>
                             </b-button></div>
-                            <div style="display: inline-block"><b-button class="choice second" href="add-client-6-1">
+                            <div style="display: inline-block"><b-button class="choice second" to="add-client-6-1">
                                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Decline.png" style="width: 1.8vw"></div>
                                 <div class="text" style="display: inline-block"><p>Corregir</p></div>
                             </b-button></div>
@@ -95,7 +95,7 @@
 </template>
 
 <script>
-import { baseUrl } from '../../shared/baseUrl';
+import { baseUrl } from '@/shared/baseUrl';
     export default {
       name: "AddClientS6",
       data(){
@@ -179,13 +179,13 @@ import { baseUrl } from '../../shared/baseUrl';
 
     /* Style page content */
     .main {
-        margin-left: 14.7vw;
-        margin-top: -2px;
-        width: 85.3vw;
-        height: 102vh;
-        background-image: url("../../assets/DashboardBG.png");
-        background-repeat: no-repeat;
-        background-origin: content-box;
+      margin-left: 14.8vw;
+      margin-top: -2px;
+      width: 85.3vw;
+      height: 102vh;
+      background-image: url("../../assets/DashboardBG.png");
+      background-repeat: no-repeat;
+      background-origin: content-box;
     }
 
     div.card-header {
@@ -204,37 +204,21 @@ import { baseUrl } from '../../shared/baseUrl';
             background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
             border-radius: 1.5vw 1.5vw 0 0;
             border: transparent;
-            .graph-icon {
-                display: inline-block;
-                position: relative;
-                top: -0.5vh;
-                left: 0.5vw;
-            }
-            .title{
-                font-size: 1.82vw;
-                line-height: 0;
-                font-weight: 600;
-                color: #000;
-                display: inline-block;
-                margin-top: -1.5vh;
-                margin-left: 1vw;
-            }
-            .navigation {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 17.55vw;
-                position: absolute;
-                right: 4vw;
-                top: 2.5vh;
-
-                .text{
-                    font-size: 1.4vw;
-                    font-weight: 600;
-                    color: #16002f;
-                    margin: auto 1vw auto 1vw;
-                }
-            }
+          .graph-icon {
+            display: inline-block;
+            position: relative;
+            top: -0.5vh;
+            left: 0.5vw;
+          }
+          .title{
+            font-size: 1.82vw;
+            line-height: 1;
+            font-weight: 600;
+            color: #000;
+            display: inline-block;
+            margin-top: -1.5vh;
+            margin-left: 1vw;
+          }
         }
         .bottom{
             height: 62.2vh;
@@ -247,9 +231,8 @@ import { baseUrl } from '../../shared/baseUrl';
                 font-weight: 600;
                 color: #000;
                 margin-left: 4vw;
-                margin-top: -2vh;
-                margin-bottom: 5vh;
-
+                margin-top: -0.5vh;
+                margin-bottom: 4.5vh;
             }
             .btn-container{
                 position: absolute;
@@ -267,7 +250,7 @@ import { baseUrl } from '../../shared/baseUrl';
                     font-weight: 600;
                     color: #fff;
                     box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                    margin-left: 3.28vw;
+                    margin-left: 5.28vw;
                     .icon {
                         margin-left: -0.5vw;
                     }
@@ -278,7 +261,8 @@ import { baseUrl } from '../../shared/baseUrl';
                     }
                 }
                 .second {
-                    width: 19.77vw;
+                    width: 18vw;
+                    margin-left: 2vw;
                     .icon {
                         margin-left: 0;
                     }
@@ -288,44 +272,24 @@ import { baseUrl } from '../../shared/baseUrl';
                     background: linear-gradient(90deg, #fc9f4d 0%, #ff718e 100%);
                 }
             }
-            .illustration{
-                position: absolute;
-                bottom: 6vh;
-                left: 45vw;
-                img{
-                    width: 26.6vw;
-                }
-            }
-            .next{
-                position: absolute;
-                right: 6vw;
-                width: 15.57vw;
-                height: 9.44vh;
-                border-radius: 51px;
-                background: #202020;
-                box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                .indicator{
-                    display: inline-block;
-                    margin-right: 1vw;
-                }
-                .text{
-                    font-family: Gilroy ☞;
-                    font-size: 40px;
-                    line-height: (60 / 40);
-                    font-weight: 600;
-                    color: #282a3f;
-                }
+            .illustration {
+              position: absolute;
+              bottom: 6vh;
+              left: 45vw;
+
+              img {
+                width: 26.6vw;
+              }
             }
             .info{
-                font-family: Gilroy ☞;
                 font-size: 2.085vw;
                 line-height: (60 / 40);
                 font-weight: 600;
                 color: #282a3f;
                 text-align: left;
                 position: absolute;
-                left: 5vw;
-                bottom: 6vh;
+                left: 5.5vw;
+                bottom: 7.5vh;
             }
         }
     }

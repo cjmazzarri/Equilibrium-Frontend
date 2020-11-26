@@ -66,15 +66,10 @@
                     <b-card class="top">
                         <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
                         <b-card-body class="title">
-                            <div class="flex-column-name" style="display: inline-block">
-                                {{clientInfo.firstName+' '+clientInfo.lastName}}
-                            </div>
-                            <div v-if="clientInfo.creditAmount > 0" class="flex-column-amount"
-                                 style="display: inline-block; margin-left: 2vw;">{{'S/. '+clientInfo.creditAmount}}
-                            </div>
-                            <div v-else class="flex-column-amount" style="display: inline-block; margin-left: 2vw;
-                            color: #F35454">{{'S/. '+clientInfo.creditAmount}}</div>
+                          {{clientInfo.firstName+' '+clientInfo.lastName}}
                         </b-card-body>
+                        <div v-if="clientInfo.creditAmount >= 0" class="flex-column-amount">{{'S/'+clientInfo.creditAmount}}</div>
+                        <div v-else class="flex-column-amount" style="color: #F35454">{{'S/'+clientInfo.creditAmount}}</div>
                     </b-card>
                     <b-card class="bottom" style="align-items: center;">
                        <div>
@@ -92,10 +87,10 @@
                                    </b-list-group-item>
                                    <b-list-group-item class="flex-column-right">
                                        <div v-if="movement.amount > 0" class="list-text">
-                                           {{movement.amount}}
+                                           S/{{movement.amount}}
                                        </div>
                                        <div v-else class="list-text" style="color: red">
-                                           {{movement.amount}}
+                                           -S/{{-movement.amount}}
                                        </div>
                                    </b-list-group-item>
                                </b-list-group>
@@ -156,13 +151,17 @@
 
     /* Style page content */
     .main {
-        margin-left: 14.7vw;
-        margin-top: -2px;
-        width: 85.3vw;
-        height: 102vh;
-        background-image: url("../assets/DashboardBG.png");
-        background-repeat: no-repeat;
-        background-origin: content-box;
+      margin-left: 14.7vw;
+      margin-top: -1px;
+      width: 85.26vw;
+      height: auto;
+      min-height: 100vh;
+      background-image: url("../assets/DashboardBG.png");
+      background-position: top left;
+      background-color: #202020;
+      background-repeat: repeat-y;
+      background-origin: content-box;
+      border-left: #888 solid 2px;
     }
 
     div.card-header {
@@ -174,43 +173,40 @@
         height: 52vh;
         margin: 2.5vw auto;
         .top {
+            width: 81.1vw;
             height: auto;
-            display: flex;
-            justify-content: center;
+            display: inline-flex;
+            justify-content: space-between;
             align-items: flex-start;
             background: linear-gradient(90deg, #a5e6ff 0%, #4f76d1 100%);
             border-radius: 1.5vw 1.5vw 0 0;
             border: transparent;
             .graph-icon {
-                display: inline-block;
-                position: relative;
-                top: -1vh;
-                left: 0.5vw;
+              display: inline-block;
+              position: relative;
+              top: 0;
+              left: 1vw;
             }
             .title{
-                font-size: 1.82vw;
-                line-height: 1;
-                font-weight: 600;
-                color: #000;
-                display: inline-block;
-                margin-top: -1.5vh;
-                margin-left: 1vw;
+              font-size: 2vw;
+              line-height: 1;
+              font-weight: 600;
+              color: #000;
+              display: inline-block;
+              margin-top: -1.5vh;
+              margin-left: 2vw;
+              position: relative;
+              top: 0.8vh;
             }
-            .navigation {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 17.55vw;
-                position: absolute;
-                right: 4vw;
-                top: 2.5vh;
-
-                .text{
-                    font-size: 1.4vw;
-                    font-weight: 600;
-                    color: #16002f;
-                    margin: auto 1vw auto 1vw;
-                }
+            .flex-column-amount {
+              display: inline-block;
+              font-size: 2.5vw;
+              line-height: 1;
+              font-weight: 600;
+              color: #000;
+              position: absolute;
+              right: 2vw;
+              margin-top: 1vh;
             }
         }
         .bottom{
@@ -218,86 +214,6 @@
             border-radius: 0 0 1.5vw 1.5vw;
             border: transparent;
             padding: 1vw 0;
-            .title{
-                font-size: 4.17vw;
-                font-weight: 600;
-                color: #000;
-                margin-left: 4vw;
-                margin-top: 0;
-                margin-bottom: 3vh;
-            }
-            .input{
-                margin-left: 4vw;
-                margin-top: 1.5vw;
-                font-size: 3.13vw;
-                font-weight: 600;
-                width: 45vw;
-                border-top: transparent;
-                border-left: transparent;
-                border-right: transparent;
-                border-radius: 0;
-                border-width: 0.26vw;
-            }
-            .input:focus{
-                border-color: #4D56D1;
-                outline: none 0 !important;
-                box-shadow: none;
-                -moz-box-shadow: none;
-                -webkit-box-shadow: none;
-            }
-            .illustration{
-                position: absolute;
-                bottom: -0.1vh;
-                right: 3vw;
-                img{
-                    width: 21.51vw;
-                }
-            }
-            .next{
-                position: absolute;
-                right: 6vw;
-                bottom: 6.2vh;
-                width: 15.57vw;
-                height: 9.44vh;
-                border-radius: 51px;
-                background: #202020;
-                box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                .indicator{
-                    display: inline-block;
-                    margin-right: 1vw;
-                }
-                .text{
-                    display: inline-block;
-                    font-size: 1.9vw;
-                    font-weight: 600;
-                    text-decoration: underline;
-                    color: #e6e6e6;
-                    margin-top: 0.5vh;
-                    position: relative;
-                    top: 0.5vh;
-                }
-            }
-        }
-    }
-    .half {
-        width: 39.48vw;
-        height: 18.61vh;
-        margin-top: 2.5vh;
-        margin-left: 2.4vw;
-        .top{
-            .amount{
-                margin-left: 8vw;
-            }
-        }
-        .bottom {
-            height: 9.26vh;
-            .text{
-                margin-left: -2vw;
-                font-size: 1.56vw;
-                line-height: 0;
-                font-weight: 400;
-                color: #000;
-            }
         }
     }
     .list-text{
@@ -321,16 +237,5 @@
     }
     .mov-list{
         list-style: none;
-    }
-    .flex-column-name{
-        min-width: 60vw;
-        max-width: 60vw;
-        vertical-align: middle;
-    }
-    .flex-column-amount{
-        max-width: 8vw;
-    }
-    .flex-column{
-        max-width: 10vw;
     }
 </style>

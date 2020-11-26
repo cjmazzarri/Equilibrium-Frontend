@@ -70,12 +70,12 @@
                     <b-card class="bottom">
                         <div><h2 class="title">¿Que deseo corregir?</h2></div>
                         <div class="info">
-                            <a href="/add-client-1">Cliente: Jesús Ortega<br></a>
-                            <a href="/add-client-2">Moneda: Soles<br></a>
-                            <a href="/add-client-3">Tipo de tasa: Efectiva<br></a>
-                            <a href="/add-client-3-1">Tasa de interés: 15% anual<br></a>
-                            <a href="/add-client-4">Mantenimiento: S/5.00 Mensual<br></a>
-                            <a href="/add-client-5">Delivery: S/10.00 por mes</a>
+                            <a href="/add-client-1">Cliente: {{clientName}}<br></a>
+                            <a href="/add-client-2">Moneda: {{currency}}<br></a>
+                            <a href="/add-client-3">Tipo de tasa: {{rateType}}<br></a>
+                            <a href="/add-client-3-1">Tasa de interés: {{rateValue}}<br></a>
+                            <a href="/add-client-4">Mantenimiento: {{maintenanceFee}}<br></a>
+                            <a href="/add-client-5">Delivery: {{deliveryFee}}</a>
                         </div>
                         <div class="illustration" style="z-index: 0"><img src="../../assets/AddClient/Step6.png"></div>
                         <div class="btn-container">
@@ -95,179 +95,246 @@
 </template>
 
 <script>
+    import {baseUrl} from "@/shared/baseUrl";
+
     export default {
-        name: "AddClientS6_1"
+        name: "AddClientS6_1",
+      data(){
+        return {
+          clientName: '',
+          currency: '',
+          rateType: '',
+          rateValue: '',
+          maintenanceFee: '',
+          deliveryFee: ''
+        }
+      },
+      mounted() {
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId)
+            .then(responseClient => {
+              console.log(responseClient.data)
+              this.clientName=responseClient.data.firstName+' '+responseClient.data.lastName;
+              let currency = '';
+              switch (responseClient.data.currency) {
+                case "s": currency='Soles'; break;
+                case "d": currency='Dólares'; break;
+              }
+              this.currency=currency;
+            });
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/rates')
+            .then(responseRate => {
+              let rate=responseRate.data;
+              this.rateType=rate.type[0].toUpperCase()+rate.type.slice(1);
+              let period = '';
+              switch (rate.period){
+                case 30: period='mensual'; break;
+                case 60: period='bimestral'; break;
+                case 90: period='trimestral'; break;
+                case 120: period='cuatrimestral'; break;
+                case 180: period='semestral'; break;
+                case 360: period='anual'; break;
+              }
+              this.rateValue=rate.value+'% '+period;
+            });
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/maintenanceFees')
+            .then(r => {
+              let mFee=r.data;
+              let periodM = '';
+              switch (mFee.period){
+                case "s": periodM='Semanal'; break;
+                case "q": periodM='Quincenal'; break;
+                case "m": periodM='Mensual'; break;
+              }
+              this.maintenanceFee='S/'+mFee.value+' '+periodM;
+            })
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/deliveryFees')
+            .then(r => {
+              let dFee=r.data;
+              let periodD='';
+              switch (dFee.type){
+                case "Pedido":
+                  periodD='por Pedido'; break;
+                case "Periodo":
+                  switch (dFee.frequency){
+                    case 7: periodD='por semana'; break;
+                    case 15: periodD='por quincena'; break;
+                    case 30: periodD='por mes'; break;
+                  }
+              }
+              this.deliveryFee='S/'+dFee.value+' '+periodD;
+            })
+      }
     }
 </script>
 
 <style lang="scss">
 @import "../../assets/scss/styles.scss";
-    body{
-        overflow-x: hidden;
-        overflow-y: hidden;
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* Style page content */
+.main {
+  margin-left: 14.8vw;
+  margin-top: -2px;
+  width: 85.3vw;
+  height: 102vh;
+  background-image: url("../../assets/DashboardBG.png");
+  background-repeat: no-repeat;
+  background-origin: content-box;
+}
+
+div.card-header {
+  background-color: transparent;
+}
+
+.medium-card {
+  width: 81.1vw;
+  height: 67.41vh;
+  margin: 2vw auto;
+
+  .top {
+    height: 5.21vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
+    border-radius: 1.5vw 1.5vw 0 0;
+    border: transparent;
+
+    .graph-icon {
+      display: inline-block;
+      position: relative;
+      top: -0.5vh;
+      left: 0.5vw;
     }
 
-    /* Style page content */
-    .main {
-        margin-left: 14.7vw;
-        margin-top: -2px;
-        width: 85.3vw;
-        height: 102vh;
-        background-image: url("../../assets/DashboardBG.png");
-        background-repeat: no-repeat;
-        background-origin: content-box;
+    .title {
+      font-size: 1.82vw;
+      line-height: 1;
+      font-weight: 600;
+      color: #000;
+      display: inline-block;
+      margin-top: -1.5vh;
+      margin-left: 1vw;
     }
 
-    div.card-header {
-        background-color: transparent;
+    .navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 17.55vw;
+      position: absolute;
+      right: 4vw;
+      top: 2.5vh;
+
+      .text {
+        font-size: 1.4vw;
+        font-weight: 600;
+        color: #16002f;
+        margin: auto 1vw auto 1vw;
+      }
+    }
+  }
+
+  .bottom {
+    height: 62.2vh;
+    width: 81.1vw;
+    border-radius: 0 0 1.5vw 1.5vw;
+    border: transparent;
+    padding: 1vw 0;
+
+    .title {
+      font-size: 4.17vw;
+      font-weight: 600;
+      color: #000;
+      margin-left: 4vw;
+      margin-top: -0.5vh;
+      margin-bottom: 4.5vh;
     }
 
-    .medium-card {
-        width: 81.1vw;
-        height: 67.41vh;
-        margin: 2vw auto;
-        .top {
-            height: 5.21vw;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
-            border-radius: 1.5vw 1.5vw 0 0;
-            border: transparent;
-            .graph-icon {
-                display: inline-block;
-                position: relative;
-                top: -0.5vh;
-                left: 0.5vw;
-            }
-            .title{
-                font-size: 1.82vw;
-                line-height: 0;
-                font-weight: 600;
-                color: #000;
-                display: inline-block;
-                margin-top: -1.5vh;
-                margin-left: 1vw;
-            }
-            .navigation {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 17.55vw;
-                position: absolute;
-                right: 4vw;
-                top: 2.5vh;
+    .btn-container {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      margin-top: 30.50vh;
+      margin-left: 32vw;
 
-                .text{
-                    font-size: 1.4vw;
-                    font-weight: 600;
-                    color: #16002f;
-                    margin: auto 1vw auto 1vw;
-                }
-            }
+      .choice {
+        width: 19.69vw;
+        height: 9vh;
+        border-radius: 2.24vw;
+        background: linear-gradient(90deg, #6aef9f 0%, #4bf879 100%);
+        border: transparent;
+        font-size: 2.08vw;
+        font-weight: 600;
+        color: #fff;
+        box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
+        margin-left: 3.28vw;
+
+        .icon {
+          margin-left: -0.5vw;
         }
-        .bottom{
-            height: 62.2vh;
-            width: 81.1vw;
-            border-radius: 0 0 1.5vw 1.5vw;
-            border: transparent;
-            padding: 1vw 0;
-            .title{
-                font-size: 4.17vw;
-                font-weight: 600;
-                color: #000;
-                margin-left: 4vw;
-                margin-top: -2vh;
-                margin-bottom: 5vh;
 
-            }
-            .btn-container{
-                position: absolute;
-                z-index: 2;
-                display: flex;
-                margin-top: 30.50vh;
-                margin-left: 32vw;
-                .choice {
-                    width: 19.69vw;
-                    height: 9vh;
-                    border-radius: 2.24vw;
-                    background: linear-gradient(90deg, #6aef9f 0%, #4bf879 100%);
-                    border: transparent;
-                    font-size: 2.08vw;
-                    font-weight: 600;
-                    color: #fff;
-                    box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                    margin-left: 3.28vw;
-                    .icon {
-                        margin-left: -0.5vw;
-                    }
-                    .text {
-                        position: relative;
-                        top: 0.4vh;
-                        margin-left: 1vw;
-                    }
-                }
-                .second {
-                    width: 19.77vw;
-                    .icon {
-                        margin-left: 0;
-                    }
-                    .text {
-                        margin-left: 1.3vw;
-                    }
-                    background: linear-gradient(90deg, #fc9f4d 0%, #ff718e 100%);
-                }
-                .edit{
-                    background: white;
-                    color: #202020;
-                    border: 0.25vw solid #202020;
-                    border-radius: 2.24vw;
-                    .text{
-                        margin-left: 0;
-                        top: 0;
-                    }
-                }
-            }
-            .illustration{
-                position: absolute;
-                bottom: 6vh;
-                left: 45vw;
-                img{
-                    width: 26.6vw;
-                }
-
-            }
-            .next{
-                position: absolute;
-                right: 6vw;
-                width: 15.57vw;
-                height: 9.44vh;
-                border-radius: 51px;
-                background: #202020;
-                box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                .indicator{
-                    display: inline-block;
-                    margin-right: 1vw;
-                }
-                .text{
-                    font-family: Gilroy ☞;
-                    font-size: 40px;
-                    line-height: (60 / 40);
-                    font-weight: 600;
-                    color: #282a3f;
-                }
-            }
-            .info{
-                font-family: Gilroy ☞;
-                font-size: 2.085vw;
-                line-height: (60 / 40);
-                font-weight: 600;
-                color: #282a3f;
-                text-align: left;
-                position: absolute;
-                left: 5vw;
-                bottom: 6vh;
-            }
+        .text {
+          position: relative;
+          top: 0.4vh;
+          margin-left: 1vw;
         }
+      }
+
+      .second {
+        width: 19.77vw;
+
+        .icon {
+          margin-left: 0;
+        }
+
+        .text {
+          margin-left: 1.3vw;
+        }
+
+        background: linear-gradient(90deg, #fc9f4d 0%, #ff718e 100%);
+      }
+
+      .edit {
+        background: white;
+        color: #202020;
+        border: 0.25vw solid #202020;
+        border-radius: 2.24vw;
+
+        .text {
+          margin-left: 0;
+          top: 0;
+        }
+      }
     }
+
+    .illustration {
+      position: absolute;
+      bottom: 6vh;
+      left: 45vw;
+
+      img {
+        width: 26.6vw;
+      }
+    }
+
+    .info {
+      font-size: 2.085vw;
+      line-height: (60 / 40);
+      font-weight: 600;
+      color: #282a3f;
+      text-align: left;
+      position: absolute;
+      left: 5.5vw;
+      bottom: 7.5vh;
+    }
+  }
+}
 </style>

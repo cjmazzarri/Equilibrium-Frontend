@@ -87,20 +87,19 @@
 export default {
 name: "AddClientS1",
   data() {
-  return {
-    clientFirstName: '',
-    clientLastName: ''
-  }
+    return {
+      clientFirstName: '',
+      clientLastName: ''
+    }
   },
   methods: {
-  onClick(evt){
-    evt.preventDefault();
-    this.$store.commit('clientFirstName', this.clientFirstName);
-    this.$store.commit('clientLastName', this.clientLastName);
-  },
+    onClick() {
+      this.$store.commit('clientFirstName', this.clientFirstName);
+      this.$store.commit('clientLastName', this.clientLastName);
+    },
     isLetter(e) {
       let char = String.fromCharCode(e.keyCode); // Get the character
-      if(/^[A-Za-z]+$/.test(char)) return true; // Match with regex
+      if (/^[A-Za-z]+$/.test(char)) return true; // Match with regex
       else e.preventDefault(); // If not match, don't add to input text
     }
   }
@@ -116,7 +115,7 @@ body{
 
 /* Style page content */
 .main {
-  margin-left: 14.7vw;
+  margin-left: 14.8vw;
   margin-top: -2px;
   width: 85.3vw;
   height: 102vh;

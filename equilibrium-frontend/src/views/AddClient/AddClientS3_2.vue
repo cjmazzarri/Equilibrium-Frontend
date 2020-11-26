@@ -129,7 +129,7 @@ body{
 }
 /* Style page content */
 .main {
-  margin-left: 14.7vw;
+  margin-left: 14.8vw;
   margin-top: -2px;
   width: 85.3vw;
   height: 102vh;
