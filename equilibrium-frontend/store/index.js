@@ -15,6 +15,7 @@ export default new Vuex.Store({
         rateType: null,
         rateCapitalization: 0,
         paymentTitle: null,
+        paymentAmount: null,
         maintenancePeriod: null,
         deliveryType: null,
         deliveryPeriod: 0,
@@ -46,6 +47,9 @@ export default new Vuex.Store({
         },
         paymentTitle(state, paymentTitle){
             state.paymentTitle = paymentTitle;
+        },
+        paymentAmount(state, paymentAmount){
+            state.paymentAmount = paymentAmount;
         },
         maintenancePeriod(state, maintenancePeriod){
             state.maintenancePeriod = maintenancePeriod;

@@ -65,8 +65,8 @@
         <div class="medium-card half">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
-            <b-card-body class="title">Marina Zárate</b-card-body>
-            <b-card-body class="title amount">S/920.09</b-card-body>
+            <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}</b-card-body>
+            <b-card-body class="title amount">{{clientInfo.creditAmount}}</b-card-body>
           </b-card>
           <b-card class="bottom">
             <div class="text"><p>Último pago: S/20 - 28/12 - Cancelación Nov.</p></div>
@@ -86,7 +86,7 @@
               del pago?</h2></div>
             <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="paymentAmount"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
-            <div @click="onClick"><b-button class="next" to="/register-payment-final">
+            <div @click="onClick"><b-button class="next" :to="`/register-payment-final/${clientInfo.id}`">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Finalizar</p>
             </b-button></div>
@@ -103,19 +103,27 @@ export default {
   name: "RegisterPaymentS2",
   data(){
     return{
-      paymentAmount: ''
+      clientInfo: null,
+      clientId: 0,
+      paymentInfo: null
     }
+  },
+  mounted(){
+    this.axios
+      .get(baseUrl + 'commerces/1/clients/'+this.$store.getters.clientId)
+      .then(responseClient => {
+        this.clientInfo = responseClient.data;
+      });
   },
   methods: {
     onClick(){
-      //TODO: get id from previous screen RegisterPayment
-      this.axios.post(baseUrl+'commerces/1/clients/1/payments', {
+      this.axios.post(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/payments', {
         description: this.$store.getters.paymentTitle,
         amount: this.paymentAmount
       }).then(responsePayment=>{
         console.log(responsePayment.data)
       })
-      this.$store.commit('paymentTitle', '');
+      this.$store.commit('paymentAmount', this.paymentAmount)
     }
   }
 }

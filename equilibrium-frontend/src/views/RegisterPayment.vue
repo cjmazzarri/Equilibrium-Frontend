@@ -67,9 +67,7 @@
                         <b-card class="top cyan">
                             <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
                             <b-card-body class="title">
-                                <router-link :to="`/register-payment-1`">
-                                    <a style="color: black"><u>{{client.firstName+" "+client.lastName}}</u></a>
-                                </router-link>
+                                    {{client.firstName+" "+client.lastName}}
                             </b-card-body>
                             <div class="amount-1 title">{{"S/. "+client.creditAmount}}</div>
                         </b-card>
@@ -77,10 +75,12 @@
                             <b-row>
                                 <b-col>
                                     <div class="info">
-                                        {{"Último pago: S/."+lastPaymentInfo[1].amount}}</div>
-                                    <b-button class="pay-btn" href="/register-payment-1">
-                                        <div class="text">Registrar pago</div>
-                                    </b-button>
+                                        {{"Último pago: S/."+paymentInfo[1].amount}}</div>
+                                    <router-link :to="`/register-payment-1/${client.id}`">
+                                        <b-button class="pay-btn">
+                                            <div class="text">Registrar pago</div>
+                                        </b-button>
+                                    </router-link>
                                 </b-col>
                             </b-row>
                         </b-card>
@@ -107,17 +107,24 @@
                         this.axios
                             .get(baseUrl + 'commerces/1/clients/'+this.clientInfo[i].id+'/payments/latest')
                             .then(responseLastPayment => {
-                                this.lastPaymentInfo.push(responseLastPayment.data);
+                                this.paymentInfo.push(responseLastPayment.data);
                             })
                     }
                 });
-            console.log(this.clientInfo, this.lastPaymentInfo);
+            console.log(this.clientInfo, this.paymentInfo);
         },
         data(){
             return {
                 clientInfo: [],
-                lastPaymentInfo: []
+                paymentInfo: [],
+                clientId: 0
             }
+        },
+        methods: {
+            /*onClick(){
+                this.$store.commit('clientId', this.client.id)
+                console.log(this.client.id)
+            }*/
         }
     }
 </script>
