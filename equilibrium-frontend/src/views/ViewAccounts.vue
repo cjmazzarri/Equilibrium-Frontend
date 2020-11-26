@@ -123,12 +123,19 @@
                         <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 30" class="info">
                             Delivery: {{"S/"+client.deliveryFee.value+" Mensual"}}
                         </div>
-                      <b-button class="they-paid-btn">
-                        <div class="text">Me pagó</div>
-                      </b-button>
-                      <b-button class="i-sold-btn">
-                        <div class="text">Le vendí</div>
-                      </b-button>
+
+                        <router-link :to="`/register-payment-1/${client.id}`">
+                            <b-button class="they-paid-btn">
+                                <div class="text">Me pagó</div>
+                            </b-button>
+                        </router-link>
+
+                        <router-link :to="`/register-sale-1/${client.id}`">
+                            <b-button class="i-sold-btn">
+                                <div class="text">Le vendí</div>
+                            </b-button>
+                        </router-link>
+
                     </b-card>
                   </div>
                 </li>
