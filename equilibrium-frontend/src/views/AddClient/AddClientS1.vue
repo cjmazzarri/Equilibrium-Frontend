@@ -69,10 +69,10 @@
           </b-card>
           <b-card class="bottom">
             <div><h2 class="title">¿Cómo se llama mi cliente?</h2></div>
-            <div><b-form-input placeholder="Nombres" class="input" v-model="clientFirstName"></b-form-input></div>
-            <div><b-form-input placeholder="Apellidos" class="input" v-model="clientLastName"></b-form-input></div>
+            <div><b-form-input placeholder="Nombres" class="input" v-model="clientFirstName" v-on:keypress="isLetter($event)"></b-form-input></div>
+            <div><b-form-input placeholder="Apellidos" class="input" v-model="clientLastName" v-on:keypress="isLetter($event)"></b-form-input></div>
             <div class="illustration"><img src="../../assets/AddClient/Step1.png"></div>
-            <div><b-button class="next" text to="/add-client-2" @click="onClick">
+            <div><b-button class="next" text to="/add-client-2" @click="onClick" type="submit" v-bind:disabled="clientFirstName.length <= 0 || clientLastName.length <= 0">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -97,7 +97,12 @@ name: "AddClientS1",
     evt.preventDefault();
     this.$store.commit('clientFirstName', this.clientFirstName);
     this.$store.commit('clientLastName', this.clientLastName);
-  }
+  },
+    isLetter(e) {
+      let char = String.fromCharCode(e.keyCode); // Get the character
+      if(/^[A-Za-z]+$/.test(char)) return true; // Match with regex
+      else e.preventDefault(); // If not match, don't add to input text
+    }
   }
 }
 </script>

@@ -80,7 +80,7 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuánta tasa de<br>interés cobraré?</h2></div>
             <div><b-input-group style="width: 43vw">
-              <b-form-input placeholder="Porcentaje, Ej. 15%" class="input" style="z-index: 1" v-model="rateValue"></b-form-input>
+              <b-form-input placeholder="Porcentaje, Ej. 15%" class="input" style="z-index: 1" v-model="rateValue" onkeyup="if(this.value<0){this.value= this.value * -1}" v-on:keypress="isNumber($event)"></b-form-input>
               <b-input-group-append class="suffix" style="z-index: 2">
                 <b-input-group-text class="bg-transparent font-weight-bold border-0 text">
                   %
@@ -88,7 +88,7 @@
               </b-input-group-append>
             </b-input-group></div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step3.png"></div>
-            <div @click="onClick"><b-button class="next" style="z-index: 2" to="/add-client-4">
+            <div @click="onClick"><b-button class="next" style="z-index: 2" to="/add-client-4" v-bind:disabled="rateValue.length <= 0">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -123,6 +123,11 @@ export default {
       this.$store.commit('ratePeriod', '');
       this.$store.commit('rateCapitalization', '');
       this.$store.commit('rateValue', '');
+    },
+    isNumber(e){
+      let char = String.fromCharCode(e.keyCode); // Get the character
+      if(/^(?:[1-9]\d*|0)?(?:\.\d+)?$/.test(char)) return true; // Match with regex
+      else e.preventDefault(); // If not match, don't add to input text
     }
   }
 }

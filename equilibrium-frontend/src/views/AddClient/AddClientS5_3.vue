@@ -80,7 +80,7 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuánto cobraré de<br>delivery?</h2></div>
             <div><b-input-group style="width: 43vw">
-              <b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="deliveryValue"></b-form-input>
+              <b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="deliveryValue" onkeyup="if(this.value<0){this.value= this.value * -1}" v-on:keypress="isNumber($event)"></b-form-input>
               <b-input-group-append class="prefix">
                 <b-input-group-text class="bg-transparent font-weight-bold border-0 text">
                   S/
@@ -88,7 +88,7 @@
               </b-input-group-append>
             </b-input-group></div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step5.png"></div>
-            <div @click="onClick"><b-button class="next" style="z-index: 2" to="/add-client-6">
+            <div @click="onClick"><b-button class="next" style="z-index: 2" href="/add-client-6" v-bind:disabled="deliveryValue.length <= 0">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -117,6 +117,11 @@ export default {
       }).then(responseDeliveryFee => {
         console.log(responseDeliveryFee.data)
       })
+    },
+    isNumber(e){
+      let char = String.fromCharCode(e.keyCode); // Get the character
+      if(/^(?:[1-9]\d*|0)?(?:\.\d+)?$/.test(char)) return true; // Match with regex
+      else e.preventDefault(); // If not match, don't add to input text
     }
   }
 }
