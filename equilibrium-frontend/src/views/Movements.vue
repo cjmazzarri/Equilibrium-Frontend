@@ -10,14 +10,14 @@
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Añadir cliente</p>
             </b-button>
-            <b-button class="category" href="/view-accounts">
-                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Ver cuentas</p>
-            </b-button>
-            <b-button class="category category-active" href="/register-payment">
+            <b-button class="category category-active" href="/view-accounts">
                 <img src="../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text s-text-active">Registrar pago</p>
+                <p class="s-text s-text-active">Ver cuentas</p>
+            </b-button>
+            <b-button class="category" href="/register-payment">
+                <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+                <p class="s-text">Registrar pago</p>
             </b-button>
             <b-button class="category" href="/register-sale">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
@@ -66,12 +66,41 @@
                     <b-card class="top">
                         <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
                         <b-card-body class="title">
-                            <div style="display: inline-block">José Torres</div>
-                            <div style="display: inline-block; margin-left: 53vw">S/1356.02</div>
+                            <div class="flex-column-name" style="display: inline-block">
+                                {{clientInfo.firstName+' '+clientInfo.lastName}}
+                            </div>
+                            <div v-if="clientInfo.creditAmount > 0" class="flex-column-amount"
+                                 style="display: inline-block; margin-left: 2vw;">{{'S/. '+clientInfo.creditAmount}}
+                            </div>
+                            <div v-else class="flex-column-amount" style="display: inline-block; margin-left: 2vw;
+                            color: #F35454">{{'S/. '+clientInfo.creditAmount}}</div>
                         </b-card-body>
                     </b-card>
-                    <b-card class="bottom">
-
+                    <b-card class="bottom" style="align-items: center;">
+                       <div>
+                           <li v-for="(movement, index) in movementInfo" :key="index" class="mov-list">
+                               <b-list-group horizontal>
+                                   <b-list-group-item class="flex-column">
+                                       <div class="list-text">
+                                           {{movement.createdAt}}
+                                       </div>
+                                   </b-list-group-item>
+                                   <b-list-group-item class="flex-column-center">
+                                       <div class="list-text">
+                                           {{movement.description}}
+                                       </div>
+                                   </b-list-group-item>
+                                   <b-list-group-item class="flex-column-right">
+                                       <div v-if="movement.amount > 0" class="list-text">
+                                           {{movement.amount}}
+                                       </div>
+                                       <div v-else class="list-text" style="color: red">
+                                           {{movement.amount}}
+                                       </div>
+                                   </b-list-group-item>
+                               </b-list-group>
+                           </li>
+                       </div>
                     </b-card>
                 </div>
             </div>
@@ -80,8 +109,41 @@
 </template>
 
 <script>
+    import { baseUrl} from "@/shared/baseUrl";
+
     export default {
-        name: "RegisterPaymentS1"
+        name: "Movements",
+        data(){
+            return {
+                movementInfo: [],
+                clientInfo: null
+            }
+        },
+        mounted(){
+            //get all movements
+            this.axios
+                .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id+'/movements')
+                .then(responseMovement => {
+                    this.movementInfo = responseMovement.data.content;
+                    this.simpleDate();
+                });
+            //get client
+            this.axios
+                .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
+                .then(responseClient => {
+                    this.clientInfo = responseClient.data;
+                });
+        },
+        methods: {
+            simpleDate() {
+                for (let i = 0; i < this.movementInfo.length; i++) {
+                    let date = this.movementInfo[i].createdAt;
+                    let splitDate = date.split("-")
+                    let formatDate = splitDate[2][0] + splitDate[2][1] + '/' + splitDate[1] + '/' + splitDate[0][2] + splitDate[0][3];
+                    this.movementInfo[i].createdAt = formatDate;
+                }
+            }
+        }
     }
 </script>
 
@@ -112,7 +174,7 @@
         height: 52vh;
         margin: 2.5vw auto;
         .top {
-            height: 5.21vw;
+            height: auto;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -152,7 +214,7 @@
             }
         }
         .bottom{
-            height: 45vh;
+            height: auto;
             border-radius: 0 0 1.5vw 1.5vw;
             border: transparent;
             padding: 1vw 0;
@@ -237,5 +299,38 @@
                 color: #000;
             }
         }
+    }
+    .list-text{
+        font-size: 1.65vw;
+        font-weight: 600;
+        color: #000;
+        vert-align: middle;
+        max-width: 40vw;
+        min-width: 3.5vw;
+    }
+    .flex-column-center{
+        min-width: 60vw;
+        text-align: left;
+        vert-align: middle;
+    }
+    .flex-column-right{
+        max-width: 15vw;
+        min-width: 10vw;
+        vert-align: middle;
+        text-align: right;
+    }
+    .mov-list{
+        list-style: none;
+    }
+    .flex-column-name{
+        min-width: 60vw;
+        max-width: 60vw;
+        vertical-align: middle;
+    }
+    .flex-column-amount{
+        max-width: 8vw;
+    }
+    .flex-column{
+        max-width: 10vw;
     }
 </style>
