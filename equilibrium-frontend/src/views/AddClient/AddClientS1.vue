@@ -66,21 +66,13 @@
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Paso 1 de 5</b-card-body>
-            <div class="navigation">
-              <div><a href="/add-client-2"><p class="text">Siguiente</p></a></div>
-              <div>
-                <router-link to="/add-client-2">
-                  <img src="../../assets/AddClient/RightArrow.png">
-                </router-link>
-              </div>
-            </div>
           </b-card>
           <b-card class="bottom">
             <div><h2 class="title">¿Cómo se llama mi cliente?</h2></div>
-            <div><b-form-input placeholder="Nombres" class="input"></b-form-input></div>
-            <div><b-form-input placeholder="Apellidos" class="input"></b-form-input></div>
+            <div><b-form-input placeholder="Nombres" class="input" v-model="clientFirstName"></b-form-input></div>
+            <div><b-form-input placeholder="Apellidos" class="input" v-model="clientLastName"></b-form-input></div>
             <div class="illustration"><img src="../../assets/AddClient/Step1.png"></div>
-            <div><b-button class="next" text to="/add-client-2">
+            <div><b-button class="next" text to="/add-client-2" @click="onClick">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -93,7 +85,20 @@
 
 <script>
 export default {
-name: "AddClientS1"
+name: "AddClientS1",
+  data() {
+  return {
+    clientFirstName: '',
+    clientLastName: ''
+  }
+  },
+  methods: {
+  onClick(evt){
+    evt.preventDefault();
+    this.$store.commit('clientFirstName', this.clientFirstName);
+    this.$store.commit('clientLastName', this.clientLastName);
+  }
+  }
 }
 </script>
 

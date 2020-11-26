@@ -82,7 +82,7 @@
             <b-form-select v-model="period" :options="periodoptions" class="period-selector"></b-form-select>
             <div class="caret"><img src="../../assets/Arrow.png"></div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step3.png"></div>
-            <div><b-button class="next" style="z-index: 2" to="/add-client-3-3">
+            <div @click="onClick"><b-button class="next" style="z-index: 2" to="/add-client-3-3">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -101,14 +101,20 @@ export default {
       period: 'Seleccione el periodo',
       periodoptions: [
         {value: 'Seleccione el periodo', text: 'Seleccione el periodo'},
-        {value: 'Semanal', text: 'Semanal'},
-        {value: 'Quincenal', text: 'Quincenal'},
-        {value: 'Mensual', text: 'Mensual'},
-        {value: 'Bimestral', text: 'Bimestral'},
-        {value: 'Trimestral', text: 'Trimestral'},
-        {value: 'Cuatrimestral', text: 'Cuatrimestral'},
-        {value: 'Semestral', text: 'Semestral'}
+        {value: '7', text: 'Semanal'},
+        {value: '15', text: 'Quincenal'},
+        {value: '30', text: 'Mensual'},
+        {value: '60', text: 'Bimestral'},
+        {value: '90', text: 'Trimestral'},
+        {value: '120', text: 'Cuatrimestral'},
+        {value: '180', text: 'Semestral'}
       ]
+    }
+  },
+  methods: {
+    onClick(){
+      this.$store.commit('rateCapitalization', this.period);
+      //console.log(this.$store.getters.rateType, this.$store.getters.ratePeriod, this.$store.getters.rateCapitalization)
     }
   }
 }

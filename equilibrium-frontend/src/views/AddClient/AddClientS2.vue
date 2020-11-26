@@ -82,9 +82,10 @@
             <div><h2 class="title">¿Con qué moneda<br>
               abrimos la cuenta?</h2></div>
             <div class="btn-container">
-              <div style="display: inline-block"><b-button class="choice" to="/add-client-3">Soles</b-button></div>
-              <div style="display: inline-block">
-                <b-button class="choice second" to="/add-client-3">Dólares</b-button></div>
+              <div style="display: inline-block" @click="onClick('s')">
+                <b-button class="choice" to="/add-client-3"><p class="text">Soles</p></b-button></div>
+              <div style="display: inline-block" @click="onClick('d')">
+                <b-button class="choice second" to="/add-client-3"><p class="text">Dólares</p></b-button></div>
             </div>
             <div class="illustration"><img src="../../assets/AddClient/Step2.png"></div>
           </b-card>
@@ -95,8 +96,24 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
+
 export default {
-  name: "AddClientS2"
+  name: "AddClientS2",
+  methods: {
+    onClick(moneda){
+      this.axios.post(baseUrl+'commerces/1/clients', {
+        firstName: this.$store.getters.clientFirstName,
+        lastName: this.$store.getters.clientLastName,
+        currency: moneda
+      }).then(responseClient => {
+        this.$store.commit('clientId', responseClient.data.id);
+        console.log(responseClient.data.id)
+      })
+      this.$store.commit('clientFirstName', '');
+      this.$store.commit('clientLastName', '');
+    }
+  }
 }
 </script>
 
@@ -195,6 +212,9 @@ div.card-header {
         color: #fff;
         box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
         margin-left: 3.28vw;
+        .text{
+          margin-top: 0.6vh;
+        }
       }
       .second {
         background: linear-gradient(90deg, #f8a74b 0%, #f96ea6 100%);
