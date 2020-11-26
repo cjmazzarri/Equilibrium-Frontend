@@ -80,9 +80,12 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Con qué frecuencia<br>cobraré<br>mantenimiento?</h2></div>
             <div class="btn-container" >
-              <div style="display: inline-block"><b-button class="choice" to="/add-client-4-2">Semanal</b-button></div>
-              <div style="display: inline-block"><b-button class="choice second" to="/add-client-4-2">Quincenal</b-button></div>
-              <div style="display: inline-block;z-index: 2" ><b-button class="choice third" to="/add-client-4-2">Mensual</b-button></div>
+              <div style="display: inline-block" @click="onClick('s')">
+                <b-button class="choice" to="/add-client-4-2"><p class="text">Semanal</p></b-button></div>
+              <div style="display: inline-block" @click="onClick('q')">
+                <b-button class="choice second" to="/add-client-4-2"><p class="text">Quincenal</p></b-button></div>
+              <div style="display: inline-block;z-index: 2" @click="onClick('m')">
+                <b-button class="choice third" to="/add-client-4-2"><p class="text">Mensual</p></b-button></div>
             </div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step4.png"></div>
           </b-card>
@@ -94,7 +97,13 @@
 
 <script>
 export default {
-  name: "AddClientS4_1"
+  name: "AddClientS4_1",
+  methods: {
+    onClick(period){
+      this.$store.commit('maintenancePeriod', period)
+      //console.log(this.$store.getters.maintenancePeriod)
+    }
+  }
 }
 </script>
 
@@ -192,6 +201,9 @@ div.card-header {
         color: #fff;
         box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
         margin-left: 3.28vw;
+        .text {
+          margin: auto;
+        }
       }
       .second {
         background: linear-gradient(90deg, #da71ff 0%, #634dfc 100%);

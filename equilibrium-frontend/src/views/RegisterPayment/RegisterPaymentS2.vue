@@ -109,7 +109,7 @@ export default {
   methods: {
     onClick(){
       //TODO: get id from previous screen RegisterPayment
-      this.axios.post(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/payments', {
+      this.axios.post(baseUrl+'commerces/1/clients/1/payments', {
         description: this.$store.getters.paymentTitle,
         amount: this.paymentAmount
       }).then(responsePayment=>{

@@ -80,7 +80,7 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuánto cobraré de<br>mantenimiento?</h2></div>
             <div><b-input-group style="width: 43vw">
-              <b-form-input placeholder="Monto, Ej. S/5.00" class="input"></b-form-input>
+              <b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="maintenanceAmount"></b-form-input>
               <b-input-group-append class="prefix">
                 <b-input-group-text class="bg-transparent font-weight-bold border-0 text">
                   S/
@@ -88,7 +88,7 @@
               </b-input-group-append>
             </b-input-group></div>
             <div class="illustration"><img src="../../assets/AddClient/Step4.png"></div>
-            <div><b-button class="next" to="/add-client-5">
+            <div @click="onClick"><b-button class="next" to="/add-client-5">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -100,8 +100,24 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
 export default {
-  name: "AddClientS4_2"
+  name: "AddClientS4_2",
+  data(){
+    return{
+      maintenanceAmount: ''
+    }
+  },
+  methods:{
+    onClick(){
+      this.axios.post(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/maintenanceFees', {
+        period: this.$store.getters.maintenancePeriod,
+        value: this.maintenanceAmount
+      }).then(responseMaintenanceFee => {
+        console.log(responseMaintenanceFee.data)
+      })
+    }
+  }
 }
 </script>
 
