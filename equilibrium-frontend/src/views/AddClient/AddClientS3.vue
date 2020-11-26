@@ -6,7 +6,7 @@
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" href="/add-client-1">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Añadir cliente</p>
@@ -108,6 +108,7 @@ export default {
   methods: {
     onClick(type){
       this.$store.commit('rateType', type);
+      //console.log(this.$store.getters.clientId)
     }
   }
 }

@@ -16,7 +16,9 @@ export default new Vuex.Store({
         rateCapitalization: 0,
         paymentTitle: null,
         paymentAmount: null,
-        maintenancePeriod: null
+        maintenancePeriod: null,
+        deliveryType: null,
+        deliveryPeriod: 0,
     },
     mutations: {
         clientId(state, clientId){
@@ -52,6 +54,12 @@ export default new Vuex.Store({
         maintenancePeriod(state, maintenancePeriod){
             state.maintenancePeriod = maintenancePeriod;
         },
+        deliveryType(state, deliveryType){
+            state.deliveryType = deliveryType;
+        },
+        deliveryPeriod(state, deliveryPeriod){
+            state.deliveryPeriod = deliveryPeriod;
+        },
     },
     getters: {
         clientId: state => {
@@ -83,6 +91,12 @@ export default new Vuex.Store({
         },
         maintenancePeriod: state => {
             return state.maintenancePeriod;
+        },
+        deliveryType: state => {
+            return state.deliveryType;
+        },
+        deliveryPeriod: state => {
+            return state.deliveryPeriod;
         },
     }
 })

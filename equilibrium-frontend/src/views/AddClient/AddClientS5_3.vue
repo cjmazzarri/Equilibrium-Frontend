@@ -6,7 +6,7 @@
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" href="/add-client-1">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Añadir cliente</p>
@@ -78,9 +78,9 @@
             </div>
           </b-card>
           <b-card class="bottom">
-            <div><h2 class="title">¿Cuánto cobraré de<br>delivery por periodo?</h2></div>
+            <div><h2 class="title">¿Cuánto cobraré de<br>delivery?</h2></div>
             <div><b-input-group style="width: 43vw">
-              <b-form-input placeholder="Monto, Ej. S/5.00" class="input"></b-form-input>
+              <b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="deliveryValue" onkeyup="if(this.value<0){this.value= this.value * -1}" v-on:keypress="isNumber($event)"></b-form-input>
               <b-input-group-append class="prefix">
                 <b-input-group-text class="bg-transparent font-weight-bold border-0 text">
                   S/
@@ -88,7 +88,7 @@
               </b-input-group-append>
             </b-input-group></div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step5.png"></div>
-            <div><b-button class="next" style="z-index: 2" to="/add-client-6">
+            <div @click="onClick"><b-button class="next" style="z-index: 2" to="/add-client-6" v-bind:disabled="deliveryValue.length <= 0">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -100,8 +100,30 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
 export default {
-  name: "AddClientS5_2"
+  name: "AddClientS5_2",
+  data(){
+    return{
+      deliveryValue: ''
+    }
+  },
+  methods: {
+    onClick(){
+      this.axios.post(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/deliveryFees', {
+        value: this.deliveryValue,
+        frequency: this.$store.getters.deliveryPeriod,
+        type: this.$store.getters.deliveryType
+      }).then(responseDeliveryFee => {
+        console.log(responseDeliveryFee.data, this.$store.getters.clientId)
+      })
+    },
+    isNumber(e){
+      let char = String.fromCharCode(e.keyCode); // Get the character
+      if(/^(?:[1-9]\d*|0)?(?:\.\d+)?$/.test(char)) return true; // Match with regex
+      else e.preventDefault(); // If not match, don't add to input text
+    }
+  }
 }
 </script>
 

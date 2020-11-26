@@ -10,7 +10,7 @@
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Añadir cliente</p>
             </b-button>
-            <b-button class="category category-active" href="#">
+            <b-button class="category category-active" href="view-accounts">
                 <img src="../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text s-text-active">Ver cuentas</p>

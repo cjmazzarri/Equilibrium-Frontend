@@ -6,7 +6,7 @@
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" href="/add-client-1">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Añadir cliente</p>
@@ -85,7 +85,7 @@
                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Accept.png"></div>
                 <div class="text" style="display: inline-block"><p>Si cobraré</p></div>
               </b-button></div>
-              <div style="display: inline-block"><b-button class="choice second" to="/add-client-5-1">
+              <div style="display: inline-block" @click="onClick"><b-button class="choice second" to="/add-client-6">
                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Decline.png" style="width: 1.8vw"></div>
                 <div class="text" style="display: inline-block"><p>No cobraré</p></div>
               </b-button></div>
@@ -99,8 +99,20 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
 export default {
-  name: "AddClientS5"
+  name: "AddClientS5",
+  methods: {
+    onClick(){
+      this.axios.post(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/deliveryFees', {
+        value: '0',
+        frequency: '0',
+        type: 'n'
+      }).then(responseDeliveryFee => {
+        console.log(responseDeliveryFee.data)
+      })
+    }
+  }
 }
 </script>
 

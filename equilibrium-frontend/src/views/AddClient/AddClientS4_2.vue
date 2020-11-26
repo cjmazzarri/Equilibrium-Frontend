@@ -6,7 +6,7 @@
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" href="/add-client-1">
         <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Añadir cliente</p>
@@ -80,7 +80,7 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuánto cobraré de<br>mantenimiento?</h2></div>
             <div><b-input-group style="width: 43vw">
-              <b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="maintenanceAmount"></b-form-input>
+              <b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="maintenanceAmount" onkeyup="if(this.value<0){this.value= this.value * -1}" v-on:keypress="isNumber($event)"></b-form-input>
               <b-input-group-append class="prefix">
                 <b-input-group-text class="bg-transparent font-weight-bold border-0 text">
                   S/
@@ -88,7 +88,7 @@
               </b-input-group-append>
             </b-input-group></div>
             <div class="illustration"><img src="../../assets/AddClient/Step4.png"></div>
-            <div @click="onClick"><b-button class="next" to="/add-client-5">
+            <div @click="onClick"><b-button class="next" to="/add-client-5" v-bind:disabled="maintenanceAmount.length <= 0">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -114,8 +114,14 @@ export default {
         period: this.$store.getters.maintenancePeriod,
         value: this.maintenanceAmount
       }).then(responseMaintenanceFee => {
+        console.log(this.$store.getters.clientId)
         console.log(responseMaintenanceFee.data)
       })
+    },
+    isNumber(e){
+      let char = String.fromCharCode(e.keyCode); // Get the character
+      if(/^(?:[1-9]\d*|0)?(?:\.\d+)?$/.test(char)) return true; // Match with regex
+      else e.preventDefault(); // If not match, don't add to input text
     }
   }
 }
