@@ -97,15 +97,32 @@
                     </b-card>
                     <b-card class="bottom">
                       <div class="info">Tipo de tasa: {{client.rate.type}}</div>
-                      <div v-if="client.rate.period == 30" class="info">
-                          Tasa de interés: {{client.rate.value+"% mensual"}}</div>
-                      <div v-if="client.rate.period == 60" class="info">Tasa de interés: {{client.rate.value+"% bimestral"}}</div>
-                      <div v-if="client.rate.period == 90" class="info">Tasa de interés: {{client.rate.value+"% trimestral"}}</div>
-                      <div v-if="client.rate.period == 120" class="info">Tasa de interés: {{client.rate.value+"% cuatrimestral"}}</div>
-                      <div v-if="client.rate.period == 180" class="info">Tasa de interés: {{client.rate.value+"% semestral"}}</div>
-                      <div v-if="client.rate.period == 360" class="info">Tasa de interés: {{client.rate.value+"% anual"}}</div>
-                      <div class="info">Mantenimiento: S/5.00 Mensual</div>
-                      <div class="info">Delivery: S/2.00 por entrega</div>
+                      <div v-if="client.rate.period == 30" class="info">Tasa de interés: {{client.rate.value+"% Mensual"}}</div>
+                      <div v-if="client.rate.period == 60" class="info">Tasa de interés: {{client.rate.value+"% Bimestral"}}</div>
+                      <div v-if="client.rate.period == 90" class="info">Tasa de interés: {{client.rate.value+"% Trimestral"}}</div>
+                      <div v-if="client.rate.period == 120" class="info">Tasa de interés: {{client.rate.value+"% Cuatrimestral"}}</div>
+                      <div v-if="client.rate.period == 180" class="info">Tasa de interés: {{client.rate.value+"% Semestral"}}</div>
+                      <div v-if="client.rate.period == 360" class="info">Tasa de interés: {{client.rate.value+"% Anual"}}</div>
+                      <div v-if="client.rate.capitalization == 7" class="info">Capitalización: Semanal</div>
+                      <div v-if="client.rate.capitalization == 15" class="info">Capitalización: Quincenal</div>
+                      <div v-if="client.rate.capitalization == 30" class="info">Capitalización: Mensual</div>
+                      <div v-if="client.rate.capitalization == 60" class="info">Capitalización: Bimestral</div>
+                      <div v-if="client.rate.capitalization == 90" class="info">Capitalización: Trimestral</div>
+                      <div v-if="client.rate.capitalization == 120" class="info">Capitalización: Cuatrimestral</div>
+                      <div v-if="client.rate.capitalization == 180" class="info">Capitalización: Semestral</div>
+                      <div v-if="client.maintenanceFee.period == 's'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Semanal"}}</div>
+                      <div v-if="client.maintenanceFee.period == 'm'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Mensual"}}</div>
+                      <div v-if="client.maintenanceFee.period == 'q'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Quincenal"}}</div>
+                      <div v-if="client.deliveryFee.type == 'Pedido'" class="info">Delivery: {{"S/"+client.deliveryFee.value+" "+" por entrega"}}</div>
+                      <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 7" class="info">
+                          Delivery: {{"S/"+client.deliveryFee.value+" Semanal"}}
+                      </div>
+                        <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 15" class="info">
+                            Delivery: {{"S/"+client.deliveryFee.value+" Quincenal"}}
+                        </div>
+                        <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 30" class="info">
+                            Delivery: {{"S/"+client.deliveryFee.value+" Mensual"}}
+                        </div>
                       <b-button class="they-paid-btn">
                         <div class="text">Me pagó</div>
                       </b-button>
@@ -154,9 +171,9 @@ import { baseUrl } from '../shared/baseUrl';
                         case 120: period='cuatrimestral'; break;
                         case 180: period='semestral'; break;
                         case 360: period='anual'; break;
-                }
+                    }
                 this.ratePeriod = "% "+period;
-                    console.log(this.ratePeriod);
+                    //console.log(this.ratePeriod);
                  }
             },
         },
@@ -165,7 +182,7 @@ import { baseUrl } from '../shared/baseUrl';
                 clientInfo: [],
                 rateType: '',
                 ratePeriod: '',
-                maintenanceFee: '',
+                maintenancePeriod: '',
                 deliveryFee: ''
             }
         }
@@ -250,7 +267,7 @@ import { baseUrl } from '../shared/baseUrl';
     .medium-card {
         width: 39.48vw;
         height: 47.31vh;
-        margin: 2vw 1vw 2vw 1.30vw;
+        margin: 2vw 1vw 6.5vh 1.30vw;
         display: inline-block;
         .top {
             height: 5.21vw;
