@@ -84,9 +84,9 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuál es el monto<br>
               del pago?</h2></div>
-            <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input"></b-form-input></div>
+            <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="paymentAmount"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
-            <div><b-button class="next" to="/register-payment-final">
+            <div @click="onClick"><b-button class="next" to="/register-payment-final">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Finalizar</p>
             </b-button></div>
@@ -98,8 +98,26 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
 export default {
-  name: "RegisterPaymentS2"
+  name: "RegisterPaymentS2",
+  data(){
+    return{
+      paymentAmount: ''
+    }
+  },
+  methods: {
+    onClick(){
+      //TODO: get id from previous screen RegisterPayment
+      this.axios.post(baseUrl+'commerces/1/clients/1/payments', {
+        description: this.$store.getters.paymentTitle,
+        amount: this.paymentAmount
+      }).then(responsePayment=>{
+        console.log(responsePayment.data)
+      })
+      this.$store.commit('paymentTitle', '');
+    }
+  }
 }
 </script>
 

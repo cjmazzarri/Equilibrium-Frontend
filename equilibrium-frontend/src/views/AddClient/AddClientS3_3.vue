@@ -80,7 +80,7 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuánta tasa de<br>interés cobraré?</h2></div>
             <div><b-input-group style="width: 43vw">
-              <b-form-input placeholder="Porcentaje, Ej. 15%" class="input" style="z-index: 1"></b-form-input>
+              <b-form-input placeholder="Porcentaje, Ej. 15%" class="input" style="z-index: 1" v-model="rateValue"></b-form-input>
               <b-input-group-append class="suffix" style="z-index: 2">
                 <b-input-group-text class="bg-transparent font-weight-bold border-0 text">
                   %
@@ -88,7 +88,7 @@
               </b-input-group-append>
             </b-input-group></div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step3.png"></div>
-            <div><b-button class="next" style="z-index: 2" to="/add-client-4">
+            <div @click="onClick"><b-button class="next" style="z-index: 2" to="/add-client-4">
               <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
               <p class="text">Siguiente</p>
             </b-button></div>
@@ -100,8 +100,31 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
 export default {
-  name: "AddClientS3_3"
+  name: "AddClientS3_3",
+  data() {
+    return {
+      rateValue: ''
+    }
+  },
+  methods: {
+    onClick(){
+      this.axios.post(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/rates', {
+        value: this.rateValue,
+        period: this.$store.getters.ratePeriod,
+        type: this.$store.getters.rateType,
+        capitalization: this.$store.getters.rateCapitalization
+      }).then(responseClient => {
+        console.log(responseClient.data)
+      })
+      //console.log(this.rateValue, this.$store.getters.ratePeriod, this.rateValue, this.$store.getters.rateCapitalization)
+      this.$store.commit('rateType', '');
+      this.$store.commit('ratePeriod', '');
+      this.$store.commit('rateCapitalization', '');
+      this.$store.commit('rateValue', '');
+    }
+  }
 }
 </script>
 

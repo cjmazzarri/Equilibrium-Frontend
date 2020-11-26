@@ -83,11 +83,11 @@
           </b-card>
           <b-card class="bottom">
             <div><h2 class="title">¿Qué tipo de tasa de<br>interés cobraré?</h2></div>
-            <div class="btn-container" >
-              <div style="display: inline-block"><b-button class="choice" to="add-client-3-1">Tasa Simple</b-button></div>
-              <div style="display: inline-block"><b-button class="choice second" to="add-client-3-1">Tasa Nominal</b-button></div>
-              <div style="display: inline-block;z-index: 2" ><b-button class="choice third" to="add-client-3-1">
-                Tasa Efectiva</b-button></div>
+            <div class="btn-container">
+              <div style="display: inline-block" @click="onClick('simple')"><b-button class="choice" to="add-client-3-1"><p class="text">Tasa Simple</p></b-button></div>
+              <div style="display: inline-block" @click="onClick('nominal')"><b-button class="choice second" to="add-client-3-1"><p class="text">Tasa Nominal</p></b-button></div>
+              <div style="display: inline-block;z-index: 2" @click="onClick('efectiva')"><b-button class="choice third" to="add-client-3-1">
+                <p class="text">Tasa Efectiva</p></b-button></div>
             </div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step3.png"></div>
           </b-card>
@@ -99,7 +99,17 @@
 
 <script>
 export default {
-  name: "AddClientS3"
+  name: "AddClientS3",
+  data() {
+    return {
+      rateType: ''
+    }
+  },
+  methods: {
+    onClick(type){
+      this.$store.commit('rateType', type);
+    }
+  }
 }
 </script>
 
@@ -197,6 +207,9 @@ div.card-header {
         color: #fff;
         box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
         margin-left: 3.28vw;
+        .text{
+          margin-top: 0.5vh;
+        }
       }
       .second {
         background: linear-gradient(90deg, #da71ff 0%, #634dfc 100%);

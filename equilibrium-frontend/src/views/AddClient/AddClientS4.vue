@@ -84,9 +84,9 @@
                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Accept.png"></div>
                 <div class="text" style="display: inline-block"><p>Si cobraré</p></div>
               </b-button ></div>
-              <div style="display: inline-block"><b-button class="choice second" to="/add-client-4-1">
+              <div style="display: inline-block"><b-button class="choice second" to="/add-client-5">
                   <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Decline.png" style="width: 1.8vw"></div>
-                  <div class="text" style="display: inline-block"><p>No cobraré</p></div>
+                  <div class="text" style="display: inline-block" @click="onClick"><p>No cobraré</p></div>
               </b-button></div>
             </div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step4.png"></div>
@@ -98,8 +98,19 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
 export default {
-  name: "AddClientS4"
+  name: "AddClientS4",
+  methods: {
+    onClick(){
+      this.axios.post(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/maintenanceFees', {
+        period: 'n',
+        value: '0'
+      }).then(responseMaintenanceFee => {
+        console.log(responseMaintenanceFee.data)
+      })
+    }
+  }
 }
 </script>
 
