@@ -80,10 +80,6 @@
           <b-card class="bottom">
             <div><h2 class="title">¡Listo, el pago ha<br>
               sido registrado!</h2></div>
-            <div class="details">
-              <p>{{"Título: "+$store.getters.paymentTitle}}</p>
-              <p>{{"Monto: "+$store.getters.paymentAmount}}</p>
-            </div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step3.png"></div>
             <div @click="onClick"><b-button class="next" href="/dashboard">
               <div class="indicator"><img src="../../assets/AddClient/Accept.png"></div>
@@ -97,38 +93,8 @@
 </template>
 
 <script>
-import {baseUrl} from "@/shared/baseUrl";
-
 export default {
   name: "RegisterPaymentFinal",
-  data(){
-    return{
-      clientInfo: null,
-      paymentInfo: null,
-      paymentAmount: null,
-      paymentTitle: ''
-    }
-  },
-  mounted(){
-    this.axios
-      .get(baseUrl + 'commerces/1/clients/'+this.$store.getters.clientId)
-      .then(responseClient => {
-        this.clientInfo = responseClient.data;
-      });
-    this.axios
-    .get(baseUrl + 'commerces/1/clients/'+this.$store.getters.clientId+'/payments/latest')
-      .then(responsePayment => {
-        this.paymentInfo = responsePayment.data;
-      });
-  },
-  methods: {
-    onClick(){
-      this.$store.commit('paymentTitle', '')
-      this.$store.commit('paymentAmount', '')
-      this.$store.commit('clientId', 0)
-    }
-  }
-
 }
 </script>
 
@@ -208,7 +174,7 @@ div.card-header {
       font-weight: 600;
       color: #000;
       margin-left: 4vw;
-      margin-top: 0;
+      margin-top: 6vh;
       margin-bottom: 3vh;
     }
     .details{

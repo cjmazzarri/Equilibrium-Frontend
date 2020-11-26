@@ -50,9 +50,9 @@ export default new Router({
         { path: "/register-payment-final/:id", alias:"/registerPaymentFinal", name: "registerPaymentFinal", component: () => import("./views/RegisterPayment/RegisterPaymentFinal")   },
 
         { path: "/register-sale", alias:"/registerSale", name: "registerSale", component: () => import("./views/RegisterSale")   },
-        { path: "/register-sale-1/", alias:"/registerSale1", name: "registerSale1", component: () => import("./views/RegisterSale/RegisterSaleS1")   },
-        { path: "/register-sale-2", alias:"/registerSale2", name: "registerSale2", component: () => import("./views/RegisterSale/RegisterSaleS2")   },
-        { path: "/register-sale-final", alias:"/registerSaleFinal", name: "registerSaleFinal", component: () => import("./views/RegisterSale/RegisterSaleFinal")   },
+        { path: "/register-sale-1/:id", alias:"/registerSale1", name: "registerSale1", component: () => import("./views/RegisterSale/RegisterSaleS1")   },
+        { path: "/register-sale-2/:id", alias:"/registerSale2", name: "registerSale2", component: () => import("./views/RegisterSale/RegisterSaleS2")   },
+        { path: "/register-sale-final/:id", alias:"/registerSaleFinal", name: "registerSaleFinal", component: () => import("./views/RegisterSale/RegisterSaleFinal")   },
 
         { path: "/movements/:id", alias:"/movements", name: "movements", component: () => import("./views/Movements")   },
     ]

@@ -69,13 +69,13 @@
                             <b-card-body class="title">
                                     {{client.firstName+" "+client.lastName}}
                             </b-card-body>
-                            <div class="amount-1 title">{{"S/. "+client.creditAmount}}</div>
+                            <div class="amount-1 title">{{"S/ "+client.creditAmount}}</div>
                         </b-card>
                         <b-card class="bottom">
                             <b-row>
                                 <b-col>
                                     <div class="info">
-                                        {{"Último pago: S/."+paymentInfo[1].amount}}</div>
+                                        {{"Creado en: "+client.createdAt}}</div>
                                     <router-link :to="`/register-payment-1/${client.id}`">
                                         <b-button class="pay-btn">
                                             <div class="text">Registrar pago</div>
