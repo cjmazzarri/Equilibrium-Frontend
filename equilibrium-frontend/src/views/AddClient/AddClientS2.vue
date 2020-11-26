@@ -70,9 +70,9 @@
               <router-link to="/add-client-1">
                 <div><img src="../../assets/AddClient/LeftArrow.png"></div>
               </router-link>
-              <div><a href="/add-client-1"><p class="text">Anterior</p></a></div>
-              <div><a href="/add-client-3"><p class="text">Siguiente</p></a></div>
-              <router-link to="/add-client-3">
+              <div><a to="/add-client-1"><p class="text">Anterior</p></a></div>
+              <div><a to="/add-client-3" disabled><p class="text">Siguiente</p></a></div>
+              <router-link to="/add-client-3" disabled>
 
                 <div><img src="../../assets/AddClient/RightArrow.png"></div>
               </router-link>
@@ -127,7 +127,7 @@ body{
 
 /* Style page content */
 .main {
-  margin-left: 14.7vw;
+  margin-left: 14.8vw;
   margin-top: -2px;
   width: 85.3vw;
   height: 102vh;

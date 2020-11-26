@@ -69,11 +69,11 @@
                     </b-card>
                     <b-card class="bottom">
                         <div><h2 class="title">¡Listo, la cuenta ha <br>sido creada!</h2></div>
-                        <div class="info">Cliente: Jesús Ortega<br>
-                            Moneda: Soles<br>
-                            Tasa de interés: 15% efectiva anual<br>
-                            Mantenimiento: S/5.00 Mensual<br>
-                            Delivery: S/10.00 por mes</div>
+                        <div class="info">Cliente: {{clientName}}<br>
+                            Moneda: {{currency}}<br>
+                            Tasa de interés: {{rateValue}}<br>
+                            Mantenimiento: {{maintenanceFee}}<br>
+                            Delivery: {{deliveryFee}}</div>
                         <div class="illustration" style="z-index: 0"><img src="../../assets/AddClient/Step7.png"></div>
                         <div class="btn-container">
                             <div style="display: inline-block"><b-button class="choice" href="/dashboard">
@@ -89,8 +89,77 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
     export default {
-        name: "AddClientS7Final"
+        name: "AddClientS7Final",
+      data(){
+        return {
+          clientName: '',
+          currency: '',
+          rateValue: '',
+          maintenanceFee: '',
+          deliveryFee: ''
+        }
+      },
+      mounted() {
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId)
+            .then(responseClient => {
+              console.log(responseClient.data)
+              this.clientName=responseClient.data.firstName+' '+responseClient.data.lastName;
+              let currency = '';
+              switch (responseClient.data.currency) {
+                case "s": currency='Soles'; break;
+                case "d": currency='Dólares'; break;
+              }
+              this.currency=currency;
+            });
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/rates')
+            .then(responseRate => {
+              let rate=responseRate.data;
+              let rateType=rate.type;
+              let period = '';
+              switch (rate.period){
+                case 30: period='mensual'; break;
+                case 60: period='bimestral'; break;
+                case 90: period='trimestral'; break;
+                case 120: period='cuatrimestral'; break;
+                case 180: period='semestral'; break;
+                case 360: period='anual'; break;
+              }
+              this.rateValue=rate.value+'% '+rateType+' '+period;
+            });
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/maintenanceFees')
+            .then(r => {
+              let mFee=r.data;
+              let periodM = '';
+              switch (mFee.period){
+                case "s": periodM='Semanal'; break;
+                case "q": periodM='Quincenal'; break;
+                case "m": periodM='Mensual'; break;
+              }
+              this.maintenanceFee='S/'+mFee.value+' '+periodM;
+            })
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/deliveryFees')
+            .then(r => {
+              let dFee=r.data;
+              let periodD='';
+              switch (dFee.type){
+                case "Pedido":
+                  periodD='por Pedido'; break;
+                case "Periodo":
+                  switch (dFee.frequency){
+                    case 7: periodD='por semana'; break;
+                    case 15: periodD='por quincena'; break;
+                    case 30: periodD='por mes'; break;
+                  }
+              }
+              this.deliveryFee='S/'+dFee.value+' '+periodD;
+            })
+      }
     }
 </script>
 
@@ -103,13 +172,13 @@
 
     /* Style page content */
     .main {
-        margin-left: 14.7vw;
-        margin-top: -2px;
-        width: 85.3vw;
-        height: 102vh;
-        background-image: url("../../assets/DashboardBG.png");
-        background-repeat: no-repeat;
-        background-origin: content-box;
+      margin-left: 14.8vw;
+      margin-top: -2px;
+      width: 85.3vw;
+      height: 102vh;
+      background-image: url("../../assets/DashboardBG.png");
+      background-repeat: no-repeat;
+      background-origin: content-box;
     }
 
     div.card-header {
@@ -129,35 +198,14 @@
             border-radius: 1.5vw 1.5vw 0 0;
             border: transparent;
             .graph-icon {
-                display: inline-block;
-                position: relative;
-                top: -0.5vh;
-                left: 0.5vw;
+              display: inline-block;
             }
             .title{
-                font-size: 1.82vw;
-                line-height: 0;
-                font-weight: 600;
-                color: #000;
-                display: inline-block;
-                margin-top: -1.5vh;
-                margin-left: 1vw;
-            }
-            .navigation {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 17.55vw;
-                position: absolute;
-                right: 4vw;
-                top: 2.5vh;
-
-                .text{
-                    font-size: 1.4vw;
-                    font-weight: 600;
-                    color: #16002f;
-                    margin: auto 1vw auto 1vw;
-                }
+              font-size: 1.82vw;
+              font-weight: 600;
+              color: #000;
+              display: inline-block;
+              margin-left: 0.5vw;
             }
         }
         .bottom{
@@ -167,98 +215,58 @@
             border: transparent;
             padding: 1vw 0;
             .title{
-                font-size: 4.17vw;
-                font-weight: 600;
-                color: #000;
-                margin-left: 4vw;
-                margin-top: -2vh;
+              font-size: 4.17vw;
+              font-weight: 600;
+              color: #000;
+              margin-left: 4vw;
+              margin-top: -0.5vh;
+              margin-bottom: 1vh;
             }
             .btn-container{
                 position: absolute;
                 z-index: 2;
                 display: flex;
                 margin-top: 24vh;
-                margin-left: 32vw;
+                margin-left: 31vw;
                 .choice {
-                    width: 27.08vw;
-                    height: 9vh;
-                    border-radius: 2.24vw;
-                    background: linear-gradient(90deg, #6aef9f 0%, #4bf879 100%);
-                    border: transparent;
-                    font-size: 2.08vw;
-                    font-weight: 600;
-                    color: #fff;
-                    box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                    margin-left: 18vw;
-                    .icon {
-                        margin-left: -0.5vw;
-                    }
-                    .text {
-                        position: relative;
-                        top: 0.4vh;
-                        margin-left: 1vw;
-                    }
-                }
-                .second {
-                    width: 19.77vw;
-                    .icon {
-                        margin-left: 0;
-                    }
-                    .text {
-                        margin-left: 1.3vw;
-                    }
-                    background: linear-gradient(90deg, #fc9f4d 0%, #ff718e 100%);
-                }
-                .edit{
-                    background: white;
-                    color: #202020;
-                    border: 0.25vw solid #202020;
-                    border-radius: 2.24vw;
-                    .text{
-                        margin-left: 0;
-                        top: 0;
-                    }
+                  width: 27.08vw;
+                  height: 9vh;
+                  border-radius: 2.24vw;
+                  background: linear-gradient(90deg, #6aef9f 0%, #4bf879 100%);
+                  border: transparent;
+                  font-size: 2.08vw;
+                  font-weight: 600;
+                  color: #fff;
+                  box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
+                  margin-left: 18vw;
+                  .icon {
+                    margin-left: -0.5vw;
+                  }
+                  .text {
+                    position: relative;
+                    top: 0.4vh;
+                    margin-left: 1vw;
+                  }
                 }
             }
             .illustration{
                 position: absolute;
                 bottom: 7.5vh;
-                left: 45vw;
+                left: 43vw;
                 img{
                     width: 26.6vw;
                 }
 
             }
-            .next{
-                position: absolute;
-                right: 6vw;
-                width: 15.57vw;
-                height: 9.44vh;
-                border-radius: 51px;
-                background: #202020;
-                box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                .indicator{
-                    display: inline-block;
-                    margin-right: 1vw;
-                }
-                .text{
-                    font-family: Gilroy ☞;
-                    font-size: 40px;
-                    line-height: (60 / 40);
-                    font-weight: 600;
-                    color: #282a3f;
-                }
-            }
             .info{
-                font-family: Gilroy ☞;
-                font-size: 2.085vw;
-                line-height: (60 / 40);
-                font-weight: 600;
-                color: #282a3f;
-                text-align: left;
-                position: absolute;
-                left: 5vw;
-                bottom: 4vh;
+              font-size: 2.085vw;
+              line-height: (60 / 40);
+              font-weight: 600;
+              color: #282a3f;
+              text-align: left;
+              position: absolute;
+              left: 5.5vw;
+              bottom: 6.5vh;
             }
         }
     }

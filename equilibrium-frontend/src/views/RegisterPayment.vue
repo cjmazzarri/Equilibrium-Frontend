@@ -130,13 +130,17 @@
 
     /* Style page content */
     .main {
-        margin-left: 14.7vw;
-        margin-top: -2px;
-        width: 85.26vw;
-        height: 158vh;
-        background-image: url("../assets/DashboardBG.png");
-        background-repeat: no-repeat;
-        background-origin: content-box;
+      margin-left: 14.7vw;
+      margin-top: -1px;
+      width: 85.26vw;
+      min-height: 100vh;
+      height: auto;
+      background-image: url("../assets/DashboardBG.png");
+      background-position: top left;
+      background-color: #202020;
+      background-repeat: repeat-y;
+      background-origin: content-box;
+      border-left: #888 solid 2px;
     }
     .payment-card{
         width: 39.43vw;

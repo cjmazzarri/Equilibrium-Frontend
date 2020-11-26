@@ -143,12 +143,15 @@ import { baseUrl } from '../shared/baseUrl';
     /* Style page content */
     .main {
         margin-left: 14.7vw;
-        margin-top: -2px;
+        margin-top: -1px;
         width: 85.26vw;
-        height: 158vh;
+        height: auto;
         background-image: url("../assets/DashboardBG.png");
-        background-repeat: no-repeat;
+        background-position: top left;
+        background-color: #202020;
+        background-repeat: repeat-y;
         background-origin: content-box;
+        border-left: #888 solid 2px;
     }
 
     .title {

@@ -80,8 +80,8 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cobraré delivery<br>por pedido o por<br>periodo?</h2></div>
             <div class="btn-container" >
-              <div style="display: inline-block" @click="onClick('Pedido')"><b-button class="choice" to="/add-client-5-3">Por pedido</b-button></div>
-              <div style="display: inline-block" @click="onClick('Periodo')"><b-button class="choice second" to="/add-client-5-2">Por periodo</b-button></div>
+              <div style="display: inline-block" @click="onClick('Pedido')"><b-button class="choice" to="/add-client-5-3"><p style="margin-top: 0.5vh">Por pedido</p></b-button></div>
+              <div style="display: inline-block" @click="onClick('Periodo')"><b-button class="choice second" to="/add-client-5-2"><p style="margin-top: 0.5vh">Por periodo</p></b-button></div>
             </div>
             <div class="illustration" style="z-index: 1"><img src="../../assets/AddClient/Step5.png"></div>
           </b-card>
@@ -112,7 +112,7 @@ body{
 
 /* Style page content */
 .main {
-  margin-left: 14.7vw;
+  margin-left: 14.8vw;
   margin-top: -2px;
   width: 85.3vw;
   height: 102vh;
