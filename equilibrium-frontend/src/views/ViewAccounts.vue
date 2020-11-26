@@ -96,16 +96,46 @@
                       <div class="amount-1 title">{{"S/ "+client.creditAmount}}</div>
                     </b-card>
                     <b-card class="bottom">
-                      <div class="info">Tipo de tasa: Efectiva</div>
-                      <div class="info">Tasa de interés: 3% Mensual</div>
-                      <div class="info">Mantenimiento: S/5.00 Mensual</div>
-                      <div class="info">Delivery: S/2.00 por entrega</div>
-                      <b-button class="they-paid-btn">
-                        <div class="text">Me pagó</div>
-                      </b-button>
-                      <b-button class="i-sold-btn">
-                        <div class="text">Le vendí</div>
-                      </b-button>
+                      <div class="info">Tipo de tasa: {{client.rate.type}}</div>
+                      <div v-if="client.rate.period == 30" class="info">Tasa de interés: {{client.rate.value+"% Mensual"}}</div>
+                      <div v-if="client.rate.period == 60" class="info">Tasa de interés: {{client.rate.value+"% Bimestral"}}</div>
+                      <div v-if="client.rate.period == 90" class="info">Tasa de interés: {{client.rate.value+"% Trimestral"}}</div>
+                      <div v-if="client.rate.period == 120" class="info">Tasa de interés: {{client.rate.value+"% Cuatrimestral"}}</div>
+                      <div v-if="client.rate.period == 180" class="info">Tasa de interés: {{client.rate.value+"% Semestral"}}</div>
+                      <div v-if="client.rate.period == 360" class="info">Tasa de interés: {{client.rate.value+"% Anual"}}</div>
+                      <div v-if="client.rate.capitalization == 7" class="info">Capitalización: Semanal</div>
+                      <div v-if="client.rate.capitalization == 15" class="info">Capitalización: Quincenal</div>
+                      <div v-if="client.rate.capitalization == 30" class="info">Capitalización: Mensual</div>
+                      <div v-if="client.rate.capitalization == 60" class="info">Capitalización: Bimestral</div>
+                      <div v-if="client.rate.capitalization == 90" class="info">Capitalización: Trimestral</div>
+                      <div v-if="client.rate.capitalization == 120" class="info">Capitalización: Cuatrimestral</div>
+                      <div v-if="client.rate.capitalization == 180" class="info">Capitalización: Semestral</div>
+                      <div v-if="client.maintenanceFee.period == 's'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Semanal"}}</div>
+                      <div v-if="client.maintenanceFee.period == 'm'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Mensual"}}</div>
+                      <div v-if="client.maintenanceFee.period == 'q'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Quincenal"}}</div>
+                      <div v-if="client.deliveryFee.type == 'Pedido'" class="info">Delivery: {{"S/"+client.deliveryFee.value+" "+" por entrega"}}</div>
+                      <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 7" class="info">
+                          Delivery: {{"S/"+client.deliveryFee.value+" Semanal"}}
+                      </div>
+                        <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 15" class="info">
+                            Delivery: {{"S/"+client.deliveryFee.value+" Quincenal"}}
+                        </div>
+                        <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 30" class="info">
+                            Delivery: {{"S/"+client.deliveryFee.value+" Mensual"}}
+                        </div>
+
+                        <router-link :to="`/register-payment-1/${client.id}`">
+                            <b-button class="they-paid-btn">
+                                <div class="text">Me pagó</div>
+                            </b-button>
+                        </router-link>
+
+                        <router-link :to="`/register-sale-1/${client.id}`">
+                            <b-button class="i-sold-btn">
+                                <div class="text">Le vendí</div>
+                            </b-button>
+                        </router-link>
+
                     </b-card>
                   </div>
                 </li>
@@ -124,12 +154,44 @@ import { baseUrl } from '../shared/baseUrl';
               .get(baseUrl + 'commerces/1/clients')
               .then(responseUser => {
                 this.clientInfo = responseUser.data.content;
+                this.rateTypeFormat();
+                this.rateValueFormat();
               });
+
+        },
+        methods: {
+            rateTypeFormat(){
+                for(let i = 0; i < this.clientInfo.length; i++){
+                    let r = this.clientInfo[i].rate;
+                    r = r.type[0].toUpperCase()+r.type.slice(1)
+                    this.clientInfo[i].rate.type = r;
+                }
+            },
+            rateValueFormat(){
+                for(let i = 0; i < this.clientInfo.length; i++){
+                    let r = this.clientInfo[i].rate;
+                    let period = '';
+                    switch (r.period){
+                        case 30: period='mensual'; break;
+                        case 60: period='bimestral'; break;
+                        case 90: period='trimestral'; break;
+                        case 120: period='cuatrimestral'; break;
+                        case 180: period='semestral'; break;
+                        case 360: period='anual'; break;
+                    }
+                this.ratePeriod = "% "+period;
+                    //console.log(this.ratePeriod);
+                 }
+            },
         },
         data() {
-          return {
-            clientInfo: []
-          }
+            return {
+                clientInfo: [],
+                rateType: '',
+                ratePeriod: '',
+                maintenancePeriod: '',
+                deliveryFee: ''
+            }
         }
     }
 </script>
@@ -212,7 +274,7 @@ import { baseUrl } from '../shared/baseUrl';
     .medium-card {
         width: 39.48vw;
         height: 47.31vh;
-        margin: 2vw 1vw 2vw 1.30vw;
+        margin: 2vw 1vw 6.5vh 1.30vw;
         display: inline-block;
         .top {
             height: 5.21vw;
