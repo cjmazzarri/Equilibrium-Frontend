@@ -55,6 +55,8 @@ export default new Router({
         { path: "/register-sale-final/:id", alias:"/registerSaleFinal", name: "registerSaleFinal", component: () => import("./views/RegisterSale/RegisterSaleFinal")   },
 
         { path: "/movements/:id", alias:"/movements", name: "movements", component: () => import("./views/Movements")   },
+
+        { path: "/profile", alias: "/profile", name: "profile", component: () => import("./views/Profile")}
     ]
 })
 

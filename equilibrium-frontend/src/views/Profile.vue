@@ -1,8 +1,8 @@
 <template>
-  <div class="Dashboard">
+  <div class="Profile">
     <div class="sidenav">
       <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category category-active" href="#">
+      <b-button class="category category-active" href="/dashboard">
         <img src="../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Dashboard</p>
       </b-button>
@@ -50,7 +50,7 @@
               </div>
             </template>
             <p class="not-title pr-title">Acciones</p>
-            <b-button class="pr-action" href="/profile">
+            <b-button class="pr-action">
               <div class="pr-text"><p>• Perfil</p></div>
             </b-button>
             <b-button class="pr-action" to="/">
@@ -60,54 +60,22 @@
         </b-navbar-nav>
       </b-navbar>
       <div class="main-body">
-        <div class="title"><h1>Dashboard - Resumen</h1></div>
-        <div class="res-card">
-          <b-card class="sm-card">
-            <b-card-header class="sm-card-title">Cuentas activas</b-card-header>
-            <b-card-body class="sm-card-body">12</b-card-body>
-            <div class="sm-card-icon"><img src="../assets/AccountIcon.png" style="width: 3.9vw; height: auto;"></div>
-          </b-card>
-          <b-card class="sm-card">
-            <b-card-header class="sm-card-title">Interés ganado</b-card-header>
-            <b-card-body class="sm-card-body">S/540</b-card-body>
-            <div class="sm-card-icon"><img src="../assets/InterestIcon.png" style="width: 3.9vw; height: auto;"></div>
-          </b-card>
-          <b-card class="sm-card">
-            <b-card-header class="sm-card-title">Crédito pendiente</b-card-header>
-            <b-card-body class="sm-card-body">S/4,520.36</b-card-body>
-            <div class="sm-card-icon"><img src="../assets/CreditIcon.png" style="width: 3.9vw; height: auto;"></div>
-          </b-card>
-          <b-card class="sm-card">
-            <b-card-header class="sm-card-title">Tasa promedio</b-card-header>
-            <b-card-body class="sm-card-body">15.1%</b-card-body>
-            <div class="sm-card-icon"><img src="../assets/RateIcon.png" style="width: 3.9vw; height: auto;"></div>
-          </b-card>
-        </div>
+        <div class="title"><h1>Dedicatoria y Autoría</h1></div>
         <div class="medium-card">
           <b-card class="top">
-            <div class="graph-icon"><img src="../assets/CreditGraphIcon.png"></div>
-            <b-card-body class="title">Crédito pendiente en</b-card-body>
-            <b-form-select v-model="currency" :options="currencyoptions" class="currency-selector"></b-form-select>
-            <div class="caret"><img src="../assets/Arrow.png"></div>
-            <b-form-select v-model="month" :options="monthoptions" class="month-selector"></b-form-select>
-            <div class="right-caret"><img src="../assets/Arrow.png"></div>
+            <div class="graph-icon"><img src="../assets/EquilibriumLogo.png" style="width: 20vw;margin-top: -0.2vh"></div>
+            <b-card-body class="title">Formulado por: Martín Senmache,</b-card-body>
+            <b-card-body class="title-2">para los bodegueros en la era digital.</b-card-body>
           </b-card>
           <b-card class="bottom">
-            <div><img src="../assets/CreditGraph.png" style="width: 78.85vw; height: auto"></div>
-          </b-card>
-        </div>
-        <div class="separator" style="height: 2.5vh"></div>
-        <div class="medium-card">
-          <b-card class="top">
-            <div class="graph-icon"><img src="../assets/InterestGraphIcon.png"></div>
-            <b-card-body class="title">Interés ganado en</b-card-body>
-            <b-form-select v-model="currency" :options="currencyoptions" class="currency-selector"></b-form-select>
-            <div class="caret"><img src="../assets/Arrow.png"></div>
-            <b-form-select v-model="month" :options="monthoptions" class="rate-month-selector month-selector"></b-form-select>
-            <div class="right-caret"><img src="../assets/Arrow.png"></div>
-          </b-card>
-          <b-card class="bottom">
-            <div><img src="../assets/InterestGraph.png" style="width: 78.85vw; height: auto"></div>
+            <img src="../assets/sadaakisz.png" class="image">
+            <img src="../assets/cjmazzarri.jpg" class="image">
+            <p class="text"><u>Diseño y prototipado por:</u><br>Carlos Mazzarri y Hector Suzuki</p>
+            <p class="text"><u>Back y Front desarrollado por:</u><br>Carlos Mazzarri y Hector Suzuki</p>
+            <p class="text"><u>Marco legal:</u> Jesarela Hijar</p>
+            <p class="text"><u>Diseño de base de datos:</u> Renzo Castro</p>
+            <p class="text"><u>Documentación:</u> Estephany Solier</p>
+            <p class="text"><u>Apoyo moral:</u> Juan Leyva</p>
           </b-card>
         </div>
       </div>
@@ -117,31 +85,11 @@
 
 <script>
 export default {
-name: "Dashboard",
-  data() {
-  return {
-    currency: "Soles",
-    currencyoptions: [
-      {value: 'Soles', text: 'Soles'},
-      {value: 'Dólares', text: 'Dólares'}
-    ],
-    month: "Enero",
-    monthoptions: [
-      {value: 'Enero', text: 'Enero'},
-      {value: 'Diciembre', text: 'Diciembre'},
-      {value: 'Noviembre', text: 'Noviembre'},
-      {value: 'Octubre', text: 'Octubre'},
-      {value: 'Septiembre', text: 'Septiembre'},
-      {value: 'Agosto', text: 'Agosto'}
-    ]
-  }
-  }
+name: "Profile"
 }
 </script>
 
 <style lang="scss">
-@import "../assets/scss/styles.scss";
-
 body{
   overflow-x: hidden;
 }
@@ -150,57 +98,14 @@ body{
   margin-left: 14.7vw;
   margin-top: -2px;
   width: 85.26vw;
-  height: 158vh;
+  height: 145vh;
   background-image: url("../assets/DashboardBG.png");
   background-repeat: no-repeat;
   background-origin: content-box;
 }
 
-.res-card {
-  width: 84vw;
-  margin-left: 0.7vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 3vh;
-}
-
-.sm-card{
-  width: 18.23vw;
-  height: 10vw;
-  color: #282a3f;
-  border-radius: 1.5vw !important;
-}
-
-.sm-card-title {
-  font-size: 1.35vw;
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  color: #4c4c4c;
-  text-align: left;
-  margin-left: -0.6vw;
-  margin-top: -1.3vh;
-}
-
 div.card-header {
   background-color: transparent;
-}
-
-.sm-card-body {
-  font-size: 2vw;
-  font-weight: 600;
-  color: #000;
-  text-align: left;
-  margin-top: 0.5vw;
-  margin-left: -0.6vw;
-}
-
-.sm-card-icon {
-  position: relative;
-  width: 3.9vw;
-  height: 3.9vw;
-  left: 12vw;
-  top: -7.5vh;
 }
 
 .medium-card {
@@ -208,27 +113,37 @@ div.card-header {
   height: 47.31vh;
   margin: 2vw auto;
   .top {
-    height: 5.21vw;
+    height: 10.21vw;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
+    background: linear-gradient(90deg, #f8a74b 0%, #f96ea6 100%);
     border-radius: 1.5vw 1.5vw 0 0;
     border: transparent;
     .graph-icon {
       display: inline-block;
-      position: relative;
-      top: -0.5vh;
-      left: 0.5vw;
+      position: absolute;
+      top: 7vh;
+      left: 4vw;
     }
     .title{
-      font-size: 1.82vw;
+      font-size: 2vw;
       line-height: 1;
       font-weight: 600;
       color: #000;
       display: inline-block;
-      margin-top: -1.5vh;
-      margin-left: 1vw;
+      margin-top: 0vh;
+      margin-left: 25vw;
+    }
+    .title-2{
+      font-size: 2vw;
+      line-height: 1;
+      font-weight: 600;
+      color: #000;
+      margin-top: -2vh;
+      position: absolute;
+      left: 45vw;
+      margin-left: -2vw;
     }
     .caret{
       display: inline-block;
@@ -267,9 +182,17 @@ div.card-header {
     border-radius: 0 0 1.5vw 1.5vw;
     border: transparent;
     padding: 1vw 0;
+    .text{
+      color: black;
+      font-weight: 400;
+      font-size: 2vw;
+      line-height: 2;
+    }
+    .image{
+      margin: -1vh 2vw 2vh;
+      width: 8vw;
+      display: inline-block;
+    }
   }
-}
-.rate-month-selector{
-  margin-left: 35.8vw !important;
 }
 </style>
