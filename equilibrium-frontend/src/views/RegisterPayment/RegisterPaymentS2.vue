@@ -89,7 +89,7 @@
             <div class="credit-alert" v-if="paymentAmount>clientInfo.creditAmount">El monto del pago supera el crédito del cliente,<br>por favor ingrese un monto menor.</div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
               <div>
-                <router-link :to="`/register-payment-final/${clientInfo.id}`">
+                <router-link :to="`/register-payment-final/${clientInfo.id}`" :class="{ disabled: paymentAmount.length <= 0 || paymentAmount>clientInfo.creditAmount }">
                   <b-button @click="onClick" class="next" v-bind:disabled="paymentAmount.length <= 0 || paymentAmount>clientInfo.creditAmount"><div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
                     <p class="text">Finalizar</p>
                   </b-button>
@@ -286,6 +286,9 @@ div.card-header {
         position: relative;
         top: 0.5vh;
       }
+    }
+    .disabled{
+      pointer-events: none;
     }
   }
 }
