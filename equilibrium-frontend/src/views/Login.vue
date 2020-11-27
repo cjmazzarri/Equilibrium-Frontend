@@ -118,7 +118,7 @@
         height: 5vh;
         border-radius: 50px;
         background: linear-gradient(90deg, #7591ff 0%, #4dd1be 100%);
-        font-size: 16px;
+        font-size: 1vw;
         display: flex;
         justify-content: center;
         align-self: center;
@@ -127,6 +127,7 @@
         color: #fff;
         border-width: 0;
         .text{
+            font-size: 1vw;
             font-weight: 500;
             margin-left: -0.5vw;
             margin-top: 0.6vh;
@@ -150,6 +151,7 @@
         color: #202020;
         position: relative;
         left: 3vw;
+        top: 0.1vw;
     }
     #InputUsername, #InputPassword{
       width: 24vw;
