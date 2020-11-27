@@ -146,7 +146,6 @@
     @import "../assets/scss/styles.scss";
     body{
         overflow-x: hidden;
-        overflow-y: hidden;
     }
 
     /* Style page content */
@@ -170,8 +169,10 @@
 
     .medium-card {
         width: 81.1vw;
-        height: 52vh;
-        margin: 2.5vw auto;
+        min-height: 52vh;
+        height: auto;
+        margin: 2.5vw auto 0vw;
+        padding-bottom: 7vh;
         .top {
             width: 81.1vw;
             height: auto;

@@ -87,7 +87,7 @@
               de la venta?</h2></div>
             <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="saleAmount" onkeyup="if(this.value<0){this.value= this.value * -1}" v-on:keypress="isNumber($event)"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterSale/Step1.png"></div>
-            <router-link :to="`/register-sale-final/${this.$store.getters.clientId}`">
+            <router-link :to="`/register-sale-final/${this.$store.getters.clientId}`" :class="{ disabled: saleAmount.length <= 0 }">
               <div @click="onClick"><b-button class="next"  v-bind:disabled="saleAmount.length <= 0">
                 <div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
                 <p class="text">Finalizar</p>
@@ -274,6 +274,9 @@ div.card-header {
         position: relative;
         top: 0.5vh;
       }
+    }
+    .disabled{
+      pointer-events: none;
     }
   }
 }
