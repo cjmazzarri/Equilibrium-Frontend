@@ -70,12 +70,14 @@
                     <b-card class="bottom">
                         <div><h2 class="title">¿Todo conforme?</h2></div>
                         <div class="info">
-                            Cliente: {{clientName}}<br>
-                            Moneda: {{currency}}<br>
-                            Tipo de tasa: {{rateType}}<br>
-                            Tasa de interés: {{rateValue}}<br>
-                            Mantenimiento: {{maintenanceFee}}<br>
-                            Delivery: {{deliveryFee}}</div>
+                            <div>Cliente: {{clientName}}<br></div>
+                            <div>Moneda: {{currency}}<br></div>
+                            <div>Tipo de tasa: {{rateType}}<br></div>
+                            <div v-if="rateType === 'Nominal'">Capitalización: {{capitalization}}<br></div>
+                            <div>Tasa de interés: {{rateValue}}<br></div>
+                            <div>Mantenimiento: {{maintenanceFee}}<br></div>
+                            <div>Delivery: {{deliveryFee}}</div></div>
+
                         <div class="illustration" style="z-index: 0"><img src="../../assets/AddClient/Step6.png"></div>
                         <div class="btn-container">
                             <div style="display: inline-block"><b-button class="choice" to="add-client-7">
@@ -105,7 +107,8 @@ import { baseUrl } from '@/shared/baseUrl';
           rateType: '',
           rateValue: '',
           maintenanceFee: '',
-          deliveryFee: ''
+          deliveryFee: '',
+            capitalization: ''
         }
       },
       mounted() {
@@ -126,6 +129,19 @@ import { baseUrl } from '@/shared/baseUrl';
             .then(responseRate => {
               let rate=responseRate.data;
               this.rateType=rate.type[0].toUpperCase()+rate.type.slice(1);
+
+              let capPeriod = '';
+              switch(rate.capitalization){
+                  case 7: capPeriod='Semanal'; break;
+                  case 15: capPeriod='Quincenal'; break;
+                  case 30: capPeriod='Mensual'; break;
+                  case 60: capPeriod='Bimestral'; break;
+                  case 90: capPeriod='Trimestral'; break;
+                  case 120: capPeriod='Cuatrimestral'; break;
+                  case 180: capPeriod='Semestral'; break;
+              }
+              this.capitalization = capPeriod;
+
               let period = '';
               switch (rate.period){
                 case 30: period='mensual'; break;
@@ -231,7 +247,7 @@ import { baseUrl } from '@/shared/baseUrl';
                 font-weight: 600;
                 color: #000;
                 margin-left: 4vw;
-                margin-top: -0.5vh;
+                margin-top: -4vh;
                 margin-bottom: 4.5vh;
             }
             .btn-container{
@@ -289,7 +305,7 @@ import { baseUrl } from '@/shared/baseUrl';
                 text-align: left;
                 position: absolute;
                 left: 5.5vw;
-                bottom: 7.5vh;
+                bottom: 4.75vh;
             }
         }
     }
