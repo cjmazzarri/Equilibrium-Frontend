@@ -136,6 +136,7 @@
                     let splitDate = date.split("-")
                     let formatDate = splitDate[2][0] + splitDate[2][1] + '/' + splitDate[1] + '/' + splitDate[0][2] + splitDate[0][3];
                     this.movementInfo[i].createdAt = formatDate;
+                    this.movementInfo[i].amount=Math.round(this.movementInfo[i].amount*100)/100
                 }
             }
         }
