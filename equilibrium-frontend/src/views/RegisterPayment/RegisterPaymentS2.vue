@@ -253,6 +253,7 @@ div.card-header {
       position: relative;
       top: -7.5vh;
       left: -30vw;
+      pointer-events:none;
     }
     .illustration{
       position: absolute;
