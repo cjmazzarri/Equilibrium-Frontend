@@ -208,6 +208,7 @@ import { baseUrl } from '../shared/baseUrl';
         margin-top: -1px;
         width: 85.26vw;
         height: auto;
+        min-height: 100vh;
         background-image: url("../assets/DashboardBG.png");
         background-position: top left;
         background-color: #202020;
