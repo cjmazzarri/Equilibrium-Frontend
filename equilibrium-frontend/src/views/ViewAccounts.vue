@@ -93,7 +93,7 @@
                               <a style="color: black"><u>{{client.firstName+" "+client.lastName}}</u></a>
                           </router-link>
                       </b-card-body>
-                      <div class="amount-1 title">{{"S/ "+client.creditAmount}}</div>
+                      <div class="amount-1">{{"S/ "+client.creditAmount}}</div>
                     </b-card>
                     <b-card class="bottom">
                       <div class="info">Tipo de tasa: {{client.rate.type}}</div>
@@ -283,41 +283,32 @@ import { baseUrl } from '../shared/baseUrl';
             align-items: flex-start;
             border-radius: 1.5vw 1.5vw 0 0;
             border: transparent;
-            .graph-icon {
-                display: inline-block;
-                position: relative;
-                bottom: 2vh;
-                left: 0.5vw;
-            }
-            .title{
-                font-size: 1.82vw;
-                line-height: 1;
-                font-weight: 600;
-                color: #000;
-                display: inline-block;
-                margin-top: -1.5vh;
-                margin-left: 1vw;
-            }
-            .amount-1{
-                display: inline-block;
-                position: relative;
-                left: 9vw;
-            }
-            .amount-2{
-                display: inline-block;
-                position: relative;
-                left: 11vw;
-            }
-            .amount-3{
-                display: inline-block;
-                position: relative;
-                left: 6.88vw;
-            }
-            .amount-4{
-                display: inline-block;
-                position: relative;
-                left: 10.5vw;
-            }
+          .graph-icon {
+            display: inline-block;
+            position: relative;
+            top: 0;
+            left: 1vw;
+          }
+          .title{
+            font-size: 1.82vw;
+            font-weight: 600;
+            color: #000;
+            display: inline-block;
+            margin-top: -2.5vh;
+            margin-left: 2vw;
+            position: relative;
+            top: 0.5vh;
+          }
+          .amount-1{
+            font-size: 1.82vw;
+            font-weight: 600;
+            color: #000;
+            text-align: right;
+            display: inline-block;
+            position: absolute;
+            right: 3vw;
+            top: 3.3vh;
+          }
         }
         .cyan{
             background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);

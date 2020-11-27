@@ -88,8 +88,8 @@
             <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="paymentAmount" onkeyup="if(this.value<0){this.value= this.value * -1}" v-on:keypress="isNumber($event)"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
               <div>
-                <router-link @click="onClick" :to="`/register-payment-final/${clientInfo.id}`">
-                  <b-button class="next" v-bind:disabled="paymentAmount.length <= 0"><div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
+                <router-link :to="`/register-payment-final/${clientInfo.id}`">
+                  <b-button @click="onClick" class="next" v-bind:disabled="paymentAmount.length <= 0"><div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
                     <p class="text">Finalizar</p>
                   </b-button>
                 </router-link>
@@ -127,7 +127,7 @@ export default {
         amount: this.paymentAmount
       }).then(responsePayment=>{
         this.paymentInfo = responsePayment.data
-        console.log(responsePayment.data.id)
+        //console.log(responsePayment.data)
         this.$store.commit('paymentId', this.paymentInfo.id)
       })
 
