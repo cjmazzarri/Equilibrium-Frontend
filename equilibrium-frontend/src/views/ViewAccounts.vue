@@ -286,7 +286,7 @@ import { baseUrl } from '../shared/baseUrl';
             .graph-icon {
                 display: inline-block;
                 position: relative;
-                top: -1.75vh;
+                bottom: 2vh;
                 left: 0.5vw;
             }
             .title{
@@ -301,12 +301,12 @@ import { baseUrl } from '../shared/baseUrl';
             .amount-1{
                 display: inline-block;
                 position: relative;
-                left: 8.75vw;
+                left: 9vw;
             }
             .amount-2{
                 display: inline-block;
                 position: relative;
-                left: 8.2vw;
+                left: 11vw;
             }
             .amount-3{
                 display: inline-block;
@@ -316,7 +316,7 @@ import { baseUrl } from '../shared/baseUrl';
             .amount-4{
                 display: inline-block;
                 position: relative;
-                left: 6vw;
+                left: 10.5vw;
             }
         }
         .cyan{
