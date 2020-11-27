@@ -66,10 +66,11 @@
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
             <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}</b-card-body>
-            <b-card-body class="title amount">{{clientInfo.creditAmount}}</b-card-body>
+            <b-card-body class="amount">{{"S/ "+clientInfo.creditAmount}}</b-card-body>
           </b-card>
           <b-card class="bottom">
-            <div class="text"><p>Último pago: S/20 - 28/12 - Cancelación Nov.</p></div>
+            <div class="text">
+              {{"Creado en: "+clientInfo.createdAt}}</div>
           </b-card>
         </div>
         <div class="medium-card">
@@ -84,11 +85,11 @@
           <b-card class="bottom">
             <div><h2 class="title">¿Cuál es el monto<br>
               del pago?</h2></div>
-            <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="paymentAmount"></b-form-input></div>
+            <div><b-form-input placeholder="Monto, Ej. S/5.00" class="input" v-model="paymentAmount" onkeyup="if(this.value<0){this.value= this.value * -1}" v-on:keypress="isNumber($event)"></b-form-input></div>
             <div class="illustration"><img src="../../assets/RegisterPayment/Step1.png"></div>
-              <div >
+              <div>
                 <router-link @click="onClick" :to="`/register-payment-final/${clientInfo.id}`">
-                  <b-button class="next" ><div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
+                  <b-button class="next" v-bind:disabled="paymentAmount.length <= 0"><div class="indicator"><img src="../../assets/AddClient/NextArrow.png"></div>
                     <p class="text">Finalizar</p>
                   </b-button>
                 </router-link>
@@ -108,7 +109,7 @@ export default {
     return{
       clientInfo: null,
       paymentInfo: null,
-      paymentAmount: 0,
+      paymentAmount: '',
     }
   },
   mounted(){
@@ -116,6 +117,7 @@ export default {
       .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
       .then(responseClient => {
         this.clientInfo = responseClient.data;
+        this.simpleDate()
       });
   },
   methods: {
@@ -129,6 +131,17 @@ export default {
         this.$store.commit('paymentId', this.paymentInfo.id)
       })
 
+    },
+    isNumber(e){
+      let char = String.fromCharCode(e.keyCode); // Get the character
+      if(/^(?:[1-9]\d*|0)?(?:\.\d+)?$/.test(char)) return true; // Match with regex
+      else e.preventDefault(); // If not match, don't add to input text
+    },
+    simpleDate() {
+      let date = this.clientInfo.createdAt;
+      let splitDate = date.split("-")
+      let formatDate = splitDate[2][0] + splitDate[2][1] + '/' + splitDate[1] + '/' + splitDate[0][2] + splitDate[0][3];
+      this.clientInfo.createdAt = formatDate;
     }
   }
 }
@@ -271,9 +284,43 @@ div.card-header {
   height: 18.61vh;
   margin-top: 2.5vh;
   margin-left: 2.4vw;
-  .top{
-    .amount{
-      margin-left: 8vw;
+
+  .top {
+    height: 5.21vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 1.5vw 1.5vw 0 0;
+    border: transparent;
+    width: 39.48vw;
+
+    .graph-icon {
+      display: inline-block;
+      position: relative;
+      top: 0;
+      left: 1vw;
+    }
+
+    .title {
+      font-size: 1.82vw;
+      font-weight: 600;
+      color: #000;
+      display: inline-block;
+      margin-top: -2.5vh;
+      margin-left: 2vw;
+      position: relative;
+      top: 0.5vh;
+    }
+
+    .amount {
+      font-size: 1.82vw;
+      font-weight: 600;
+      color: #000;
+      text-align: right;
+      display: inline-block;
+      position: absolute;
+      right: 3vw;
+      top: 1vh;
     }
   }
   .bottom {

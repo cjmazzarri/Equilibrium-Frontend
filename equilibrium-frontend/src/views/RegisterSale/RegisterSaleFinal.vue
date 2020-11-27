@@ -65,11 +65,12 @@
         <div class="medium-card half">
           <b-card class="top">
             <div class="graph-icon"><img src="../../assets/RegisterPayment/RegisterPaymentIcon.png"></div>
-            <b-card-body class="title">Marina Zárate</b-card-body>
-            <b-card-body class="title amount">S/920.09</b-card-body>
+            <b-card-body class="title">{{clientInfo.firstName+' '+clientInfo.lastName}}</b-card-body>
+            <b-card-body class="amount">{{"S/ "+clientInfo.creditAmount}}</b-card-body>
           </b-card>
           <b-card class="bottom">
-            <div class="text"><p>Último pago: S/20 - 28/12 - Cancelación Nov.</p></div>
+            <div class="text">
+              {{"Creado en: "+clientInfo.createdAt}}</div>
           </b-card>
         </div>
         <div class="medium-card">
@@ -93,8 +94,37 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
 export default {
-  name: "RegisterSaleFinal"
+  name: "RegisterSaleFinal",
+  data(){
+    return{
+      clientInfo: null,
+      saleInfo: null,
+      saleAmount: '',
+    }
+  },
+  mounted(){
+    this.axios
+        .get(baseUrl + 'commerces/1/clients/'+this.$route.params.id)
+        .then(responseClient => {
+          this.clientInfo = responseClient.data;
+          this.simpleDate()
+        });
+  },
+  methods: {
+    isNumber(e){
+      let char = String.fromCharCode(e.keyCode); // Get the character
+      if(/^(?:[1-9]\d*|0)?(?:\.\d+)?$/.test(char)) return true; // Match with regex
+      else e.preventDefault(); // If not match, don't add to input text
+    },
+    simpleDate() {
+      let date = this.clientInfo.createdAt;
+      let splitDate = date.split("-")
+      let formatDate = splitDate[2][0] + splitDate[2][1] + '/' + splitDate[1] + '/' + splitDate[0][2] + splitDate[0][3];
+      this.clientInfo.createdAt = formatDate;
+    }
+  }
 }
 </script>
 
@@ -143,7 +173,7 @@ div.card-header {
       font-weight: 600;
       color: #000;
       display: inline-block;
-      margin-top: -1.5vh;
+      margin-top: -2vh;
       margin-left: 1vw;
     }
     .navigation {
@@ -206,6 +236,8 @@ div.card-header {
         display: inline-block;
         margin-right: 1.3vw;
         margin-left: -0.8vw;
+        position: relative;
+        top: -0.7vh;
       }
       .text{
         display: inline-block;
@@ -214,7 +246,7 @@ div.card-header {
         text-decoration: underline;
         color: #e6e6e6;
         position: relative;
-        top: 0.4vh;
+        top: 0;
       }
     }
   }
@@ -224,10 +256,31 @@ div.card-header {
   height: 18.61vh;
   margin-top: 2.5vh;
   margin-left: 2.4vw;
-  .top{
-    .amount{
-      margin-left: 8vw;
-    }
+  .graph-icon {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: 1vw;
+  }
+  .title{
+    font-size: 1.82vw;
+    font-weight: 600;
+    color: #000;
+    display: inline-block;
+    margin-top: -2.5vh;
+    margin-left: 2vw;
+    position: relative;
+    top: 0.5vh;
+  }
+  .amount{
+    font-size: 1.82vw;
+    font-weight: 600;
+    color: #000;
+    text-align: right;
+    display: inline-block;
+    position: absolute;
+    right: 3vw;
+    top: 1vh;
   }
   .bottom {
     height: 9.26vh;
