@@ -131,6 +131,7 @@ import {baseUrl} from "@/shared/baseUrl";
 @import "../assets/scss/styles.scss";
     body{
         overflow-x: hidden;
+        background-color: #202020;
     }
     /* Style page content */
     .main {
