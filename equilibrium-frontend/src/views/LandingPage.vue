@@ -5,19 +5,19 @@
         <b-navbar-brand href="#">
           <img src="../assets/EquilibriumMini.png" class="d-inline-block align-top nav-logo" style="width: 41px; height: auto" alt="Equilibrium">
         </b-navbar-brand>
-        <b-nav-item class="text-primary">
+        <b-nav-item class="text-primary" text to="/login">
           <span class="text active">AÑADE CLIENTES</span>
         </b-nav-item>
-        <b-nav-item>VER CUENTAS</b-nav-item>
-        <b-nav-item>REGISTRAR PAGOS</b-nav-item>
-        <b-nav-item>REGISTRAR VENTAS</b-nav-item>
+        <b-nav-item  text to="/login">VER CUENTAS</b-nav-item>
+        <b-nav-item text to="/login">REGISTRAR PAGOS</b-nav-item>
+        <b-nav-item text to="/login">REGISTRAR VENTAS</b-nav-item>
         <b-nav-item>
-          <b-button size="lg" class="nav-btn-registrarse">
+          <b-button class="nav-btn-registrarse" text to="/sign-up">
             <p class="text">REGISTRARSE</p>
           </b-button>
         </b-nav-item>
         <b-nav-item>
-          <b-button size="lg" class="nav-btn-iniciar">
+          <b-button size="lg" class="nav-btn-iniciar" text to="/login">
             <p class="text">INICIAR SESIÓN</p>
           </b-button>
         </b-nav-item>
@@ -30,7 +30,7 @@
         <br>facilito con
       </p>
       <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button size="lg" class="btn-comenzar-ya">
+      <b-button size="lg" class="btn-comenzar-ya" texto to="/sign-up">
         <svg class="RightArrow" viewBox="0 0 41.9 25.8"><path d="M21 25.8L0 5.9 6.2 0 21 14 35.7 0 41.9 5.9 21 25.8Z"/></svg>
         <p class="text">Comienza ya!</p>
       </b-button>
@@ -45,146 +45,163 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  height: 100%;
-  display: grid;
+.LandingPage {
+  top: 0;
+  left: 0;
+  height: 100vh;
   background-image: url("../assets/LandingPageBg.png");
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
 }
+
 .text {
-  position: relative;
   font-family: Gilroy ☞, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 0.9em;
+  line-height: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   font-weight: 700;
   color: #fff;
-  margin: auto;
 }
 
 u {
   text-decoration: none;
-  border-bottom: 4px solid white;
+  border-bottom: 0.21vw solid white;
 }
 
 .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 30px;
+  top: 4vh;
   margin: 0 auto;
-  height: 3.6vw;
+  height: 6.4vh;
   width: 100vw;
+  .text-primary {
+    background-image: url("../assets/ActiveTab.png");
+    background-size: 12vw auto;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-position: center 3.5vh;
+    width: 12vw;
+    .active {
+      top: 0;
+      color: #eee;
+      font-size: 1.24vw;
+      position: relative;
+      left: 1vw;
+    }
+  }
+  .nav-btn-registrarse {
+    width: 11.5vw;
+    height: 7vh;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #4bc8f8 0%, #6e93f9 100%);
+    .text {
+      top: 0;
+      display: inline-block;
+      margin-top: 2.6vh;
+      font-size: 1.15vw;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+  .nav-btn-registrarse:hover {
+    border: 0.19vw solid #648dff;
+    background: transparent;
+    .text {
+      margin-top: 2.3vh;
+    }
+  }
+  .nav-btn-iniciar {
+    width: 11.5vw;
+    height: 7vh;
+    border: 0.1042vw solid #fff;
+    border-radius: 4px;
+    background: transparent;
+    .text {
+      top: 0;
+      margin-top: 2.2vh;
+      display: inline-block;
+      font-size: 1.15vw;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+  .nav-btn-iniciar:hover {
+    border-radius: 0.21vw;
+    border: transparent;
+    background: linear-gradient(90deg, #4d56d1 0%, #da71ff 100%);
+    .text {
+      margin-top: 2.4vh;
+    }
+  }
 }
 
-#nav-text > * {
+#nav-text>* {
   margin-left: 2vw;
   display: grid;
   place-items: center;
 }
 
-.text-primary {
-  background-image: url("../assets/ActiveTab.png");
-  background-size: 12vw auto;
-  background-repeat: no-repeat;
-  background-origin: border-box;
-  background-position: center 1.4em;
-  width: 12em;
-.active {
-  color: #eee;
-  font-size: 1em;
-  position: relative;
-  left: 1em;
-}
-}
-
-.nav-btn-registrarse {
-  transition: 0.3s;
-  width: 11.5vw;
-  height: 3.5vw;
-  border-radius: 4px;
-  background: linear-gradient(90deg, #4bc8f8 0%, #6e93f9 100%);
-}
-
-.nav-btn-registrarse:hover {
-  border: 3px solid #648dff;
-  background: transparent;
-}
-
-.nav-btn-iniciar {
-  transition: 0.3s;
-  width: 11.5vw;
-  height: 3.5vw;
-  border: 2px solid #fff;
-  border-radius: 4px;
-  background: transparent;
-}
-
-.nav-btn-iniciar:hover {
-  border-radius: 4px;
-  border: none;
-  background: linear-gradient(90deg, #4d56d1 0%, #da71ff 100%);
-}
-
 .cta {
   position: absolute;
   left: 13.5vw;
-  top: 9.5vw;
-
-.title {
-  text-align: left;
-  font-size: 3.65vw;
-  line-height: (105 / 70);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: #fff;
-}
-
-.logo {
-  position: relative;
-  top: 1.5vw;
-  width: 39vw;
-  height: auto;
-}
-
-.btn-comenzar-ya {
-  transition: 0s;
-  position: relative;
-  left: 6.5vw;
-  top: 1vw;
-  width: 30vw;
-  height: 6vw;
-  border-radius: 3.8vw;
-  border-width: 0px;
-  background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
-
-.RightArrow {
-  position: relative;
-  top: -0.73vw;
-  left: -1.1vw;
-  width: 2.2vw;
-  height: 1.35vw;
-  transform: rotate(-90deg);
-  transform-origin: center;
-  fill: rgba(240,240,240,1);
-}
-
-.text {
-  position: relative;
-  top: -0.1vw;
-  left: 0.4vw;
-  display: inline-block;
-  font-size: 3vw;
-}
-}
-
-.btn-comenzar-ya:hover {
-  border: 0.26vw solid #f96ea6;
-  border-radius: 3.8vw;
-  background: #202020;
-}
+  top: 20vh;
+  .title {
+    text-align: left;
+    font-size: 3.65vw;
+    line-height: (105 / 70);
+    font-weight: 600;
+    letter-spacing: 0.01vw;
+    color: #fff;
+  }
+  .logo {
+    position: relative;
+    top: 3vh;
+    width: 39vw;
+    height: auto;
+  }
+  .btn-comenzar-ya {
+    transition: 0s;
+    position: relative;
+    left: 6.5vw;
+    top: 2vh;
+    width: 30vw;
+    height: 11.8vh;
+    border-radius: 3.8vw;
+    background: linear-gradient(-90deg, #634dfc 0%, #da71ff 100%);
+    border: transparent;
+    .RightArrow {
+      display: inline-block;
+      position: relative;
+      top: 2.4vh;
+      left: -1.1vw;
+      width: 2.2vw;
+      height: auto;
+      transform: rotate(-90deg);
+      transform-origin: center;
+      fill: rgba(240, 240, 240, 1);
+    }
+    .text {
+      position: relative;
+      top: 3.9vh;
+      left: 0.4vw;
+      display: inline-block;
+      font-size: 3vw;
+      color: #fff;
+    }
+  }
+  .btn-comenzar-ya:hover {
+    border: 0.26vw solid #f96ea6;
+    border-radius: 3.8vw;
+    background: #202020;
+    .RightArrow {
+      top: 1.9vh;
+    }
+    .text {
+      top: 3.4vh;
+    }
+  }
 }
 </style>

@@ -6,10 +6,12 @@
                     <img src="../assets/SignUpBG.png" style="width: 28.5vw; height: auto;">
                 </b-col>
                 <b-col>
-                    <img class="close-x" src="../assets/CloseX.png">
+                    <router-link to="/">
+                        <img class="close-x" src="../assets/CloseX.png">
+                    </router-link>
                     <form class="login-form">
                         <h1 class="registrate-header">Regístrate en Equilibrium</h1>
-                        <h3 class="text">¿Ya tienes cuenta? <a class="form-link" href="" target="_blank" rel="noopener">Inicia sesión aquí</a></h3>
+                        <h3 class="text">¿Ya tienes cuenta? <a class="form-link" href="/login" rel="noopener">Inicia sesión aquí</a></h3>
                         <div class="form-text">
                             <label for="InputUsername">Username</label>
                             <input type="text" class="form-control" required id="InputUsername">
@@ -32,7 +34,7 @@
                         </div>
 
                     </form>
-                    <button class="register-btn">REGISTRARSE</button>
+                    <b-button class="register-btn" text to="/sign-up-complete"><p class="text">REGISTRARSE</p></b-button>
                 </b-col>
             </b-row>
         </b-container>
@@ -47,7 +49,7 @@
 
 <style lang="scss">
     .SignUp {
-        height: 100%;
+        height: 100vh;
         display: grid;
         background-image: url("../assets/SimpleBG.png");
         background-repeat: no-repeat;
@@ -56,17 +58,13 @@
     }
 
     .registrate-header{
-        font-family: Gilroy ☞;
-        text-align: left;
-        font-size: 20px;
-        font-weight: 700;
-        color: #202020;
-        position: relative;
-
+      text-align: left;
+      font-size: 1.7vw;
+      font-weight: 700;
+      color: #202020;
     }
 
     .form-text {
-        font-family: Gilroy ☞;
         text-align: left;
         font-size: 14px;
         font-weight: 500;
@@ -76,7 +74,6 @@
     }
 
     .form-text:focus-within {
-        font-family: Gilroy ☞;
         text-align: left;
         font-size: 14px;
         font-weight: 500;
@@ -84,7 +81,6 @@
     }
 
     .form-link{
-        font-family: Gilroy ☞;
         font-size: 14px;
         font-weight: 500;
         position: relative;
@@ -93,7 +89,6 @@
     }
 
     .form-control{
-        font-family: Gilroy ☞;
         text-align: left;
         font-size: 16px;
         font-weight: 500;
@@ -101,7 +96,6 @@
     }
 
     .text {
-        font-family: Gilroy ☞;
         text-align: left;
         font-size: 14px;
         font-weight: 500;
@@ -123,22 +117,46 @@
     }
 
     .register-btn {
-        width: 25vw;
-        height: 35px;
-        border-radius: 50px;
-        background: linear-gradient(90deg, #7591ff 0%, #4dd1be 100%);
-        font-family: Gilroy ☞;
-        font-size: 16px;
-        line-height: (9 / 20);
+      width: 25vw;
+      height: 5vh;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #7591ff 0%, #4dd1be 100%);
+      font-size: 1vw;
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      line-height: (9 / 20);
+      font-weight: 500;
+      color: #fff;
+      border-width: 0;
+      margin-top: 5vh;
+      .text{
+        font-size: 1vw;
         font-weight: 500;
+        margin-left: -0.5vw;
+        margin-top: 1vh;
         color: #fff;
-        border-width: 0;
-        margin-top: 5%;
-        margin-bottom: 4%;
+      }
     }
 
     .login-form > * {
         margin-left: 6.5%;
         margin-bottom: 5%;
+    }
+    #InputUsername, #InputPassword, #InputEmail, #InputConfirmPassword, #FechaNac{
+      width: 24vw;
+      margin-left: 0;
+      border-top: transparent;
+      border-left: transparent;
+      border-right: transparent;
+      border-radius: 0;
+      border-width: 0.2vw;
+    }
+    #InputUsername:focus, #InputPassword:focus, #InputEmail:focus, #InputConfirmPassword:focus, #FechaNac:focus{
+      border-color: #4D56D1;
+      outline: none 0 !important;
+      box-shadow: none;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
     }
 </style>

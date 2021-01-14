@@ -2,24 +2,24 @@
     <div class="VerCuentas">
         <div class="sidenav">
             <img src="../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-            <b-button class="category" href="#">
+            <b-button class="category" href="/dashboard">
             <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text s-text-active">Dashboard</p>
+                <p class="s-text">Dashboard</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/add-client-1">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Añadir cliente</p>
             </b-button>
-            <b-button class="category category-active" href="#">
-                <svg class="category-indicator" width="10" height="61" viewBox="0 0 10 61"><defs><clipPath><rect width="10" height="61"/></clipPath></defs><g clip-path="url(#clip-path)"><rect width="228" height="59" rx="8"/></g></svg>
+            <b-button class="category category-active" href="view-accounts">
+                <img src="../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
-                <p class="s-text">Ver cuentas</p>
+                <p class="s-text s-text-active">Ver cuentas</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-payment">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar pago</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-sale">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar venta</p>
             </b-button>
@@ -54,7 +54,7 @@
                         <b-button class="pr-action">
                             <div class="pr-text"><p>• Perfil</p></div>
                         </b-button>
-                        <b-button class="pr-action">
+                        <b-button class="pr-action" href="login">
                             <div class="pr-text"><p>• Cerrar sesión</p></div>
                         </b-button>
                     </b-dropdown>
@@ -84,344 +84,137 @@
                         <div class="sm-card-icon"><img src="../assets/RateIcon.png" style="width: 3.9vw; height: auto;"></div>
                     </b-card>
                 </div>
-
-                <div class="medium-card">
+                <li v-for="(client, index) in clientInfo" :key="index" style="list-style-type: none;display: inline">
+                  <div class="medium-card">
                     <b-card class="top cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">José Torres</b-card-body>
-                        <div class="amount-1 title">S/1,356.02</div>
+                      <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
+                      <b-card-body class="title">
+                          <router-link :to="`/movements/${client.id}`">
+                              <a style="color: black"><u>{{client.firstName+" "+client.lastName}}</u></a>
+                          </router-link>
+                      </b-card-body>
+                      <div class="amount-1">{{"S/ "+client.creditAmount}}</div>
                     </b-card>
                     <b-card class="bottom">
-                        <div class="info">Tipo de tasa: Efectiva</div>
-                        <div class="info">Tasa de interés: 3% Mensual</div>
-                        <div class="info">Mantenimiento: S/5.00 Mensual</div>
-                        <div class="info">Delivery: S/2.00 por entrega</div>
-                        <b-button class="they-paid-btn">
-                            <div class="text">Me pagó</div>
-                        </b-button>
-                        <b-button class="i-sold-btn">
-                            <div class="text">Le vendí</div>
-                        </b-button>
-                    </b-card>
-                </div>
+                      <div class="info">Tipo de tasa: {{client.rate.type}}</div>
+                      <div v-if="client.rate.period == 30" class="info">Tasa de interés: {{client.rate.value+"% Mensual"}}</div>
+                      <div v-if="client.rate.period == 60" class="info">Tasa de interés: {{client.rate.value+"% Bimestral"}}</div>
+                      <div v-if="client.rate.period == 90" class="info">Tasa de interés: {{client.rate.value+"% Trimestral"}}</div>
+                      <div v-if="client.rate.period == 120" class="info">Tasa de interés: {{client.rate.value+"% Cuatrimestral"}}</div>
+                      <div v-if="client.rate.period == 180" class="info">Tasa de interés: {{client.rate.value+"% Semestral"}}</div>
+                      <div v-if="client.rate.period == 360" class="info">Tasa de interés: {{client.rate.value+"% Anual"}}</div>
+                      <div v-if="client.rate.capitalization == 7" class="info">Capitalización: Semanal</div>
+                      <div v-if="client.rate.capitalization == 15" class="info">Capitalización: Quincenal</div>
+                      <div v-if="client.rate.capitalization == 30" class="info">Capitalización: Mensual</div>
+                      <div v-if="client.rate.capitalization == 60" class="info">Capitalización: Bimestral</div>
+                      <div v-if="client.rate.capitalization == 90" class="info">Capitalización: Trimestral</div>
+                      <div v-if="client.rate.capitalization == 120" class="info">Capitalización: Cuatrimestral</div>
+                      <div v-if="client.rate.capitalization == 180" class="info">Capitalización: Semestral</div>
+                      <div v-if="client.maintenanceFee.period == 's'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Semanal"}}</div>
+                      <div v-if="client.maintenanceFee.period == 'm'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Mensual"}}</div>
+                      <div v-if="client.maintenanceFee.period == 'q'" class="info">Mantenimiento: {{"S/"+client.maintenanceFee.value+" Quincenal"}}</div>
+                      <div v-if="client.deliveryFee.type == 'Pedido'" class="info">Delivery: {{"S/"+client.deliveryFee.value+" "+" por entrega"}}</div>
+                      <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 7" class="info">
+                          Delivery: {{"S/"+client.deliveryFee.value+" Semanal"}}
+                      </div>
+                        <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 15" class="info">
+                            Delivery: {{"S/"+client.deliveryFee.value+" Quincenal"}}
+                        </div>
+                        <div v-if="client.deliveryFee.type == 'Periodo' && client.deliveryFee.frequency == 30" class="info">
+                            Delivery: {{"S/"+client.deliveryFee.value+" Mensual"}}
+                        </div>
 
-                <div class="medium-card">
-                    <b-card class="top dark-cyan">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Marina Zárate</b-card-body>
-                        <div class="amount-2 title">S/920.09</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <div class="info">Tipo de tasa: Nominal</div>
-                        <div class="info">Tasa de interés: 2% Mensual</div>
-                        <div class="info">Mantenimiento: Sin mantenimiento</div>
-                        <div class="info">Delivery: S/10.00 por entrega</div>
-                        <b-button class="they-paid-btn">
-                            <div class="text">Me pagó</div>
-                        </b-button>
-                        <b-button class="i-sold-btn">
-                            <div class="text">Le vendí</div>
-                        </b-button>
-                    </b-card>
-                </div>
+                        <router-link :to="`/register-payment-1/${client.id}`">
+                            <b-button class="they-paid-btn">
+                                <div class="text">Me pagó</div>
+                            </b-button>
+                        </router-link>
 
-                <div class="medium-card">
-                    <b-card class="top purple">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Jenny Castro</b-card-body>
-                        <div class="amount-3 title">S/846.50</div>
-                    </b-card>
-                    <b-card class="bottom">
-                        <div class="info">Tipo de tasa: Simple</div>
-                        <div class="info">Tasa de interés: 15% Anual</div>
-                        <div class="info">Mantenimiento: S/3.00 Quincenal</div>
-                        <div class="info">Delivery: S/25.00 por mes</div>
-                        <b-button class="they-paid-btn">
-                            <div class="text">Me pagó</div>
-                        </b-button>
-                        <b-button class="i-sold-btn">
-                            <div class="text">Le vendí</div>
-                        </b-button>
-                    </b-card>
-                </div>
+                        <router-link :to="`/register-sale-1/${client.id}`">
+                            <b-button class="i-sold-btn">
+                                <div class="text">Le vendí</div>
+                            </b-button>
+                        </router-link>
 
-                <div class="medium-card">
-                    <b-card class="top pink">
-                        <div class="graph-icon"><img src="../assets/MovementIcon.png"></div>
-                        <b-card-body class="title">Julieta Olórtegui</b-card-body>
-                        <div class="amount-4 title">S/645.12</div>
                     </b-card>
-                    <b-card class="bottom">
-                        <div class="info">Tipo de tasa: Efectiva</div>
-                        <div class="info">Tasa de interés: 3% Mensual</div>
-                        <div class="info">Mantenimiento: S/5.00 Mensual</div>
-                        <div class="info">Delivery: S/2.00 por entrega</div>
-                        <b-button class="they-paid-btn">
-                            <div class="text">Me pagó</div>
-                        </b-button>
-                        <b-button class="i-sold-btn">
-                            <div class="text">Le vendí</div>
-                        </b-button>
-                    </b-card>
-                </div>
-
+                  </div>
+                </li>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { baseUrl } from '../shared/baseUrl';
     export default {
-        name: "VerCuentas"
+        name: "VerCuentas",
+        mounted() {
+          //get all clients
+          this.axios
+              .get(baseUrl + 'commerces/1/clients')
+              .then(responseUser => {
+                this.clientInfo = responseUser.data.content;
+                this.rateTypeFormat();
+                this.rateValueFormat();
+              });
+
+        },
+        methods: {
+            rateTypeFormat(){
+                for(let i = 0; i < this.clientInfo.length; i++){
+                    let r = this.clientInfo[i].rate;
+                    r = r.type[0].toUpperCase()+r.type.slice(1)
+                    this.clientInfo[i].rate.type = r;
+                }
+            },
+            rateValueFormat(){
+                for(let i = 0; i < this.clientInfo.length; i++){
+                    let r = this.clientInfo[i].rate;
+                    let period = '';
+                    switch (r.period){
+                        case 30: period='mensual'; break;
+                        case 60: period='bimestral'; break;
+                        case 90: period='trimestral'; break;
+                        case 120: period='cuatrimestral'; break;
+                        case 180: period='semestral'; break;
+                        case 360: period='anual'; break;
+                    }
+                this.ratePeriod = "% "+period;
+                    //console.log(this.ratePeriod);
+                 }
+            },
+        },
+        data() {
+            return {
+                clientInfo: [],
+                rateType: '',
+                ratePeriod: '',
+                maintenancePeriod: '',
+                deliveryFee: ''
+            }
+        }
     }
 </script>
 
 <style lang="scss">
-    /*scrollbar*/
-    /* width */
-    ::-webkit-scrollbar {
-        width: 5px;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: #222222;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: #4FC0D1;
-        border-radius: 3px;
-    }
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #7ADFCD;
-    }
+@import "../assets/scss/styles.scss";
     body{
         overflow-x: hidden;
-    }
-    .sidenav {
-        height: 100%;
-        width: 14.74vw;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #202020;
-        overflow-x: hidden;
-        padding-top: 1.77vw;
-    }
-
-    .sidenav .logo {
-        margin: 0 auto 1.7vw auto;
-        width: 10.83vw;
-        height: auto;
-    }
-
-    .sidenav .category {
-        width: 11.5vw;
-        height: 3.1vw;
-        margin: 0 auto 1.7vh 1.9vw;
-        text-decoration: none;
-        font-size: 1em;
-        color: #818181;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0.42vw;
-        background: #fff;
-        text-align: left;
-        border: transparent;
-    }
-
-    .sidenav .category:hover {
-        background: #ddd;
-    }
-
-    .sidenav .category:focus {
-        background: #fff;
-    }
-
-    .sidenav .category-indicator {
-        position: relative;
-        left: -2.5vw;
-        top: 0.09vh;
-        fill: #A5FFC9;
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-    }
-
-    .sidenav .category-active {
-        border-radius: 0.42vw;
-        background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
-    }
-
-    .sidenav .category-active:hover, .sidenav .category-active:focus {
-        background: linear-gradient(135deg, #a5ffc9 0%, #4dbfd1 100%);
-    }
-
-    .sidenav .s-circle {
-        position: absolute;
-        left: 3vw;
-        margin: auto;
-        width: 1.04vw;
-        height: 1.04vw;
-        fill: #282a3f;
-    }
-
-    .sidenav .s-circle-active {
-        fill: #584FD8;
-    }
-
-    .sidenav .s-text {
-        margin: 0.81vh auto auto 2.5vw;
-        font-size: 1.1vw;
-        font-weight: 500;
-        color: #282a3f;
-        white-space: nowrap;
-    }
-
-    .sidenav .s-text-active {
-        position: relative;
-        left: -0.5vw;
-        font-weight: 600;
-        color: #584fd8;
     }
 
     /* Style page content */
     .main {
         margin-left: 14.7vw;
-        margin-top: -2px;
+        margin-top: -1px;
         width: 85.26vw;
-        height: 158vh;
+        height: auto;
+        min-height: 100vh;
         background-image: url("../assets/DashboardBG.png");
-        background-repeat: no-repeat;
+        background-position: top left;
+        background-color: #202020;
+        background-repeat: repeat-y;
         background-origin: content-box;
-    }
-
-    .main .navbar {
-        padding: 1vw 2.29vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .main .navbar .nav-hamburger {
-        width: 1.04vw;
-        height: auto;
-        margin: auto 0;
-    }
-
-    .main .navbar .nav-search {
-        width: 0.89vw;
-        height: auto;
-        margin: auto 0 auto 2.81vw;
-    }
-
-    .nav-text {
-        font-size: 1vw;
-        line-height: 1.1vw;
-        font-weight: 500;
-        letter-spacing: 0.025em;
-        color: #8e8e8e;
-        margin: auto 0 auto 0.83vw;
-        padding-top: 0.18vh;
-    }
-
-    .main .nav-notification {
-        width: 5.57vw;
-        height: 3.33vw;
-        border-radius: 0.89vw;
-        background: #fff;
-        margin-left: 53.13vw;
-    }
-
-    .not-title {
-        font-size: 1.8vw;
-        margin: 1.8vh auto 0 1.5vw;
-        color: #584FD8;
-    }
-
-    .nav-notification /deep/ .dropdown-menu {
-        background-color: #fff;
-        border-radius: 0.89vw;
-        margin-top: 1.8vh;
-        border: transparent !important;
-        box-shadow: -6px -4px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .not-card {
-        font-size: 1vw;
-        width: 15vw;
-        border-radius: 0.89vw;
-        background: #eee;
-        border: transparent !important;
-        margin: 1.24vh 0.5vw;
-        box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .not-card-text {
-        color: #444;
-        font-weight: 400;
-    }
-
-    .nav-profile {
-        margin-left: 1.93vw;
-        width: 12.24vw;
-        height: 3.33vw;
-        border-radius: 0.89vw;
-        background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
-    }
-
-    .pr-name {
-        font-size: 0.9vw;
-        font-weight: 600;
-        display: block;
-        width: 5.88vw;
-        height: 1.98vw;
-        color: #202020;
-    }
-
-    .pr-business{
-        font-size: 0.8vw;
-        font-weight: 400;
-        display: block;
-        width: 4.53vw;
-        height: 0.94vw;
-        color: #727272;
-    }
-
-    .nav-profile /deep/ .dropdown-menu {
-        background-color: #fff;
-        border-radius: 0.89vw;
-        border: transparent;
-        box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-        margin-top: 1.8vh;
-        width: 12.24vw;
-    }
-
-    .pr-title {
-        color: #4DBFD1;
-        margin-bottom: 2.13vh;
-    }
-
-    .pr-action {
-        width: 10vw;
-        height: 3.07vw;
-        border-radius: 0.42vw;
-        background: #fff !important;
-        border: transparent !important;
-        margin: 0.89vh 0 1.8vh 1vw;
-        box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .pr-text {
-        font-size: 1.15vw;
-        font-weight: 600;
-        margin: 0.53vh 0 0 0;
-        color: #282a3f;
-        white-space: nowrap;
+        border-left: #888 solid 2px;
     }
 
     .title {
@@ -482,7 +275,7 @@
     .medium-card {
         width: 39.48vw;
         height: 47.31vh;
-        margin: 2vw 1vw 2vw 1.30vw;
+        margin: 2vw 1vw 6.5vh 1.30vw;
         display: inline-block;
         .top {
             height: 5.21vw;
@@ -491,41 +284,32 @@
             align-items: flex-start;
             border-radius: 1.5vw 1.5vw 0 0;
             border: transparent;
-            .graph-icon {
-                display: inline-block;
-                position: relative;
-                top: -1.75vh;
-                left: 0.5vw;
-            }
-            .title{
-                font-size: 1.82vw;
-                line-height: 1;
-                font-weight: 600;
-                color: #000;
-                display: inline-block;
-                margin-top: -1.5vh;
-                margin-left: 1vw;
-            }
-            .amount-1{
-                display: inline-block;
-                position: relative;
-                left: 8.75vw;
-            }
-            .amount-2{
-                display: inline-block;
-                position: relative;
-                left: 8.2vw;
-            }
-            .amount-3{
-                display: inline-block;
-                position: relative;
-                left: 6.88vw;
-            }
-            .amount-4{
-                display: inline-block;
-                position: relative;
-                left: 6vw;
-            }
+          .graph-icon {
+            display: inline-block;
+            position: relative;
+            top: 0;
+            left: 1vw;
+          }
+          .title{
+            font-size: 1.82vw;
+            font-weight: 600;
+            color: #000;
+            display: inline-block;
+            margin-top: -2.5vh;
+            margin-left: 2vw;
+            position: relative;
+            top: 0.5vh;
+          }
+          .amount-1{
+            font-size: 1.82vw;
+            font-weight: 600;
+            color: #000;
+            text-align: right;
+            display: inline-block;
+            position: absolute;
+            right: 3vw;
+            top: 3.3vh;
+          }
         }
         .cyan{
             background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
@@ -571,7 +355,6 @@
                 .text{
                     font-family: Gilroy ☞;
                     font-size: 1.46vw;
-                    line-height: 0;
                     font-weight: 600;
                     color: #fff;
                 }
@@ -588,7 +371,6 @@
                 .text{
                     font-family: Gilroy ☞;
                     font-size: 1.46vw;
-                    line-height: 0;
                     font-weight: 600;
                     color: #fff;
                 }

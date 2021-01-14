@@ -2,24 +2,24 @@
   <div class="AddClientS2">
     <div class="sidenav">
       <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-      <b-button class="category" href="#">
+      <b-button class="category" href="/dashboard">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Dashboard</p>
       </b-button>
-      <b-button class="category category-active" href="#">
-        <svg class="category-indicator" width="10" height="61" viewBox="0 5 8 61"><defs><clipPath><rect width="10" height="61"/></clipPath></defs><g clip-path="url(#clip-path)"><rect width="228" height="70" rx="8"/></g></svg>
+      <b-button class="category category-active" href="/add-client-1">
+        <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text s-text-active">Añadir cliente</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/view-accounts">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Ver cuentas</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/register-payment">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar pago</p>
       </b-button>
-      <b-button class="category" href="#">
+      <b-button class="category" href="/register-sale">
         <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
         <p class="s-text">Registrar venta</p>
       </b-button>
@@ -54,7 +54,7 @@
             <b-button class="pr-action">
               <div class="pr-text"><p>• Perfil</p></div>
             </b-button>
-            <b-button class="pr-action">
+            <b-button class="pr-action" to="/login">
               <div class="pr-text"><p>• Cerrar sesión</p></div>
             </b-button>
           </b-dropdown>
@@ -67,18 +67,25 @@
             <div class="graph-icon"><img src="../../assets/AddClient/AddClientIcon.png"></div>
             <b-card-body class="title">Paso 2 de 5</b-card-body>
             <div class="navigation">
-              <div><img src="../../assets/AddClient/LeftArrow.png"></div>
-              <div><p class="text">Anterior</p></div>
-              <div><p class="text">Siguiente</p></div>
-              <div><img src="../../assets/AddClient/RightArrow.png"></div>
+              <router-link to="/add-client-1">
+                <div><img src="../../assets/AddClient/LeftArrow.png"></div>
+              </router-link>
+              <div><a to="/add-client-1"><p class="text">Anterior</p></a></div>
+              <div><a to="/add-client-3" disabled><p class="text">Siguiente</p></a></div>
+              <router-link to="/add-client-3" disabled>
+
+                <div><img src="../../assets/AddClient/RightArrow.png"></div>
+              </router-link>
             </div>
           </b-card>
           <b-card class="bottom">
             <div><h2 class="title">¿Con qué moneda<br>
               abrimos la cuenta?</h2></div>
             <div class="btn-container">
-              <div style="display: inline-block"><b-button class="choice">Soles</b-button></div>
-              <div style="display: inline-block"><b-button class="choice second">Dólares</b-button></div>
+              <div style="display: inline-block" @click="onClick('s')">
+                <b-button class="choice" to="/add-client-3"><p class="text">Soles</p></b-button></div>
+              <div style="display: inline-block" @click="onClick('d')">
+                <b-button class="choice second" to="/add-client-3"><p class="text">Dólares</p></b-button></div>
             </div>
             <div class="illustration"><img src="../../assets/AddClient/Step2.png"></div>
           </b-card>
@@ -89,271 +96,44 @@
 </template>
 
 <script>
+import {baseUrl} from "@/shared/baseUrl";
+
 export default {
-  name: "AddClientS2"
+  name: "AddClientS2",
+  methods: {
+    onClick(moneda){
+      this.axios.post(baseUrl+'commerces/1/clients', {
+        firstName: this.$store.getters.clientFirstName,
+        lastName: this.$store.getters.clientLastName,
+        currency: moneda
+      }).then(responseClient => {
+        this.$store.commit('clientId', responseClient.data.id);
+        console.log(this.$store.getters.clientId)
+      })
+      this.$store.commit('clientFirstName', '');
+      this.$store.commit('clientLastName', '');
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-/*scrollbar*/
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
+@import "../../assets/scss/styles.scss";
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #222222;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #4FC0D1;
-  border-radius: 3px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #7ADFCD;
-}
 body{
   overflow-x: hidden;
   overflow-y: hidden;
 }
-.sidenav {
-  height: 100%;
-  width: 14.74vw;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #202020;
-  overflow-x: hidden;
-  padding-top: 1.77vw;
-}
-
-.sidenav .logo {
-  margin: 0 auto 1.7vw auto;
-  width: 10.83vw;
-  height: auto;
-}
-
-.sidenav .category {
-  width: 11.5vw;
-  height: 3.1vw;
-  margin: 0 auto 1.7vh 1.9vw;
-  text-decoration: none;
-  font-size: 1em;
-  color: #818181;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.42vw;
-  background: #fff;
-  text-align: left;
-  border: transparent;
-}
-
-.sidenav .category:hover {
-  background: #ddd;
-}
-
-.sidenav .category:focus {
-  background: #fff;
-}
-
-.sidenav .category-indicator {
-  position: relative;
-  left: -2.5vw;
-  top: 0.09vh;
-  fill: #A5FFC9;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-}
-
-.sidenav .category-active {
-  border-radius: 0.42vw;
-  background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
-}
-
-.sidenav .category-active:hover, .sidenav .category-active:focus {
-  background: linear-gradient(135deg, #a5ffc9 0%, #4dbfd1 100%);
-}
-
-.sidenav .s-circle {
-  position: absolute;
-  left: 3vw;
-  margin: auto;
-  width: 1.04vw;
-  height: 1.04vw;
-  fill: #282a3f;
-}
-
-.sidenav .s-circle-active {
-  fill: #584FD8;
-}
-
-.sidenav .s-text {
-  margin: 0.81vh auto auto 2.5vw;
-  font-size: 1.1vw;
-  font-weight: 500;
-  color: #282a3f;
-  white-space: nowrap;
-}
-
-.sidenav .s-text-active {
-  position: relative;
-  left: -0.5vw;
-  font-weight: 600;
-  color: #584fd8;
-}
 
 /* Style page content */
 .main {
-  margin-left: 14.7vw;
+  margin-left: 14.8vw;
   margin-top: -2px;
   width: 85.3vw;
   height: 102vh;
   background-image: url("../../assets/DashboardBG.png");
   background-repeat: no-repeat;
   background-origin: content-box;
-}
-
-.main .navbar {
-  padding: 1vw 2.29vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.main .navbar .nav-hamburger {
-  width: 1.04vw;
-  height: auto;
-  margin: auto 0;
-}
-
-.main .navbar .nav-search {
-  width: 0.89vw;
-  height: auto;
-  margin: auto 0 auto 2.81vw;
-}
-
-.nav-text {
-  font-size: 1vw;
-  line-height: 1.1vw;
-  font-weight: 500;
-  letter-spacing: 0.025em;
-  color: #8e8e8e;
-  margin: auto 0 auto 0.83vw;
-  padding-top: 0.18vh;
-}
-
-.main .nav-notification {
-  width: 5.57vw;
-  height: 3.33vw;
-  border-radius: 0.89vw;
-  background: #fff;
-  margin-left: 53.13vw;
-  position: relative;
-  top: 1vh;
-}
-
-.not-title {
-  font-size: 1.8vw;
-  margin: 1.8vh auto 0 1.5vw;
-  color: #584FD8;
-}
-
-.nav-notification /deep/ .dropdown-menu {
-  background-color: #fff;
-  border-radius: 0.89vw;
-  margin-top: 1.8vh;
-  border: transparent !important;
-  box-shadow: -6px -4px 30px rgba(0, 0, 0, 0.2);
-}
-
-.not-card {
-  font-size: 1vw;
-  width: 15vw;
-  border-radius: 0.89vw;
-  background: #eee;
-  border: transparent !important;
-  margin: 1.24vh 0.5vw;
-  box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-}
-
-.not-card-text {
-  color: #444;
-  font-weight: 400;
-}
-
-.nav-profile {
-  margin-left: 1.93vw;
-  width: 12.24vw;
-  height: 3.33vw;
-  border-radius: 0.89vw;
-  background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
-  position: absolute;
-  top: 1vh;
-}
-
-.pr-name {
-  font-size: 0.9vw;
-  font-weight: 600;
-  display: block;
-  width: 5.88vw;
-  height: 1.98vw;
-  color: #202020;
-}
-
-.pr-business{
-  font-size: 0.8vw;
-  font-weight: 400;
-  display: block;
-  width: 4.53vw;
-  height: 0.94vw;
-  color: #727272;
-  margin-top: -0.3vh;
-}
-
-.nav-profile /deep/ .dropdown-menu {
-  background-color: #fff;
-  border-radius: 0.89vw;
-  border: transparent;
-  box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-  margin-top: 1.8vh;
-  width: 12.24vw;
-}
-
-.pr-title {
-  color: #4DBFD1;
-  margin-bottom: 2.13vh;
-}
-
-.pr-action {
-  width: 10vw;
-  height: 3.07vw;
-  border-radius: 0.42vw;
-  background: #fff !important;
-  border: transparent !important;
-  margin: 0.89vh 0 1.8vh 1vw;
-  box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-}
-
-.pr-text {
-  font-size: 1.15vw;
-  font-weight: 600;
-  margin: 0.53vh 0 0 0;
-  color: #282a3f;
-  white-space: nowrap;
-}
-
-.title {
-  margin-left: 2.2vw;
-  text-align: left;
-  font-size: 2.6vw;
-  font-weight: 600;
-  color: #e5e5e5;
 }
 
 div.card-header {
@@ -432,6 +212,9 @@ div.card-header {
         color: #fff;
         box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
         margin-left: 3.28vw;
+        .text{
+          margin-top: 0.6vh;
+        }
       }
       .second {
         background: linear-gradient(90deg, #f8a74b 0%, #f96ea6 100%);

@@ -2,24 +2,24 @@
     <div class="AddClientS6_1">
         <div class="sidenav">
             <img src="../../assets/EquilibriumLogo.png" class="logo" alt="LogoEquilibrium">
-            <b-button class="category" href="#">
+            <b-button class="category" href="/dashboard">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Dashboard</p>
             </b-button>
-            <b-button class="category category-active" href="#">
-                <svg class="category-indicator" width="10" height="61" viewBox="0 5 8 61"><defs><clipPath><rect width="10" height="61"/></clipPath></defs><g clip-path="url(#clip-path)"><rect width="228" height="70" rx="8"/></g></svg>
+            <b-button class="category category-active" href="/add-client-1">
+                <img src="../../assets/CategoryIndicator.png" style="height: 6.5vh; position: absolute; left: 0">        <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <svg class="s-circle s-circle-active" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text s-text-active">Añadir cliente</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/view-accounts">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Ver cuentas</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-payment">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar pago</p>
             </b-button>
-            <b-button class="category" href="#">
+            <b-button class="category" href="/register-sale">
                 <svg class="s-circle" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
                 <p class="s-text">Registrar venta</p>
             </b-button>
@@ -54,7 +54,7 @@
                         <b-button class="pr-action">
                             <div class="pr-text"><p>• Perfil</p></div>
                         </b-button>
-                        <b-button class="pr-action">
+                        <b-button class="pr-action" href="/login">
                             <div class="pr-text"><p>• Cerrar sesión</p></div>
                         </b-button>
                     </b-dropdown>
@@ -69,18 +69,20 @@
                     </b-card>
                     <b-card class="bottom">
                         <div><h2 class="title">¿Que deseo corregir?</h2></div>
-                        <div class="info">Cliente: Jesús Ortega<br>
-                            Moneda: Soles<br>
-                            Tipo de tasa: Efectiva<br>
-                            Tasa de interés: 15% anual<br>
-                            Mantenimiento: S/5.00 Mensual<br>
-                            Delivery: S/10.00 por mes</div>
+                        <div class="info">
+                            <a href="/add-client-1">Cliente: {{clientName}}<br></a>
+                            <a href="/add-client-2">Moneda: {{currency}}<br></a>
+                            <a href="/add-client-3">Tipo de tasa: {{rateType}}<br></a>
+                            <a href="/add-client-3-1">Tasa de interés: {{rateValue}}<br></a>
+                            <a href="/add-client-4">Mantenimiento: {{maintenanceFee}}<br></a>
+                            <a href="/add-client-5">Delivery: {{deliveryFee}}</a>
+                        </div>
                         <div class="illustration" style="z-index: 0"><img src="../../assets/AddClient/Step6.png"></div>
                         <div class="btn-container">
                             <div style="display: inline-block"><b-button class="choice edit">
                                 <div class="text" style="display: inline-block"><p>Modo de edición</p></div>
                             </b-button></div>
-                            <div style="display: inline-block"><b-button class="choice">
+                            <div style="display: inline-block"><b-button class="choice" to="/add-client-6">
                                 <div class="icon" style="display: inline-block"><img src="../../assets/AddClient/Accept.png"></div>
                                 <div class="text" style="display: inline-block; text-decoration: underline"><p>Todo correcto!</p></div>
                             </b-button></div>
@@ -93,423 +95,246 @@
 </template>
 
 <script>
+    import {baseUrl} from "@/shared/baseUrl";
+
     export default {
-        name: "AddClientS6_1"
+        name: "AddClientS6_1",
+      data(){
+        return {
+          clientName: '',
+          currency: '',
+          rateType: '',
+          rateValue: '',
+          maintenanceFee: '',
+          deliveryFee: ''
+        }
+      },
+      mounted() {
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId)
+            .then(responseClient => {
+              console.log(responseClient.data)
+              this.clientName=responseClient.data.firstName+' '+responseClient.data.lastName;
+              let currency = '';
+              switch (responseClient.data.currency) {
+                case "s": currency='Soles'; break;
+                case "d": currency='Dólares'; break;
+              }
+              this.currency=currency;
+            });
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/rates')
+            .then(responseRate => {
+              let rate=responseRate.data;
+              this.rateType=rate.type[0].toUpperCase()+rate.type.slice(1);
+              let period = '';
+              switch (rate.period){
+                case 30: period='mensual'; break;
+                case 60: period='bimestral'; break;
+                case 90: period='trimestral'; break;
+                case 120: period='cuatrimestral'; break;
+                case 180: period='semestral'; break;
+                case 360: period='anual'; break;
+              }
+              this.rateValue=rate.value+'% '+period;
+            });
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/maintenanceFees')
+            .then(r => {
+              let mFee=r.data;
+              let periodM = '';
+              switch (mFee.period){
+                case "s": periodM='Semanal'; break;
+                case "q": periodM='Quincenal'; break;
+                case "m": periodM='Mensual'; break;
+              }
+              this.maintenanceFee='S/'+mFee.value+' '+periodM;
+            })
+        this.axios
+            .get(baseUrl+'commerces/1/clients/'+this.$store.getters.clientId+'/deliveryFees')
+            .then(r => {
+              let dFee=r.data;
+              let periodD='';
+              switch (dFee.type){
+                case "Pedido":
+                  periodD='por Pedido'; break;
+                case "Periodo":
+                  switch (dFee.frequency){
+                    case 7: periodD='por semana'; break;
+                    case 15: periodD='por quincena'; break;
+                    case 30: periodD='por mes'; break;
+                  }
+              }
+              this.deliveryFee='S/'+dFee.value+' '+periodD;
+            })
+      }
     }
 </script>
 
 <style lang="scss">
-    /*scrollbar*/
-    /* width */
-    ::-webkit-scrollbar {
-        width: 5px;
-    }
+@import "../../assets/scss/styles.scss";
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: #222222;
-    }
+/* Style page content */
+.main {
+  margin-left: 14.8vw;
+  margin-top: -2px;
+  width: 85.3vw;
+  height: 102vh;
+  background-image: url("../../assets/DashboardBG.png");
+  background-repeat: no-repeat;
+  background-origin: content-box;
+}
 
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: #4FC0D1;
-        border-radius: 3px;
-    }
+div.card-header {
+  background-color: transparent;
+}
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #7ADFCD;
-    }
-    body{
-        overflow-x: hidden;
-        overflow-y: hidden;
-    }
-    .sidenav {
-        height: 100%;
-        width: 14.74vw;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #202020;
-        overflow-x: hidden;
-        padding-top: 1.77vw;
-    }
+.medium-card {
+  width: 81.1vw;
+  height: 67.41vh;
+  margin: 2vw auto;
 
-    .sidenav .logo {
-        margin: 0 auto 1.7vw auto;
-        width: 10.83vw;
-        height: auto;
-    }
+  .top {
+    height: 5.21vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
+    border-radius: 1.5vw 1.5vw 0 0;
+    border: transparent;
 
-    .sidenav .category {
-        width: 11.5vw;
-        height: 3.1vw;
-        margin: 0 auto 1.7vh 1.9vw;
-        text-decoration: none;
-        font-size: 1em;
-        color: #818181;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 0.42vw;
-        background: #fff;
-        text-align: left;
-        border: transparent;
-    }
-
-    .sidenav .category:hover {
-        background: #ddd;
-    }
-
-    .sidenav .category:focus {
-        background: #fff;
-    }
-
-    .sidenav .category-indicator {
-        position: relative;
-        left: -2.5vw;
-        top: 0.09vh;
-        fill: #A5FFC9;
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-    }
-
-    .sidenav .category-active {
-        border-radius: 0.42vw;
-        background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
-    }
-
-    .sidenav .category-active:hover, .sidenav .category-active:focus {
-        background: linear-gradient(135deg, #a5ffc9 0%, #4dbfd1 100%);
-    }
-
-    .sidenav .s-circle {
-        position: absolute;
-        left: 3vw;
-        margin: auto;
-        width: 1.04vw;
-        height: 1.04vw;
-        fill: #282a3f;
-    }
-
-    .sidenav .s-circle-active {
-        fill: #584FD8;
-    }
-
-    .sidenav .s-text {
-        margin: 0.81vh auto auto 2.5vw;
-        font-size: 1.1vw;
-        font-weight: 500;
-        color: #282a3f;
-        white-space: nowrap;
-    }
-
-    .sidenav .s-text-active {
-        position: relative;
-        left: -0.5vw;
-        font-weight: 600;
-        color: #584fd8;
-    }
-
-    /* Style page content */
-    .main {
-        margin-left: 14.7vw;
-        margin-top: -2px;
-        width: 85.3vw;
-        height: 102vh;
-        background-image: url("../../assets/DashboardBG.png");
-        background-repeat: no-repeat;
-        background-origin: content-box;
-    }
-
-    .main .navbar {
-        padding: 1vw 2.29vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .main .navbar .nav-hamburger {
-        width: 1.04vw;
-        height: auto;
-        margin: auto 0;
-    }
-
-    .main .navbar .nav-search {
-        width: 0.89vw;
-        height: auto;
-        margin: auto 0 auto 2.81vw;
-    }
-
-    .nav-text {
-        font-size: 1vw;
-        line-height: 1.1vw;
-        font-weight: 500;
-        letter-spacing: 0.025em;
-        color: #8e8e8e;
-        margin: auto 0 auto 0.83vw;
-        padding-top: 0.18vh;
-    }
-
-    .main .nav-notification {
-        width: 5.57vw;
-        height: 3.33vw;
-        border-radius: 0.89vw;
-        background: #fff;
-        margin-left: 53.13vw;
-        position: relative;
-        top: 1vh;
-    }
-
-    .not-title {
-        font-size: 1.8vw;
-        margin: 1.8vh auto 0 1.5vw;
-        color: #584FD8;
-    }
-
-    .nav-notification /deep/ .dropdown-menu {
-        background-color: #fff;
-        border-radius: 0.89vw;
-        margin-top: 1.8vh;
-        border: transparent !important;
-        box-shadow: -6px -4px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .not-card {
-        font-size: 1vw;
-        width: 15vw;
-        border-radius: 0.89vw;
-        background: #eee;
-        border: transparent !important;
-        margin: 1.24vh 0.5vw;
-        box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .not-card-text {
-        color: #444;
-        font-weight: 400;
-    }
-
-    .nav-profile {
-        margin-left: 1.93vw;
-        width: 12.24vw;
-        height: 3.33vw;
-        border-radius: 0.89vw;
-        background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
-        position: absolute;
-        top: 1vh;
-    }
-
-    .pr-name {
-        font-size: 0.9vw;
-        font-weight: 600;
-        display: block;
-        width: 5.88vw;
-        height: 1.98vw;
-        color: #202020;
-    }
-
-    .pr-business{
-        font-size: 0.8vw;
-        font-weight: 400;
-        display: block;
-        width: 4.53vw;
-        height: 0.94vw;
-        color: #727272;
-        margin-top: -0.3vh;
-    }
-
-    .nav-profile /deep/ .dropdown-menu {
-        background-color: #fff;
-        border-radius: 0.89vw;
-        border: transparent;
-        box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-        margin-top: 1.8vh;
-        width: 12.24vw;
-    }
-
-    .pr-title {
-        color: #4DBFD1;
-        margin-bottom: 2.13vh;
-    }
-
-    .pr-action {
-        width: 10vw;
-        height: 3.07vw;
-        border-radius: 0.42vw;
-        background: #fff !important;
-        border: transparent !important;
-        margin: 0.89vh 0 1.8vh 1vw;
-        box-shadow: 6px 4px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .pr-text {
-        font-size: 1.15vw;
-        font-weight: 600;
-        margin: 0.53vh 0 0 0;
-        color: #282a3f;
-        white-space: nowrap;
+    .graph-icon {
+      display: inline-block;
+      position: relative;
+      top: -0.5vh;
+      left: 0.5vw;
     }
 
     .title {
-        margin-left: 2.2vw;
-        text-align: left;
-        font-size: 2.6vw;
+      font-size: 1.82vw;
+      line-height: 1;
+      font-weight: 600;
+      color: #000;
+      display: inline-block;
+      margin-top: -1.5vh;
+      margin-left: 1vw;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 17.55vw;
+      position: absolute;
+      right: 4vw;
+      top: 2.5vh;
+
+      .text {
+        font-size: 1.4vw;
         font-weight: 600;
-        color: #e5e5e5;
+        color: #16002f;
+        margin: auto 1vw auto 1vw;
+      }
+    }
+  }
+
+  .bottom {
+    height: 62.2vh;
+    width: 81.1vw;
+    border-radius: 0 0 1.5vw 1.5vw;
+    border: transparent;
+    padding: 1vw 0;
+
+    .title {
+      font-size: 4.17vw;
+      font-weight: 600;
+      color: #000;
+      margin-left: 4vw;
+      margin-top: -0.5vh;
+      margin-bottom: 4.5vh;
     }
 
-    div.card-header {
-        background-color: transparent;
-    }
+    .btn-container {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      margin-top: 30.50vh;
+      margin-left: 32vw;
 
-    .medium-card {
-        width: 81.1vw;
-        height: 67.41vh;
-        margin: 2vw auto;
-        .top {
-            height: 5.21vw;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            background: linear-gradient(90deg, #a5ffc9 0%, #4dbfd1 100%);
-            border-radius: 1.5vw 1.5vw 0 0;
-            border: transparent;
-            .graph-icon {
-                display: inline-block;
-                position: relative;
-                top: -0.5vh;
-                left: 0.5vw;
-            }
-            .title{
-                font-size: 1.82vw;
-                line-height: 0;
-                font-weight: 600;
-                color: #000;
-                display: inline-block;
-                margin-top: -1.5vh;
-                margin-left: 1vw;
-            }
-            .navigation {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 17.55vw;
-                position: absolute;
-                right: 4vw;
-                top: 2.5vh;
+      .choice {
+        width: 19.69vw;
+        height: 9vh;
+        border-radius: 2.24vw;
+        background: linear-gradient(90deg, #6aef9f 0%, #4bf879 100%);
+        border: transparent;
+        font-size: 2.08vw;
+        font-weight: 600;
+        color: #fff;
+        box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
+        margin-left: 3.28vw;
 
-                .text{
-                    font-size: 1.4vw;
-                    font-weight: 600;
-                    color: #16002f;
-                    margin: auto 1vw auto 1vw;
-                }
-            }
+        .icon {
+          margin-left: -0.5vw;
         }
-        .bottom{
-            height: 62.2vh;
-            width: 81.1vw;
-            border-radius: 0 0 1.5vw 1.5vw;
-            border: transparent;
-            padding: 1vw 0;
-            .title{
-                font-size: 4.17vw;
-                font-weight: 600;
-                color: #000;
-                margin-left: 4vw;
-                margin-top: -2vh;
-                margin-bottom: 5vh;
 
-            }
-            .btn-container{
-                position: absolute;
-                z-index: 2;
-                display: flex;
-                margin-top: 30.50vh;
-                margin-left: 32vw;
-                .choice {
-                    width: 19.69vw;
-                    height: 9vh;
-                    border-radius: 2.24vw;
-                    background: linear-gradient(90deg, #6aef9f 0%, #4bf879 100%);
-                    border: transparent;
-                    font-size: 2.08vw;
-                    font-weight: 600;
-                    color: #fff;
-                    box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                    margin-left: 3.28vw;
-                    .icon {
-                        margin-left: -0.5vw;
-                    }
-                    .text {
-                        position: relative;
-                        top: 0.4vh;
-                        margin-left: 1vw;
-                    }
-                }
-                .second {
-                    width: 19.77vw;
-                    .icon {
-                        margin-left: 0;
-                    }
-                    .text {
-                        margin-left: 1.3vw;
-                    }
-                    background: linear-gradient(90deg, #fc9f4d 0%, #ff718e 100%);
-                }
-                .edit{
-                    background: white;
-                    color: #202020;
-                    border: 0.25vw solid #202020;
-                    border-radius: 2.24vw;
-                    .text{
-                        margin-left: 0;
-                        top: 0;
-                    }
-                }
-            }
-            .illustration{
-                position: absolute;
-                bottom: 6vh;
-                left: 45vw;
-                img{
-                    width: 26.6vw;
-                }
-
-            }
-            .next{
-                position: absolute;
-                right: 6vw;
-                width: 15.57vw;
-                height: 9.44vh;
-                border-radius: 51px;
-                background: #202020;
-                box-shadow: 13px 10px 30px rgba(0, 0, 0, 0.2);
-                .indicator{
-                    display: inline-block;
-                    margin-right: 1vw;
-                }
-                .text{
-                    font-family: Gilroy ☞;
-                    font-size: 40px;
-                    line-height: (60 / 40);
-                    font-weight: 600;
-                    color: #282a3f;
-                }
-            }
-            .info{
-                font-family: Gilroy ☞;
-                font-size: 2.085vw;
-                line-height: (60 / 40);
-                font-weight: 600;
-                color: #282a3f;
-                text-align: left;
-                position: absolute;
-                left: 5vw;
-                bottom: 6vh;
-            }
+        .text {
+          position: relative;
+          top: 0.4vh;
+          margin-left: 1vw;
         }
+      }
+
+      .second {
+        width: 19.77vw;
+
+        .icon {
+          margin-left: 0;
+        }
+
+        .text {
+          margin-left: 1.3vw;
+        }
+
+        background: linear-gradient(90deg, #fc9f4d 0%, #ff718e 100%);
+      }
+
+      .edit {
+        background: white;
+        color: #202020;
+        border: 0.25vw solid #202020;
+        border-radius: 2.24vw;
+
+        .text {
+          margin-left: 0;
+          top: 0;
+        }
+      }
     }
+
+    .illustration {
+      position: absolute;
+      bottom: 6vh;
+      left: 45vw;
+
+      img {
+        width: 26.6vw;
+      }
+    }
+
+    .info {
+      font-size: 2.085vw;
+      line-height: (60 / 40);
+      font-weight: 600;
+      color: #282a3f;
+      text-align: left;
+      position: absolute;
+      left: 5.5vw;
+      bottom: 7.5vh;
+    }
+  }
+}
 </style>

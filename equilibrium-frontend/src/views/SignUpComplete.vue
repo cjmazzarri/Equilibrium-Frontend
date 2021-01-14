@@ -6,12 +6,14 @@
                     <img src="../assets/SignUpBG.png" style="width: 28.5vw; height: auto;">
                 </b-col>
                 <b-col>
-                    <img class="close-x" src="../assets/CloseX.png">
+                    <router-link to="/login">
+                        <img class="close-x" src="../assets/CloseX.png">
+                    </router-link>
                     <img class="checkmark" src="../assets/CyanCheckmark.png">
                     <h1 class="registro-header">Registro completado!</h1>
                     <label class="text">Te has registrado en Equilibrium
                         de manera satisfactoria.</label>
-                    <label class="text-italic">Redirigiendo a la página principal.</label>
+                    <label class="text-italic">Redirigiendo al login.</label>
                 </b-col>
             </b-row>
         </b-container>
@@ -20,7 +22,10 @@
 
 <script>
     export default {
-        name: "SignUpComplete"
+      name: "SignUpComplete",
+      created() {
+        setTimeout(function(){location.href="/login"}, 3000);
+      }
     }
 </script>
 
@@ -36,7 +41,7 @@
 
     .registro-header{
         font-family: Gilroy ☞;
-        font-size: 30px;
+        font-size: 2vw;
         font-weight: 700;
         text-decoration: underline;
         color: #202020;
@@ -46,7 +51,7 @@
 
     .text{
         font-family: Gilroy ☞;
-        font-size: 16px;
+        font-size: 1.5vw;
         line-height: (35 / 25);
         font-weight: 400;
         color: #202020;
@@ -58,7 +63,7 @@
 
     .text-italic{
         font-family: Gilroy-MediumItalic ☞;
-        font-size: 16px;
+        font-size: 1.5vw;
         line-height: (35 / 25);
         font-weight: 400;
         font-style: italic;

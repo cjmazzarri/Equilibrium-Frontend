@@ -1,16 +1,14 @@
 <template>
   <div id="app">
-    <AddClientS5_2/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import AddClientS5_2 from "@/views/AddClient/AddClientS5_2";
 
 export default {
   name: 'App',
   components: {
-    AddClientS5_2
   }
 }
 </script>

@@ -6,7 +6,9 @@
                     <img src="../assets/LoginBGWithLine.png" style="width: 28.5vw; height: auto;">
                 </b-col>
                 <b-col>
-                    <img src="../assets/RedCloseX.png" style="position: relative; left: 13.5vw; bottom: 14%; width: 1vw; height: auto">
+                    <router-link to="/">
+                        <img src="../assets/RedCloseX.png" style="position: relative; left: 13.5vw; bottom: 14%; width: 1vw; height: auto">
+                    </router-link>
                     <img src="../assets/CyanCheckmark.png" style="position: relative; right: 11vw; margin-top: 46%;
                     margin-bottom: 6%; width: 3vw; height: auto">
                     <h1 class="correo-enviado-header">Correo de
