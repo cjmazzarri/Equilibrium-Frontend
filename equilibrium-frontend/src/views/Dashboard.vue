@@ -148,12 +148,16 @@ body{
 /* Style page content */
 .main {
   margin-left: 14.7vw;
-  margin-top: -2px;
+  margin-top: -1px;
   width: 85.26vw;
-  height: 158vh;
+  height: auto;
+  min-height: 170vh;
   background-image: url("../assets/DashboardBG.png");
-  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: #202020;
+  background-repeat: repeat-y;
   background-origin: content-box;
+  border-left: #888 solid 2px;
 }
 
 .res-card {
@@ -206,7 +210,7 @@ div.card-header {
 .medium-card {
   width: 81.1vw;
   height: 47.31vh;
-  margin: 2vw auto;
+  margin: 2vw 0vw 4vw 2vw;
   .top {
     height: 5.21vw;
     display: flex;
