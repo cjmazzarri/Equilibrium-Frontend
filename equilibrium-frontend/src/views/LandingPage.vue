@@ -93,6 +93,8 @@ u {
       color: #eee;
       position: relative;
       left: 1vw;
+      display: grid;
+      place-items: center;
     }
   }
   .nav-btn-registrarse {
