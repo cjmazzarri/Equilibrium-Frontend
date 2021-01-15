@@ -52,6 +52,7 @@ export default {
 .SignUp {
   height: 100vh;
   display: grid;
+  place-items: center;
   background-image: url("../assets/SimpleBG.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
