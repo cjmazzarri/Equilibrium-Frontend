@@ -1,6 +1,6 @@
 <template>
   <div class="SignUp vh-100 vw-100" style="align-content: center">
-    <b-container align="center">
+    <b-container style="display: grid; place-items: center">
       <b-row no-gutters class="back" align-v="center">
         <b-col>
           <img src="../assets/SignUpBG.png" style="width: 28.5vw; height: auto;">
@@ -116,11 +116,12 @@ export default {
   background-color: white;
   margin: auto;
   width: 57vw;
+  height: auto;
 }
 
 .register-btn {
   width: 25vw;
-  height: 5vh;
+  height: 3vw;
   border-radius: 50px;
   background: linear-gradient(90deg, #7591ff 0%, #4dd1be 100%);
   font-size: 1vw;
@@ -128,14 +129,15 @@ export default {
   font-weight: 500;
   color: #fff;
   border-width: 0;
-  margin-top: 5vh;
   display: grid;
   place-items: center;
+  margin-left: 2vw;
+  margin-top: 3vw;
 }
 
 .login-form>* {
   margin-left: 2.3vw;
-  margin-bottom: 4vh;
+  margin-bottom: 2vw;
 }
 
 #InputUsername,
